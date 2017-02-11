@@ -3,10 +3,11 @@
 from __future__ import unicode_literals
 
 AUTHOR = u'Vibek Raj Maurya'
-SITENAME = u'rvibek.com.np'
+SITENAME = u'rvibek'
 SITEURL = ''
 
 PATH = 'content'
+THEME = 'output/theme/purepelican'
 
 TIMEZONE = 'Africa/Cairo'
 
@@ -26,8 +27,8 @@ LINKS = (('Pelican', 'http://getpelican.com/'),
          ('You can modify those links in your config file', '#'),)
 
 # Social widget
-SOCIAL = (('You can add links in your config file', '#'),
-          ('Another social link', '#'),)
+SOCIAL = (
+          ('Facebook', 'http://facebook.com/rvibek'),)
 
 DEFAULT_PAGINATION = 10
 
