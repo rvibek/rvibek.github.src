@@ -14,4 +14,4 @@ The same photo was also  selected among the [Best Audience Photos 2009](http://r
 
 [Download ColdplayZone Calendar 2010](http://docs.google.com/leaf?id=0B8IiFn2ckr59YmUxYTNlN2YtZjU3MC00YWJmLTk1NDItMzg4NDZjOWM5ZTc3&hl=en_GB)
 
-![Coldplay Calendar](http://docs.google.com/leaf?id=0B8IiFn2ckr59YmUxYTNlN2YtZjU3MC00YWJmLTk1NDItMzg4NDZjOWM5ZTc3&hl=en_GB)
+![Coldplay Calendar](http://i0.wp.com/res.cloudinary.com/rvibek-com-np/image/upload/v1423914278/Screen-Shot-2014-03-15-at-12.37.43-PM_fp3ydi.png?resize=482%2C517)
