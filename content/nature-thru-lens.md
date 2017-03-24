@@ -3,6 +3,7 @@ Date: 2007-07-17 17:17
 Category: Blog
 Tags: nature through lens, wcn, nepalphotography, award
 Slug: nature-thru
+Email:  rvibek@gmail.com
 Summary: Judges for this competition were Mani Lama, Nripa Dhoj Khadka, Pradeep Shakya and Raj Bhai Suwal.Winners of this competition were Mr. Vibek Raj Maurya (Grand prize winner)
 
 Being awarded *Grand Prize Nature Through Lens 3 (2007)*
@@ -14,7 +15,7 @@ Being awarded *Grand Prize Nature Through Lens 3 (2007)*
 The 'award-wining **I am just looking** - title inpired by [Stereophonics](http://en.wikipedia.org/wiki/Stereophonics" target="_blank) song
 
 
-![Vibek Raj Maurya [Nature Through Lens3](http://i1.wp.com/res.cloudinary.com/rvibek-com-np/image/upload/v1423914265/ntl3_2_h8cqiu.jpg?resize=250%2C188)
+![Nature Through Lens3](http://i1.wp.com/res.cloudinary.com/rvibek-com-np/image/upload/v1423914265/ntl3_2_h8cqiu.jpg?resize=250%2C188)
 
 James F. Moriarty, US Ambassador to Nepal, handing award
 source: [nepalphotography](http://nepalphotography.wordpress.com/2007/06/17/im-just-looking/)

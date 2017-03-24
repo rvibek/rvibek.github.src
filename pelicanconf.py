@@ -8,6 +8,10 @@ SITEURL = ''
 
 PATH = 'content'
 THEME = 'output/theme/purepelican'
+COVER_IMG_URL = 'http://res.cloudinary.com/rvibek-com-np/image/upload/v1486821421/ghostium800_y3y8pa.jpg'
+PROFILE_IMG_URL = 'http://res.cloudinary.com/rvibek-com-np/image/upload/v1486821422/logo_dpmyds.png'
+DISQUS_SITENAME = ''
+AUTHOR_EMAIL = 'rvibek@gmail.com'
 
 TIMEZONE = 'Africa/Cairo'
 
@@ -23,12 +27,12 @@ AUTHOR_FEED_RSS = None
 # Blogroll
 LINKS = (('Pelican', 'http://getpelican.com/'),
          ('Python.org', 'http://python.org/'),
-         ('Jinja2', 'http://jinja.pocoo.org/'),
-         ('You can modify those links in your config file', '#'),)
+         ('Jinja2', 'http://jinja.pocoo.org/'),)
 
 # Social widget
 SOCIAL = (
-          ('Facebook', 'http://facebook.com/rvibek'),)
+          ('Facebook', 'http://facebook.com/rvibek'),
+          ('Instagram', 'http://instagram.com/rvibek'),)
 
 DEFAULT_PAGINATION = 10
 
