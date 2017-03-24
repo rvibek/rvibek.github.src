@@ -1,12 +1,11 @@
-:Title: Template GHub
+Title: Template GHub
 Slug: template-ghub
-:Dlug: template-ghub
-:Date: 2017-03-24 22:30:42
-:Tags: 
-:Category: 
-:Author: Vibek Raj Maurya
-:Lang: 
-:Summary: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum alias, explicabo ut dolorem nobis, temporibus ad repellat. Reprehenderit, corrupti? Aliquid perferendis rerum alias laudantium vel iure, nulla incidunt odio officia!
+Date: 2017-03-24 22:30:42
+Tags: 
+Category: 
+Author: Vibek Raj Maurya
+Lang: 
+Summary: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum alias, explicabo ut dolorem nobis, temporibus ad repellat. Reprehenderit, corrupti? Aliquid perferendis rerum alias laudantium vel iure, nulla incidunt odio officia!
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, obcaecati illum libero eos impedit eveniet cumque illo. Deserunt corporis a, corrupti sapiente tempora, provident cumque laudantium earum reiciendis suscipit facilis! 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur vel voluptate qui eius necessitatibus fuga error laboriosam veritatis quia id ut quis, sunt a repellendus nam aliquam earum. Laborum, eos?
