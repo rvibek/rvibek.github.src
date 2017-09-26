@@ -7,7 +7,7 @@ SITENAME = u'rvibek'
 SITEURL = ''
 
 PATH = 'content'
-THEME = 'output/theme/purepelican'
+THEME = 'output/theme/pelicanium'
 COVER_IMG_URL = 'http://res.cloudinary.com/rvibek-com-np/image/upload/v1486821421/ghostium800_y3y8pa.jpg'
 PROFILE_IMG_URL = 'http://res.cloudinary.com/rvibek-com-np/image/upload/v1486821422/logo_dpmyds.png'
 DISQUS_SITENAME = ''
@@ -31,10 +31,10 @@ LINKS = (('Pelican', 'http://getpelican.com/'),
 
 # Social widget
 SOCIAL = (
-          ('Facebook', 'http://facebook.com/rvibek'),
-          ('Instagram', 'http://instagram.com/rvibek'),)
+    ('Facebook', 'http://facebook.com/rvibek'),
+    ('Instagram', 'http://instagram.com/rvibek'),)
 
-DEFAULT_PAGINATION = 10
+DEFAULT_PAGINATION = 3
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
