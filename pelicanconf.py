@@ -38,3 +38,15 @@ DEFAULT_PAGINATION = 3
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
+PAGINATED_DIRECT_TEMPLATES = ['index', 'archives']
+# Uncomment following line if you want document-relative URLs when developing
+RELATIVE_URLS = True
+# PLUGIN_PATH = 'src/pelican-plugins'
+# PLUGINS = (
+#     # 'pelican_edit_url',
+#     'pelican_extended_authors',
+#     # 'summary',
+# )
+ARTICLE_EXCLUDES = ('pages', 'authors')
+# PAGE_EXCLUDES = ('authors',)
+PLUGINS = ('pelican_extended_authors',)
