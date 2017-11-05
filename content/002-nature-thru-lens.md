@@ -1,7 +1,7 @@
 Title: I'm just looking
-Date: 2007-07-17 17:17
+Date: 2007-07-17 11:09
 Category: Blog
-Tags: nature through lens, wcn, nepalphotography, award
+Tags: nature through lens, wcn, nepalphotography, award, grand prize
 Slug: nature-thru
 Email:  rvibek@gmail.com
 Summary: Judges for this competition were Mani Lama, Nripa Dhoj Khadka, Pradeep Shakya and Raj Bhai Suwal.Winners of this competition were Mr. Vibek Raj Maurya (Grand prize winner)
@@ -12,7 +12,7 @@ Being awarded *Grand Prize Nature Through Lens 3 (2007)*
 
 ![Screen Shot 2014-03-15 at 3.02.41PM](http://i2.wp.com/res.cloudinary.com/rvibek-com-np/image/upload/v1423914272/Screen-Shot-2014-03-15-at-3.02.41-PM_kswen1.png?resize=605%2C405)
 
-The 'award-wining **I am just looking** - title inpired by [Stereophonics](http://en.wikipedia.org/wiki/Stereophonics" target="_blank) song
+The 'award-wining **I am just looking** - title inpired by [Stereophonics](http://en.wikipedia.org/wiki/Stereophonics) song
 
 
 ![Nature Through Lens3](http://i1.wp.com/res.cloudinary.com/rvibek-com-np/image/upload/v1423914265/ntl3_2_h8cqiu.jpg?resize=250%2C188)

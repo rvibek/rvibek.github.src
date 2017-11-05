@@ -21,5 +21,6 @@ DELETE_OUTPUT_DIRECTORY = False
 
 # Following items are often useful when publishing
 
-#DISQUS_SITENAME = ""
-#GOOGLE_ANALYTICS = ""
+#Edit in pelicanconf.py
+# DISQUS_SITENAME = "rvibekblog"
+# GOOGLE_ANALYTICS = "UA-177774-1"

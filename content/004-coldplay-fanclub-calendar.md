@@ -1,6 +1,6 @@
 Title: Coldplay Fanclub Calendar
 Slug: coldplay-fanclub-calendar
-Date: 2010-01-10 21:25:38
+Date: 2010-12-12 21:25:38
 Tags: ColdplayZone, Coldplay, roskilde, Roskilde Festival, rvibek, photography
 Category: Blog
 Author: Vibek Raj Maurya

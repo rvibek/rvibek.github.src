@@ -6,4 +6,5 @@ Tags:
 Category: 
 Author: Vibek Raj Maurya
 Lang: 
-Summary: 
+Summary:  I am currently based in Cairo [previously, Hargeisa Kathmandu Pokhara Copenhagen]. I enjoy data scrapping, data wrangling and data visualisation.
+
