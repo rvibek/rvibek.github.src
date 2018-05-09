@@ -12,7 +12,7 @@ If the number of supermarket outlets and it’s location defined the population 
   
  Coordinates of the Netto and Fakta is [here](http://goo.gl/gEcP0v "Netto Fakta - rvibek")
 
-<iframe height="450" src="http://www.openheatmap.com/embed.html?map=FunambuloesHerlsAkebi" width="600"></iframe>
+<iframe height="450" src="https://www.openheatmap.com/embed.html?map=FunambuloesHerlsAkebi" width="600"></iframe>
 
 [View Larger Map](http://www.openheatmap.com/view.html?map=FunambuloesHerlsAkebi "Netto-Fakta HeatMap - rvibek")
 

@@ -14,9 +14,9 @@ I have been following [santdex's YouTube](https://www.youtube.com/user/sentdex){
 
 I have been 'binge' watching [Matplotlib Tutorial Series - Graphing in Python](https://www.youtube.com/playlist?list=PLQVvvaa0QuDfefDfXb9Yf0la1fPDKluPF){:target="_blank"}. And, here's one of the works - [xkcd](https://xkcd.com){:target="_blank"} styled map of South Asia. 
 
-[![xkcd South Asia](http://res.cloudinary.com/rvibek-com-np/image/upload/v1505491453/xkcd_southasia_xkcd_ag53g2.png)](http://res.cloudinary.com/rvibek-com-np/image/upload/v1505491453/xkcd_southasia_xkcd_ag53g2.png){:target="_blank"}
+[![xkcd South Asia](https://res.cloudinary.com/rvibek-com-np/image/upload/v1505491453/xkcd_southasia_xkcd_ag53g2.png)](http://res.cloudinary.com/rvibek-com-np/image/upload/v1505491453/xkcd_southasia_xkcd_ag53g2.png){:target="_blank"}
 
-[Download SVG](http://res.cloudinary.com/rvibek-com-np/image/upload/v1505491459/xkcd_southasia_xkcd_fbryap.svg){:target="_blank"}
+[Download SVG](https://res.cloudinary.com/rvibek-com-np/image/upload/v1505491459/xkcd_southasia_xkcd_fbryap.svg){:target="_blank"}
 
 
 

@@ -12,7 +12,7 @@ This is my Ubunutu 10.10 on Samsung NC10 facelifted with conky and docky. Wednes
 
 It has already been 6 years since I started using Ubuntu. I started with Ubuntu 5.04 (Hoary Hedgehog) – I think that was the second Ubuntu release.
 
-![maverick](http://res.cloudinary.com/rvibek-com-np/image/upload/v1432017585/maverick_rvibek_rk2fzo.png)
+![maverick](https://res.cloudinary.com/rvibek-com-np/image/upload/v1432017585/maverick_rvibek_rk2fzo.png)
 
  
 

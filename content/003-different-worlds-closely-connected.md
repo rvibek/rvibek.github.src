@@ -17,8 +17,8 @@ I took the photo in Accra while I as conducting field research.
 
 ---
 
-![Image](http://i1.wp.com/res.cloudinary.com/rvibek-com-np/image/upload/v1423914277/Screen-Shot-2014-03-15-at-12.44.01-PM_kwzvdu.png)
+![Image](https://i1.wp.com/res.cloudinary.com/rvibek-com-np/image/upload/v1423914277/Screen-Shot-2014-03-15-at-12.44.01-PM_kwzvdu.png)
 
-![Image](http://i1.wp.com/res.cloudinary.com/rvibek-com-np/image/upload/v1423914276/Screen-Shot-2014-03-15-at-1.02.04-PM_ie7glv.png?resize=366%2C475)
+![Image](https://i1.wp.com/res.cloudinary.com/rvibek-com-np/image/upload/v1423914276/Screen-Shot-2014-03-15-at-1.02.04-PM_ie7glv.png?resize=366%2C475)
 
 

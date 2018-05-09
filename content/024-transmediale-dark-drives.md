@@ -13,14 +13,14 @@ I was extremely happy when [transmediale](http://www.transmediale.de" target="_b
 The transmediale is an annual festival with a focus on the interplay between art, culture and technology. This year the festival is celebrating its 25th anniversary and through the years of its existence the festival has emerged to become one of the most influential platforms for the ever more important questions concerning our relationship to the constantly changing technological environments.
 
 
-[![Transmediale e-waste Vibek](http://res.cloudinary.com/rvibek-com-np/image/upload/v1432019605/transmediale_flickr_bcv8j2.png)](http://www.transmediale.de/content/photos-e-waste-found-flickr" target="_blank")
+[![Transmediale e-waste Vibek](https://res.cloudinary.com/rvibek-com-np/image/upload/v1432019605/transmediale_flickr_bcv8j2.png)](http://www.transmediale.de/content/photos-e-waste-found-flickr" target="_blank")
 
 > [Vibek Raj Maurya](http://www.transmediale.de/content/vibek-raj-maurya" target="_blank") is an environmental service professional with expertise in sustainable development and environmental justice. He also contributes to a news magazine in Nepal on environmental issues. He started as a hobby photographer in 2004. He has also worked as a researcher for documentaries on sustainability and climate change. In 2007 Vibek moved from Nepal to Denmark to pursue postgraduate studies. His photographs of e-waste are a product of a research trip to Ghana.
 
 
-[![Profile in Transmediale Site](http://res.cloudinary.com/rvibek-com-np/image/upload/v1432019384/transmediale_profile_anrjb0.png)](http://www.transmediale.de/content/vibek-raj-maurya" target="_blank")
+[![Profile in Transmediale Site](https://res.cloudinary.com/rvibek-com-np/image/upload/v1432019384/transmediale_profile_anrjb0.png)](http://www.transmediale.de/content/vibek-raj-maurya" target="_blank")
 
-[Transmediale Flickr](http://www.transmediale.de/content/photos-e-waste-found-flickr)
+[Transmediale Flickr](https://www.transmediale.de/content/photos-e-waste-found-flickr)
 
 
 

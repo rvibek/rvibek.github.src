@@ -25,11 +25,11 @@ Right click and save the result – “Nepali TV” to your favourite.
 
 Happy watching!
 
-![NepaliTV](http://res.cloudinary.com/rvibek-com-np/image/upload/v1423918809/NepaliTV_Navi-X_z7y0t5.png)
+![NepaliTV](https://res.cloudinary.com/rvibek-com-np/image/upload/v1423918809/NepaliTV_Navi-X_z7y0t5.png)
 
 
 *Update: November 2014*
-I have put the [JSON of latest playlist](http://app-weather.rhcloud.com/data/kimplx.json" target="_blank") publicly - if you are interested in building up your own app.
+I have put the [JSON of latest playlist](https://app-weather.rhcloud.com/data/kimplx.json" target="_blank") publicly - if you are interested in building up your own app.
 
 Here's  the snapshot of generated JSON. The file gets updated every hour.
 

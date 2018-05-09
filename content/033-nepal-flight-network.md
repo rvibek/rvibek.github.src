@@ -14,7 +14,7 @@ The flight reminds me of [flight dataviz](http://flightclub.jalopnik.com/you-mus
   
 As for now I have flight network in the simplest form. I aggregated the flight connection data from [TravelandTourNepal](http://travelandtourtonepal.com/ticketing/domestic-flight-in-nepal" target="_blank) and airport data from [Wikipedia – Airport in Nepal](http://en.wikipedia.org/wiki/List_of_airports_in_Nepal" target="_blank). I loaded the resulting two files in [R](http://www.r-project.org/) and fiddled with [map library](http://cran.r-project.org/web/packages/maps/index.html" target="_blank).
 
-[![FlightNetwork Nepal](http://i0.wp.com/res.cloudinary.com/rvibek-com-np/image/upload/v1423914262/FlightNetwork_ahrp5v.png?resize=605%2C305)](http://i0.wp.com/res.cloudinary.com/rvibek-com-np/image/upload/v1423914262/FlightNetwork_ahrp5v.png "Flight Network")
+[![FlightNetwork Nepal](https://i0.wp.com/res.cloudinary.com/rvibek-com-np/image/upload/v1423914262/FlightNetwork_ahrp5v.png?resize=605%2C305)](http://i0.wp.com/res.cloudinary.com/rvibek-com-np/image/upload/v1423914262/FlightNetwork_ahrp5v.png "Flight Network")
 
 **flights.csv**
 ```python

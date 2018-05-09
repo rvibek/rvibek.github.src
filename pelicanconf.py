@@ -5,15 +5,15 @@ from __future__ import unicode_literals
 AUTHOR = u'Vibek Raj Maurya'
 SITENAME = u'rvibek'
 SITESUBTITLE = u'..in the making'
-SITEURL = 'http://rvibek.com.np'
+SITEURL = 'https://rvibek.com.np'
 
 PATH = 'content'
 THEME = 'output/theme/pelicanium'
-COVER_IMG_URL = 'http://res.cloudinary.com/rvibek-com-np/image/upload/v1486821421/ghostium800_y3y8pa.jpg'
-PROFILE_IMG_URL = 'http://res.cloudinary.com/rvibek-com-np/image/upload/v1486821422/logo_dpmyds.png'
+COVER_IMG_URL = 'https://res.cloudinary.com/rvibek-com-np/image/upload/v1486821421/ghostium800_y3y8pa.jpg'
+PROFILE_IMG_URL = 'https://res.cloudinary.com/rvibek-com-np/image/upload/v1486821422/logo_dpmyds.png'
 AUTHOR_EMAIL = 'rvibek@gmail.com'
 
-DISQUS_SITENAME = 'rvibekblog'
+DISQUS_SITENAME = 'rvibekblog'  # rvibekghost
 GOOGLE_ANALYTICS = "UA-177774-1"
 
 
@@ -35,12 +35,12 @@ LINKS = (('Pelican', 'http://getpelican.com/'),
 
 # Social widget
 SOCIAL = (
-    ('Facebook', 'http://facebook.com/rvibek'),
-    ('Flickr', 'http://flickr.com/rvibek'),
-    ('Github', 'http://github.com/rvibek'),
+    ('Facebook', 'https://facebook.com/rvibek'),
+    ('Flickr', 'https://flickr.com/rvibek'),
+    ('Github', 'https://github.com/rvibek'),
 
-    ('Instagram', 'http://instagram.com/rvibek'),
-    ('Twitter', 'http://twitter.com/rvibek')
+    ('Instagram', 'https://instagram.com/rvibek'),
+    ('Twitter', 'https://twitter.com/rvibek')
 
 )
 

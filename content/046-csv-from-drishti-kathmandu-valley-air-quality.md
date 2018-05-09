@@ -40,7 +40,7 @@ The flag R and H means Hourly reading and the Highest in the past 24 hours. I st
 
 Graph generated from the data collected in about a month
 
-![Graph](http://res.cloudinary.com/rvibek-com-np/image/upload/v1472802171/drishti-aug_ooogyl.png)
+![Graph](https://res.cloudinary.com/rvibek-com-np/image/upload/v1472802171/drishti-aug_ooogyl.png)
 
 
 

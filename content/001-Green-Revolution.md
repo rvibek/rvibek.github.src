@@ -14,6 +14,6 @@ I was interviewed by [NepalNet](http://nepalnet.net) in regards to [EnvironmentN
 
 [https://goo.gl/g8rpYy](https://goo.gl/g8rpYy)
 
-[![Screen Shot 2014-03-15 at 1.10.18 PM](http://i0.wp.com/res.cloudinary.com/rvibek-com-np/image/upload/v1423914275/Screen-Shot-2014-03-15-at-1.10.18-PM_mkgm8s.png?resize=605%2C379)](https://web.archive.org/web/20040816074557/http://www.nepalnet.net/article/1001_1020/article1009.htm)
+[![Screen Shot 2014-03-15 at 1.10.18 PM](https://i0.wp.com/res.cloudinary.com/rvibek-com-np/image/upload/v1423914275/Screen-Shot-2014-03-15-at-1.10.18-PM_mkgm8s.png?resize=605%2C379)](https://web.archive.org/web/20040816074557/http://www.nepalnet.net/article/1001_1020/article1009.htm)
 
 
