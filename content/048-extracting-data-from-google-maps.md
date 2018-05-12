@@ -14,7 +14,7 @@ The following code loads the first 20 results, if the JSON file has ```"next_pag
 
 The scripts available in my [GitRepo](https://github.com/rvibek/Data-from-Google-Maps)
 
-And here's are the saved results in Gist.[Nepalese Restaurants in Europe](https://gist.github.com/rvibek/e5aea8a9396ad10d5b8d42562c53cf08). Interestingly, there are almost 80 Nepalese restaurants in Finland. 
+And here's are the saved results in Gist. [Nepalese Restaurants in Europe](https://gist.github.com/rvibek/e5aea8a9396ad10d5b8d42562c53cf08). Interestingly, there are almost 80 Nepalese restaurants in Finland. 
 
 The script uses 3 libraries. ```time``` is needed to delay the API call. Google has limitation on request per second. 
 
