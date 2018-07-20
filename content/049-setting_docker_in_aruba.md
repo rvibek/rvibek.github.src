@@ -6,7 +6,7 @@ Tags: docker, aruba, python, nginx, jupyter
 Category: Blog
 Author: Vibek Raj Maurya
 Lang: 
-Summary: I am experimenting a multiple of intances of dockers in a vps using docker-machine aruba driver
+Summary: I am experimenting a multiple of intances of dockers in a arubacloud vps using docker-machine aruba driver
 
 I have been using  [arubacloud](https://www.arubacloud.com) VPS for sometime now. Price wise, it's cheap and the service is good. Their price is as low as 1 Euro/month with 1 vCPU, 1 GB RAM, 20 GB SSD Storage and 2 TB/month data transfer.
 
@@ -25,7 +25,12 @@ docker-machine create --driver arubacloud \
  --ac_admin_password              "XXXXXX" arubdocker
 ```
 
-then ```docker-machine ssh arubadocker``` to SSH the vps
+then 
+
+```
+docker-machine ssh arubadocker
+``` 
+to SSH the vps
 
 and, to create instances of dockers
 
@@ -34,7 +39,7 @@ docker pull nginx
 docker pull jupyter/datascience-notebook
 ```
 
-Datascience-notebook setups with the default user ```jovyan```, which is not sudoer.  My attempt to find ```sudo``` password was invain. However, I could start the docker as a root from the host. It allows me to install/update software. 
+Datascience-notebook setups with the default user ```jovyan```, which is not a sudoer.  My attempt to find ```sudo``` password in the internet was in vain. However, I could start the docker as a root from the host. It allows me to install/update software. 
 
 ```
 docker run --name jupyter-dockr  -p 8888:8888 -p 2223:22 -e GRANT_SUDO=yes --user root -d  jupyter/datascience-notebook 
