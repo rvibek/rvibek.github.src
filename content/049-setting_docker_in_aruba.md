@@ -16,7 +16,7 @@ Creating a new server is straight forward
 
 ```
 docker-machine create --driver arubacloud \
- --ac_action "NewSmart"\
+ --ac_action                      "NewSmart"\
  --ac_username                    "AWI-XXXX" \
  --ac_password                    "XXXXXX" \
  --ac_endpoint                    "dc1" \
@@ -36,4 +36,6 @@ docker pull jupyter/datascience-notebook
 
 Datascience-notebook setups with the default user ```jovyan```, which is not sudoer.  My attempt to find ```sudo``` password was invain. However, I could start the docker as a root from the host. It allows me to install/update software. 
 
-```docker run --name jupyter-dockr  -p 8888:8888 -p 2223:22 -e GRANT_SUDO=yes --user root -d  jupyter/datascience-notebook ```
+```
+docker run --name jupyter-dockr  -p 8888:8888 -p 2223:22 -e GRANT_SUDO=yes --user root -d  jupyter/datascience-notebook 
+```
