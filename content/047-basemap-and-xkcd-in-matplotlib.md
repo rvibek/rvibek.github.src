@@ -6,13 +6,11 @@ Category: Blog
 Tags: matplotlib, python, southasia, nepal
 Author: Vibek Raj Maurya
 Lang: EN
-Summary: I had never paid much attention what goes under the hood and barely used customisations. It was time to roll up the sleeves for yet another tutorial. 
+Summary: Matplotlib - I have been using the API for some time but hardly customised it. It was time to roll up the sleeves for yet another tutorial. 
 
-It had been awhile since I last posted.
+I have been following [santdex's YouTube](https://www.youtube.com/user/sentdex){:target="_blank"} for Python-related series. Although I have been using  [matplotlib](https://matplotlib.org){:target="_blank"} for super quick charting, I had never paid much attention what goes under the hood and barely used customisations. 
 
-I have been following [santdex's YouTube](https://www.youtube.com/user/sentdex){:target="_blank"} for tutorials. Although I had been using some [matplotlib](https://matplotlib.org){:target="_blank"}, I had never paid much attention what goes under the hood and barely used customisations. It was time to roll up the sleeves for yet another tutorial. 
-
-I have been 'binge' watching [Matplotlib Tutorial Series - Graphing in Python](https://www.youtube.com/playlist?list=PLQVvvaa0QuDfefDfXb9Yf0la1fPDKluPF){:target="_blank"}. And, here's one of the works - [xkcd](https://xkcd.com){:target="_blank"} styled map of South Asia. 
+Yet another 'binge' watching - [Matplotlib Tutorial Series - Graphing in Python](https://www.youtube.com/playlist?list=PLQVvvaa0QuDfefDfXb9Yf0la1fPDKluPF){:target="_blank"}. And, for your viewing pleasure [xkcd](https://xkcd.com){:target="_blank"} styled map of South Asia. 
 
 [![xkcd South Asia](https://res.cloudinary.com/rvibek-com-np/image/upload/v1505491453/xkcd_southasia_xkcd_ag53g2.png)](http://res.cloudinary.com/rvibek-com-np/image/upload/v1505491453/xkcd_southasia_xkcd_ag53g2.png){:target="_blank"}
 
@@ -31,8 +29,8 @@ plt.xkcd()
 
 
 font = {
-		'family': 'xkcd',
-		'size'   : 4.5}
+        'family': 'xkcd',
+        'size'   : 4.5}
 
 matplotlib.rc('font', **font)
 
@@ -44,8 +42,8 @@ df = pd.read_csv(url)
 ax1 = plt.subplot(111)
 
 m = Basemap(projection = 'mill', 
-			llcrnrlat=2,llcrnrlon=60,urcrnrlat=40, urcrnrlon=98,
-			ax = ax1)
+            llcrnrlat=2,llcrnrlon=60,urcrnrlat=40, urcrnrlon=98,
+            ax = ax1)
 m.drawcountries(linewidth=0.5)
 m.drawcoastlines(linewidth=0.5)
 m.fillcontinents(color="grey")
@@ -53,10 +51,10 @@ m.drawmapboundary()
 
 
 for point in range(len(df)):
-	x,y = m(df.Longitude[point], df.Latitude[point])
-	ax1.annotate(df.Capital[point], xy=(x,y), xycoords='data',
-				textcoords='offset points', xytext=(0,5))
-	ax1.plot(x,y, marker='o', color='indianred')
+    x,y = m(df.Longitude[point], df.Latitude[point])
+    ax1.annotate(df.Capital[point], xy=(x,y), xycoords='data',
+                textcoords='offset points', xytext=(0,5))
+    ax1.plot(x,y, marker='o', color='indianred')
 
 plt.title('xkcd - South Asia', size=16)
 

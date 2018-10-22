@@ -1,15 +1,15 @@
 Title: CSV from Drishti KTM Valley Air Quality
 Slug: csv-from-drishti-kathmandu-valley-air-quality
 Date: 2016-08-18 21:25:38
-Tags: kathmandu, dataviz, python, bokeh, air quality
+Tags: kathmandu, data viz, python, bokeh, air quality
 Category: Blog
 Author: 
 Lang: EN
-Summary: The sheets provided just a snapshot of past 24 hours data. I wish they had shared more data or perhaps API - reachers and data enthusiasts would have loved it. 
+Summary: The sheet maintained by Drishti provides just a snapshot of past 24 hours data. I wish they had shared more detail data or perhaps API.
 
-I ran across a couple posts on [Drishti Kathmandu](https://www.facebook.com/groups/drishtiKathmandu/" target="_blank") recently. I was excited to read, as some tweets indicated, Drishti Kathmandu had installed low-cost pollution monitoring stations in various spots in the valley and would be sharing real time air quality monitoring data. 
+I ran across a couple posts on [Drishti Kathmandu](https://www.facebook.com/groups/drishtiKathmandu/" target="_blank") recently. I was excited to read, as some tweets indicated, Drishti Kathmandu had installed low-cost pollution monitoring stations in various spots in the valley and would be sharing real-time air quality monitoring data. 
 
-Drishti Kathmandu maintains a [Google Sheets](https://docs.google.com/spreadsheets/d/1J2I40hglES63YZHROcOL3oAjDPqiiKLRPE_ikAWsR-Q/pubhtml?gid=1267634591&single=true" target="_blank"). The sheet gets updated every hour but the readings doesn't change much though. Besides, I was disappointed the sheets provided just a snapshot of past 24 hours data. I wish they had shared more data or perhaps API - reachers and data enthusiasts would have loved it. I once wrote to group admin but never heard back.
+Drishti Kathmandu maintains a [Google Sheets](https://docs.google.com/spreadsheets/d/1J2I40hglES63YZHROcOL3oAjDPqiiKLRPE_ikAWsR-Q/pubhtml?gid=1267634591&single=true" target="_blank"). The sheet gets updated every hour but the readings don't change much though. Besides, I was disappointed the sheets provided just a snapshot of the past 24 hours data. I wish they had shared more data or perhaps API - researchers and data enthusiasts would have appreciated it. Once I even wrote to the group admin but never heard back.
 
 As a weekend project, I wrote a python script to scrap the sheets and append reading to [CSV file](http://goo.gl/y2Z0gG" target="_blank"). 
 
@@ -36,7 +36,7 @@ date,time,place,reading,type
 "Wednesday,August 17,2016","08:00 PM","THAPATHALI",95,H
 ```
 
-The flag R and H means Hourly reading and the Highest in the past 24 hours. I started appending Highest reading a week ago.
+The flags R and H mean hourly reading and the highest in the past 24 hours respectively. 
 
 Graph generated from the data collected in about a month
 

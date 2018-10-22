@@ -10,9 +10,9 @@ Summary: I worked as a UNV Online Volunteer/Online Coordinator for Standby Task 
 
 I worked as a UNV Online Volunteer/Online Coordinator for Standby Task Force during Nepal Earthquake Deployment (April 25, 2015 - May 6, 2015) for crisis mapping when the 7.9 magnitude earthquake hit Nepal on 25 April 2015. 
 
-I was not in the country but I wanted to be part of a humanitarian response in whatever way and capacity I could. 
+During the crisis, I was in Somaliland but I wanted to be part of a humanitarian response in whatever way and capacity I could. 
 
-UNV covered the intervention on its newsletter. Online version of the [article can be found here](https://www.onlinevolunteering.org/en/node/384182)
+UNV covered the intervention on its newsletter. The online version of the [article can be found here](https://www.onlinevolunteering.org/en/node/384182)
 
 
 

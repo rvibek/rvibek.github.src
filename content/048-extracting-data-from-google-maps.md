@@ -6,9 +6,9 @@ Tags: google maps, python, scrapping
 Category: Blog
 Author: Vibek Raj Maurya
 Lang: 
-Summary: Using the parameter page_token to recursively fetch Google Maps API result.
+Summary: Using page_token parameter to recursively fetch Google Maps API result.
 
-Google Maps API displays 20 results in one page. By using a parameter ```page_token```, it is possible to get more than 20 results.  The API fetches maximum 60 results for a query. The query can be refined should we need more result - run the query on sub-division level instead of country.
+Google Maps API displays 20 results on one page. By using a parameter ```page_token```, it is possible to get more than 20 results.  The API fetches maximum 60 results for a query. The query can be refined should we need more result - run the query on sub-division level instead of country.
 
 The following code loads the first 20 results, if the JSON file has ```"next_page_token"``` key then it recursively loads the subsequent pages.
 
@@ -16,7 +16,7 @@ The scripts available in my [GitRepo](https://github.com/rvibek/Data-from-Google
 
 And here's are the saved results in Gist. [Nepalese Restaurants in Europe](https://gist.github.com/rvibek/e5aea8a9396ad10d5b8d42562c53cf08). Interestingly, there are almost 80 Nepalese restaurants in Finland. 
 
-The script uses 3 libraries. ```time``` is needed to delay the API call. Google has limitation on request per second. 
+The script uses 3 libraries. ```time``` is needed to delay the API call. Google has a limitation on request per second. 
 
 ```
 import json
