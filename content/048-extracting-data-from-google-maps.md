@@ -8,7 +8,7 @@ Author: Vibek Raj Maurya
 Lang: 
 Summary: Using page_token parameter to recursively fetch Google Maps API result.
 
-Google Maps API displays 20 results on one page. By using a parameter ```page_token```, it is possible to get more than 20 results.  The API fetches maximum 60 results for a query. The query can be refined should we need more result - run the query on sub-division level instead of country.
+Google Maps API displays 20 results on one page. By using ```page_token``` parameter, it is possible to get more than 20 results.  The API fetches maximum 60 results for a query. The query can be refined should we need more result - run the query on sub-division level instead of country.
 
 The following code loads the first 20 results, if the JSON file has ```"next_page_token"``` key then it recursively loads the subsequent pages.
 
