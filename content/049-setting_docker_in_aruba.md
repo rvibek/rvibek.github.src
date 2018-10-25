@@ -8,7 +8,7 @@ Author: Vibek Raj Maurya
 Lang: 
 Summary: Experimenting a multiple of instance of dockers in arubacloud VPS using docker-machine aruba driver
 
-I have been using  [arubacloud](https://www.arubacloud.com) VPS for some time now. Price wise, it's cheap and can't complain about the serive. The subscription is as low as 1 EUR/month for 1 vCPU, 1 GB RAM, 20 GB SSD Storage and 2 TB/month data transfer.
+I have been using  [arubacloud](https://www.arubacloud.com) VPS for some time now. Price wise, it's cheap and can't complain about the service. The subscription is as low as 1 EUR/month for 1 vCPU, 1 GB RAM, 20 GB SSD Storage and 2 TB/month data transfer.
 
 This is an experiment to setup a multiple of instance of dockers in a VPS using [docker-machine aruba driver](https://github.com/Arubacloud/docker-machine-driver-arubacloud). I have 2 docker instances running - [jupyter/datascience-notebook](https://hub.docker.com/r/jupyter/datascience-notebook/) and [nginx](https://hub.docker.com/_/nginx/)
 
