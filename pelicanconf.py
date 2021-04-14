@@ -48,7 +48,7 @@ DEFAULT_PAGINATION = 10
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
-PAGINATED_DIRECT_TEMPLATES = ['index', 'archives']
+PAGINATED_TEMPLATES = ['index', 'archives']
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
 # PLUGIN_PATH = 'src/pelican-plugins'
@@ -59,7 +59,7 @@ RELATIVE_URLS = True
 # )
 ARTICLE_EXCLUDES = ('pages', 'authors')
 # PAGE_EXCLUDES = ('authors',)
-PLUGINS = ('pelican_extended_authors',)
+PLUGINS = ['pelican_extended_authors']
 STATIC_PATHS = ['images', 'extra/favicon.ico']
 EXTRA_PATH_METADATA = {
     'extra/robots.txt': {'path': 'robots.txt'},
