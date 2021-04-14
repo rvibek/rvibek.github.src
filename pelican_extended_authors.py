@@ -5,7 +5,7 @@ import hashlib
 import logging
 import six
 
-from pelican.contents import Content#, is_valid_content
+from pelican.contents import Content, is_valid_content
 from pelican.generators import Generator
 from pelican import signals
 
