@@ -977,6 +977,7 @@
     color: #000;
     text-shadow: 0 1px #fff;
     font-family: Consolas, Monaco, 'Andale Mono', monospace;
+    font-size: 20px;
     direction: ltr;
     text-align: left;
     white-space: pre;
