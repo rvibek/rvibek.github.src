@@ -1,7 +1,7 @@
 Title: Setting up Docker in ArubaCloud
 Slug: setting-up-docker-in-arubacloud
 Date: 2018-07-20 08:25:16
-Modified: 2018-07-20 22:45:14
+Modified: 2020-02-20 22:45:14
 Tags: docker, aruba, python, nginx, jupyter, data science
 Category: Blog
 Author: Vibek Raj Maurya
@@ -14,12 +14,12 @@ This is an experiment to setup a multiple of instance of dockers in a VPS using 
 
 Creating a new server is straightforward
 
-then 
 
 ```
 docker-machine ssh arubadocker
 ``` 
-to SSH the VPS
+
+then to SSH the VPS
 
 and, to create instances of dockers
 
@@ -33,3 +33,4 @@ Data science-notebook setups with the default user ```jovyan```, which is not a 
 ```
 docker run --name jupyter-dockr  -p 8888:8888 -p 2223:22 -e GRANT_SUDO=yes --user root -d  jupyter/datascience-notebook 
 ```
+
