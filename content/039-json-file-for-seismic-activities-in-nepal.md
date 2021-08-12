@@ -2,7 +2,7 @@ Title: JSON file for seismic activities in Nepal
 Slug: json-file-for-seismic-activities-in-nepal
 Date: 2015-05-18 13:08:43
 Modified: 2015-05-18 14:08:43
-Tags: python, scraping, data, earthquake, json
+Tags: python, scraping, data, earthquake, json, magazine
 Category: Blog 
 Author: Vibek Raj Maurya 
 Lang: EN
@@ -96,7 +96,7 @@ And writing the result into [JSON](http://app-weather.rhcloud.com/data/earthquak
 ```
 Finally - widget based on above JSON file. [HimalKhabar](http://himalkhabar.com" target="_blank") has embedded it in its website.
 
-![Seismic Activity Card](https://res.cloudinary.com/rvibek-com-np/image/upload/h_400,e_shadow/v1628804084/reu56ezdegh7pkymfg9w.png)
+![Seismic Activity Card](https://res.cloudinary.com/rvibek-com-np/image/upload/w_350,e_shadow/v1628804084/reu56ezdegh7pkymfg9w.png)
 
 
 <blockquote class="twitter-tweet" lang="en"><p lang="ne" dir="ltr">भूकम्पको लाइभ अपडेट <a href="http://t.co/yfbJgjRYxA">http://t.co/yfbJgjRYxA</a> मा ।</p>&mdash; Himal Khabar (@Himal_Khabar) <a href="https://twitter.com/Himal_Khabar/status/600229390790721538">May 18, 2015</a></blockquote>
