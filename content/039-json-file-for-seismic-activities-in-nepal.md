@@ -6,13 +6,13 @@ Tags: python, scraping, data, earthquake, json
 Category: Blog 
 Author: Vibek Raj Maurya 
 Lang: EN
-Summary: I wrote a python script to reorganise the table containing seismological record from [seismonepal.gov.np](http://seismonepal.gov.np" target="_blank") website.
+Summary: I wrote a python script to reorganise the table containing seismological record from seismonepal.gov.np
 
-Spent the long weekend fiddling with [R](http://cran.r-project.org/" target"=_blank) and [Python](http://python.org" target"=_blank) mainly to pull the data - and then cleaning and reorganising.
+Spent the long weekend fiddling with [R](http://cran.r-project.org/" target"=_blank") and [Python](http://python.org" target"=_blank) mainly to pull the data - and then cleaning and reorganising.
 
 Among others, I wrote a python script to reorganise the table containing seismological record from [seismonepal.gov.np](http://seismonepal.gov.np" target="_blank") website.
 
-I have used **=ImportHTML()** to fetch the data from above table. I could have written scrapper but whenever data is in tabular form I rely on [Google Spreadsheet](http://spreadsheet.google.com" target="_blank") to convert table into CSV. 
+**=ImportHTML()** is a handy function to fetch the data from a table or list. It time saver trick in [Google Spreadsheet](http://spreadsheet.google.com" target="_blank") when the source data is available in a tabular or list form. 
 
 ```python
 =ImportHTML("http://seismonepal.gov.np/index.php", "table", 1)
@@ -96,7 +96,7 @@ And writing the result into [JSON](http://app-weather.rhcloud.com/data/earthquak
 ```
 Finally - widget based on above JSON file. [HimalKhabar](http://himalkhabar.com" target="_blank") has embedded it in its website.
 
-<iframe src=http://app-weather.rhcloud.com/data/earthquake/ width="270" height="410" frameborder="0">Browser not compatible.</iframe>
+![Seismic Activity Card](https://res.cloudinary.com/rvibek-com-np/image/upload/v1628804084/reu56ezdegh7pkymfg9w.png)
 
 
 <blockquote class="twitter-tweet" lang="en"><p lang="ne" dir="ltr">भूकम्पको लाइभ अपडेट <a href="http://t.co/yfbJgjRYxA">http://t.co/yfbJgjRYxA</a> मा ।</p>&mdash; Himal Khabar (@Himal_Khabar) <a href="https://twitter.com/Himal_Khabar/status/600229390790721538">May 18, 2015</a></blockquote>
