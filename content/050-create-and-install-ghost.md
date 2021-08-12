@@ -6,7 +6,6 @@ Tags: ghost, site generator, node, git
 Category: Blog
 Author: Vibek Raj Maurya
 Lang: en
-
 Summary: A quick note on setting up Ghost CMS locally and using wget command to generate required resources to host it in Github. 
 
 
