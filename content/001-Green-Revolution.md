@@ -5,10 +5,10 @@ Modified: 2004-09-04 22:11:17
 Tags: environmental, interview, Vibek Raj Maurya, rvibek
 Category: Blog
 Author: Vibek Raj Maurya
-Lang: 
+Lang:
 Summary: EnvironmentNEPAL started as a pet project in late 2000. During those days, the team envisaged to develop a portal that would exclusively cover environmental stories from Nepal.
 
-I was interviewed by [NepalNet](http://nepalnet.net) in regards to [EnvironmentNEPAL](http://goo.gl/iYq3zO) project. 
+I was interviewed by [NepalNet](http://nepalnet.net) in regards to [EnvironmentNEPAL](http://goo.gl/iYq3zO) project.
 
 > EnvironmentNEPAL started as a pet project in late 2000. During those days, the team envisaged to develop a portal that would exclusively cover environmental stories from Nepal. - Vibek
 
