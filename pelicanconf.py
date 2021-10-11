@@ -3,9 +3,9 @@
 
 
 AUTHOR = u'Vibek Raj Maurya'
-SITENAME = u'rvibek'
+SITENAME = u'rvibek | Vibek Raj Maurya'
 SITESUBTITLE = u'..in the making'
-SITEURL = 'https://rvibek.co.np/'
+SITEURL = 'https://rvibek.com.np'
 
 PATH = 'content'
 THEME = 'theme/pelicanium/'
@@ -33,10 +33,8 @@ AUTHOR_FEED_RSS = None
 
 # Social widget
 SOCIAL = (
-    ('Facebook', 'https://facebook.com/rvibek'),
     ('Flickr', 'https://flickr.com/rvibek'),
     ('Github', 'https://github.com/rvibek'),
-
     ('Instagram', 'https://instagram.com/rvibek'),
     ('Twitter', 'https://twitter.com/rvibek')
 
