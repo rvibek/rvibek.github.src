@@ -3,9 +3,12 @@
 
 
 AUTHOR = u'Vibek Raj Maurya'
-SITENAME = u'rvibek | Vibek Raj Maurya'
+SITENAME = u'rvibek'
+SITE_TITLE  =  u'rvibek | Vibek Raj Maurya'
 SITESUBTITLE = u'..in the making'
 SITEURL = 'https://rvibek.com.np'
+# GITHUB_URL = 'https://github.com/rvibek'
+
 
 PATH = 'content'
 THEME = 'theme/pelicanium/'
@@ -36,6 +39,7 @@ SOCIAL = (
     ('Flickr', 'https://flickr.com/rvibek'),
     ('Github', 'https://github.com/rvibek'),
     ('Instagram', 'https://instagram.com/rvibek'),
+    ('LinkedIn', 'https://www.linkedin.com/in/rvibek/'),
     ('Twitter', 'https://twitter.com/rvibek')
 
 )

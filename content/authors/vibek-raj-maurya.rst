@@ -1,7 +1,6 @@
 =================
 Vibek Raj Maurya
 =================
-
 :slug: vibek-raj-maurya
 :date: 2014-04-14 14:14
 :cover_image: https://res.cloudinary.com/rvibek-com-np/image/upload/c_scale,w_100/v1618400153/circle-cropped_4_dgiful.png
