@@ -7,8 +7,8 @@ SITENAME = u'rvibek'
 SITE_TITLE  =  u'rvibek | Vibek Raj Maurya'
 SITESUBTITLE = u'..in the making'
 SITEURL = 'https://rvibek.com.np'
-# GITHUB_URL = 'https://github.com/rvibek'
 
+BIO = "I am a data analyst currently based in Copenhagen (again) [previously lived and worked in Geneva, Cairo, Nairobi, Hargeisa, Copenhagen, Kathmandu, Pokhara]. I enjoy data scraping, data wrangling to draw meaningful insignts. My work extends to artificial intelligence and machine learning applications. When not working with data, I'm exploring urban photography."
 
 PATH = 'content'
 THEME = 'themes/hyde'
@@ -22,6 +22,7 @@ GOOGLE_ANALYTICS = "UA-177774-1"
 
 
 TIMEZONE = 'Europe/Copenhagen'
+DEFAULT_DATE_FORMAT = '%B %d, %Y' 
 
 DEFAULT_LANG = 'en'
 
@@ -33,7 +34,10 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 # Blogroll
-
+MENUITEMS = (
+    ('Home', SITEURL),
+    ('About', SITEURL + '/authors.html'),
+)
 
 # Social widget
 SOCIAL = (
@@ -48,26 +52,36 @@ SOCIAL = (
 
 DEFAULT_PAGINATION = 8
 
-# Uncomment following line if you want document-relative URLs when developing
-#RELATIVE_URLS = True
-# PAGINATED_DIRECT_TEMPLATES = ['index', 'archives']
-# PAGINATED_TEMPLATES = ['index', 'archives']
+
 PAGINATED_TEMPLATES = {'index': None, 'tag': None, 'category': None, 'author': None, 'articles': None}
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
-# PLUGIN_PATH = 'src/pelican-plugins'
-# PLUGINS = (
-#     # 'pelican_edit_url',
-#     'pelican_extended_authors',
-#     # 'summary',
-# )
+
 ARTICLE_EXCLUDES = ('pages', 'authors')
-# PAGE_EXCLUDES = ('authors',)
-# PLUGINS = ('pelican_extended_authors',)
+
 
 EXTRA_PATH_METADATA = {
     'extra/robots.txt': {'path': 'robots.txt'},
     'extra/favicon.ico': {'path': 'favicon.ico'}
 }
 
+FOOTER_TEXT = '<a href="https://github.com/jvanz/pelican-hyde" target="_blank">pelican-hyde</a>, a theme based on <a href="https://github.com/poole/hyde"  target="_blank">Hyde</a>. Powered by <a href="https://getpelican.com">Pelican</a>'
+# 
+# 
+# "pelican-hyde, a theme based on Hyde Theme. Proudly powered by Pelican. Theme available on [GitHub](https://github.com/rvibek/pelican-hyde)."
+
+# Uncomment following line if you want document-relative URLs when developing
+#RELATIVE_URLS = True
+# PAGINATED_DIRECT_TEMPLATES = ['index', 'archives']
+# PAGINATED_TEMPLATES = ['index', 'archives']
+
+# PAGE_EXCLUDES = ('authors',)
+# PLUGINS = ('pelican_extended_authors',)
+
+# PLUGIN_PATH = 'src/pelican-plugins'
+# PLUGINS = (
+#     # 'pelican_edit_url',
+#     'pelican_extended_authors',
+#     # 'summary',
+# )
 # BIO = "Hello world!"
