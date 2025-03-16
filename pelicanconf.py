@@ -70,4 +70,4 @@ EXTRA_PATH_METADATA = {
     'extra/favicon.ico': {'path': 'favicon.ico'}
 }
 
-BIO = "Hello world!"
+# BIO = "Hello world!"
