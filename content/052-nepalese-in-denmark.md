@@ -8,7 +8,7 @@ Author: Vibek Raj Maurya
 Lang: 
 Summary: Denmark’s Nepalese community has surged tenfold since 2008, fueled by education-driven migration and post-pandemic rebounds. The Nepalese diaspora now exceeding 12,000 reflects Denmark’s appeal as a hub for opportunity, education, and integration.
 
-Lately, I’ve been digging into some data from [Statistics Denmark](https://www.statbank.dk/) about the Nepalese community here, and the story it tells is nothing short of captivating. From students chasing degrees to families reuniting and immigrants putting down permanent roots, the numbers reveal a growing presence. Let me unpack the trends.  
+Lately, I’ve been digging into some data from [Statistics Denmark](https://www.statbank.dk/){:target="_blank"} about the Nepalese community here, and the story it tells is nothing short of captivating. From students chasing degrees to families reuniting and immigrants putting down permanent roots, the numbers reveal a growing presence. Let me unpack the trends.  
 
 Kicking off with a modest 408 new arrivals in 2007, the total Nepalese population hit 1,174 by 2008. From there, it climbed steadily but gently—yearly arrivals fluctuated between 226 and 614 through 2010—building the community to 4,089 by 2016. Then came a plateau: immigration dipped (notably to 234 in 2020—cheers, COVID-19), and the population hovered around 4,844 to 4,976 from 2017 to 2020. 
 
@@ -43,7 +43,7 @@ Asylum and refugee status remains minimal, peaking at 10 permits by 2005 and sta
 
 ### Naturalisations Trend
 
-Finally, let’s see how many Nepalese have taken the leap to become Danish citizens. Here’s the data from 1979 to 2024. Til date almost 600 Nepalese have acquired Danish citizenship - the big spike can be observed in the last 5 years.
+Finally, let’s see how many Nepalese have taken the leap to become Danish citizens. Here’s the data from 1979 to 2024. Til date almost 600 Nepalese have acquired Danish citizenship - big spikes can be observed in the last 5 years.
 
 <iframe title="Naturalisation: Nepali to Dane" aria-label="Column Chart" id="datawrapper-chart-1kN34" src="https://datawrapper.dwcdn.net/1kN34/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="438" data-external="1"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}}))}();
 </script>
