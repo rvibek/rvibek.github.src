@@ -1,0 +1,28 @@
+name: Deploy Pelican Site
+on:
+  push:
+    branches: [ master ]
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          submodules: true  # Fetch the themes/hyde submodule
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+      - name: Generate site
+        run: pelican content -o output -s publishconf.py
+      - name: Deploy to gh-pages
+        uses: JamesIves/github-pages-deploy-action@v4.6.1
+        with:
+          branch: gh-pages
+          folder: output
+          token: ${{ secrets.GITHUB_TOKEN }}
+          clean: true
