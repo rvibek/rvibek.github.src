@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="I am a data analyst currently based in Copenhagen (again) [previously lived and worked in Geneva, Cairo, Nairobi, Hargeisa, Copenhagen, Kathmandu, Pokhara]. I enjoy data scraping, data wrangling to draw meaningful insignts. My work extends to artificial intelligence and machine learning applications. When not working with data, I'm exploring urban photography.">
+	<meta property="og:description" content="I am a data analyst currently based in Copenhagen (again) [previously lived and worked in Geneva, Cairo, Nairobi, Hargeisa, Copenhagen, Kathmandu, Pokhara]. I enjoy data scraping, data wrangling to draw meaningful insignts. My work extends to artificial intelligence and machine learning applications. When not working with data, I'm exploring urban photography.">
+	<meta property="og:title" content="Kathmandu PM2.5 Plot" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/kathmandu-pm25-drishti-.html" />
+		<meta property="og:image" content="/images/" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>rvibek - ..in the making</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+<link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="rvibek Full Atom Feed" />
+<link href="/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate" title="rvibek Categories Atom Feed" />
+
+		<!-- Analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-177774-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-177774-1');
+</script>
+	</head>
+
+	<body class="theme-base-00">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/">
+					rvibek
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">I am a data analyst currently based in Copenhagen (again) [previously lived and worked in Geneva, Cairo, Nairobi, Hargeisa, Copenhagen, Kathmandu, Pokhara]. I enjoy data scraping, data wrangling to draw meaningful insignts. My work extends to artificial intelligence and machine learning applications. When not working with data, I'm exploring urban photography. </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="https://rvibek.com.np">Home</a></li>
+					<li><a href="https://rvibek.com.np/authors.html">About</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="mailto:mailto:contact@rvibek.com.np">
+						<i class="fa fa-envelope"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/rvibek" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://instagram.com/rvibek" target="_blank">
+						<i class="fa fa-instagram"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.linkedin.com/in/rvibek/" target="_blank">
+						<i class="fa fa-linkedin"></i>
+					</a>
+			<a class="sidebar-social-item" href="/feeds/all.atom.xml">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer"><a href="https://github.com/jvanz/pelican-hyde" target="_blank">pelican-hyde</a>, a theme based on <a href="https://github.com/poole/hyde"  target="_blank">Hyde</a>. Powered by <a href="https://getpelican.com">Pelican</a></p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Kathmandu PM2.5 Plot</h1>
+	<span class="post-date">November 16, 2017</span>
+	<p>The <code>plt.xkcd()</code> function can convert any matplotlib plot into XKCD style. Trying it with <a href="https://github.com/rvibek/drishti">Kathmandu air quality data</a> collected over a year.</p>
+<p><img alt="ktm_air_quality_pm25" src="http://res.cloudinary.com/rvibek-com-np/image/upload/v1510877205/ktm_air_quality_pm25_gukcmg.png"></p>
+<h3>Import Library</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">matplotlib</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xkcd</span><span class="p">()</span>
+<span class="n">font</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;family&#39;</span><span class="p">:</span> <span class="s1">&#39;xkcd&#39;</span><span class="p">,</span><span class="s1">&#39;weight&#39;</span> <span class="p">:</span> <span class="s1">&#39;regular&#39;</span><span class="p">,</span><span class="s1">&#39;size&#39;</span>   <span class="p">:</span> <span class="mi">12</span><span class="p">}</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">font</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>Plot Graph</h3>
+<div class="highlight"><pre><span></span><code><span class="n">places</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;SATDOBATO&#39;</span><span class="p">,</span> <span class="s1">&#39;THAPATHALI&#39;</span><span class="p">,</span> <span class="s1">&#39;KALANKI&#39;</span><span class="p">,</span> <span class="s1">&#39;PUTALISADAK&#39;</span><span class="p">]</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">places</span><span class="p">)):</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">tmp</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">place</span> <span class="o">==</span> <span class="n">places</span><span class="p">[</span><span class="n">idx</span><span class="p">]]</span>
+    <span class="n">tmp</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">tmpweekly</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;W&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tmpweekly</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">tmpweekly</span><span class="o">.</span><span class="n">reading</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Weekly PM2.5 AVG&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+
+    <span class="n">tmpmonthly</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;M&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tmpmonthly</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">tmpmonthly</span><span class="o">.</span><span class="n">reading</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Monthly PM2.5 AVG&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">places</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;  PM2.5 READING&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span> <span class="mi">16</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Check out <a href="https://matplotlib.org/xkcd/examples/showcase/xkcd.html">matplotlib xkcd gallery</a> for more.</p>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/google-matplotlib.html">google matplotlib</a></li>
+					<li><a href="/tag/python.html">python</a></li>
+					<li><a href="/tag/kathmandu.html">kathmandu</a></li>
+					<li><a href="/tag/nepal.html">nepal</a></li>
+					<li><a href="/tag/drishti.html">drishti</a></li>
+					<li><a href="/tag/air-quality.html">air quality</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

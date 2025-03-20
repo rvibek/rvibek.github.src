@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="I am a data analyst currently based in Copenhagen (again) [previously lived and worked in Geneva, Cairo, Nairobi, Hargeisa, Copenhagen, Kathmandu, Pokhara]. I enjoy data scraping, data wrangling to draw meaningful insignts. My work extends to artificial intelligence and machine learning applications. When not working with data, I'm exploring urban photography.">
+	<meta property="og:description" content="I am a data analyst currently based in Copenhagen (again) [previously lived and worked in Geneva, Cairo, Nairobi, Hargeisa, Copenhagen, Kathmandu, Pokhara]. I enjoy data scraping, data wrangling to draw meaningful insignts. My work extends to artificial intelligence and machine learning applications. When not working with data, I'm exploring urban photography.">
+	<meta property="og:title" content="Extracting Data from Google Maps" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/extracting-data-from-google-maps-.html" />
+		<meta property="og:image" content="/images/" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>rvibek - ..in the making</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+<link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="rvibek Full Atom Feed" />
+<link href="/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate" title="rvibek Categories Atom Feed" />
+
+		<!-- Analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-177774-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-177774-1');
+</script>
+	</head>
+
+	<body class="theme-base-00">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/">
+					rvibek
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">I am a data analyst currently based in Copenhagen (again) [previously lived and worked in Geneva, Cairo, Nairobi, Hargeisa, Copenhagen, Kathmandu, Pokhara]. I enjoy data scraping, data wrangling to draw meaningful insignts. My work extends to artificial intelligence and machine learning applications. When not working with data, I'm exploring urban photography. </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="https://rvibek.com.np">Home</a></li>
+					<li><a href="https://rvibek.com.np/authors.html">About</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="mailto:mailto:contact@rvibek.com.np">
+						<i class="fa fa-envelope"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/rvibek" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://instagram.com/rvibek" target="_blank">
+						<i class="fa fa-instagram"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.linkedin.com/in/rvibek/" target="_blank">
+						<i class="fa fa-linkedin"></i>
+					</a>
+			<a class="sidebar-social-item" href="/feeds/all.atom.xml">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer"><a href="https://github.com/jvanz/pelican-hyde" target="_blank">pelican-hyde</a>, a theme based on <a href="https://github.com/poole/hyde"  target="_blank">Hyde</a>. Powered by <a href="https://getpelican.com">Pelican</a></p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Extracting Data from Google Maps</h1>
+	<span class="post-date">February 12, 2018</span>
+	<p>Google Maps API displays 20 results on one page. By using <code>page_token</code> parameter, it is possible to get more than 20 results.  The API fetches maximum 60 results for a query. The query can be refined should we need more result - run the query on sub-division level instead of country.</p>
+<p>The following code loads the first 20 results, if the JSON file has <code>"next_page_token"</code> key then it recursively loads the subsequent pages.</p>
+<p>The scripts available in my <a href="https://github.com/rvibek/Data-from-Google-Maps">GitRepo</a></p>
+<p>And here's are the saved results in Gist. <a href="https://gist.github.com/rvibek/e5aea8a9396ad10d5b8d42562c53cf08">Nepalese Restaurants in Europe</a>. Interestingly, there are almost 80 Nepalese restaurants in Finland. </p>
+<p>The script uses 3 libraries. <code>time</code> is needed to delay the API call. Google has a limitation on request per second. </p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+</code></pre></div>
+
+<p>The next is declare the varible and load first JSON</p>
+<div class="highlight"><pre><span></span><code># Declare API Key &amp; Query
+key = &#39;AIzaSyXXX-XXXX&#39;
+query = &#39;Nepalese+Restaurants+Finland&#39;
+url = &#39;https://maps.googleapis.com/maps/api/place/textsearch/json?query=&#39; + str(query) + &#39;&amp;key=&#39; + str(key)
+
+# Parse JSON
+jsonfile = requests.get(url)
+f = jsonfile.json()
+</code></pre></div>
+
+<p>The below function recursively populates the result.</p>
+<div class="highlight"><pre><span></span><code><span class="err">#</span><span class="w"> </span><span class="k">Recursive</span><span class="w"> </span><span class="k">Function</span>
+<span class="n">def</span><span class="w"> </span><span class="n">getjson</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="w"> </span><span class="n">pagetoken</span><span class="p">,</span><span class="w"> </span><span class="k">key</span><span class="p">,</span><span class="w"> </span><span class="n">query</span><span class="p">)</span><span class="err">:</span>
+
+<span class="w">    </span><span class="nc">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="n">API</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">requests</span><span class="w"> </span><span class="n">per</span><span class="w"> </span><span class="k">second</span><span class="w"> </span><span class="n">limitation</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">pagetoken</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="err">:</span>
+<span class="w">        </span><span class="k">print</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">url</span><span class="p">)</span>
+<span class="w">        </span><span class="n">pass</span>
+
+<span class="w">    </span><span class="k">else</span><span class="err">:</span>
+
+<span class="w">        </span><span class="k">print</span><span class="p">(</span><span class="s1">&#39;e1url&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">url</span><span class="p">)</span>
+
+<span class="w">        </span><span class="err">#</span><span class="w"> </span><span class="n">Reset</span><span class="w"> </span><span class="n">URL</span>
+<span class="w">        </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;https://maps.googleapis.com/maps/api/place/textsearch/json?query=&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">str</span><span class="p">(</span><span class="n">query</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;&amp;key=&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">str</span><span class="p">(</span><span class="k">key</span><span class="p">)</span>
+<span class="w">        </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">url</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;&amp;pagetoken=&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">pagetoken</span>
+
+<span class="w">        </span><span class="n">jsonfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">requests</span><span class="p">.</span><span class="k">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="w">        </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jsonfile</span><span class="p">.</span><span class="n">json</span><span class="p">()</span>
+
+<span class="w">        </span><span class="err">#</span><span class="w"> </span><span class="n">append</span><span class="w"> </span><span class="k">array</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">desired</span><span class="w"> </span><span class="k">data</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">JSON</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="nf">count</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">enumerate</span><span class="p">(</span><span class="n">f</span><span class="o">[</span><span class="n">&#39;results&#39;</span><span class="o">]</span><span class="p">)</span><span class="err">:</span>
+<span class="w">            </span><span class="k">names</span><span class="p">.</span><span class="n">append</span><span class="p">((</span><span class="n">f</span><span class="o">[</span><span class="n">&#39;results&#39;</span><span class="o">][</span><span class="n">count</span><span class="o">][</span><span class="n">&#39;name&#39;</span><span class="o">]</span><span class="p">))</span>
+<span class="w">            </span><span class="n">address</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="o">[</span><span class="n">&#39;results&#39;</span><span class="o">][</span><span class="n">count</span><span class="o">][</span><span class="n">&#39;formatted_address&#39;</span><span class="o">]</span><span class="p">)</span>
+
+<span class="w">        </span><span class="err">#</span><span class="w"> </span><span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="w"> </span><span class="n">#DEBUG</span>
+<span class="w">        </span><span class="err">#</span><span class="w"> </span><span class="n">Assign</span><span class="w"> </span><span class="k">NEW</span><span class="w"> </span><span class="n">Page</span><span class="w"> </span><span class="n">Token</span>
+<span class="w">        </span><span class="k">try</span><span class="err">:</span>
+<span class="w">            </span><span class="n">pagetoken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="o">[</span><span class="n">&#39;next_page_token&#39;</span><span class="o">]</span>
+<span class="w">        </span><span class="ow">except</span><span class="w"> </span><span class="nl">KeyError</span><span class="p">:</span>
+<span class="w">            </span><span class="n">pagetoken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span>
+<span class="w">        </span><span class="n">pass</span>
+
+<span class="w">        </span><span class="err">#</span><span class="w"> </span><span class="k">Recursive</span><span class="w"> </span><span class="k">call</span>
+<span class="w">        </span><span class="n">getjson</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="w"> </span><span class="n">pagetoken</span><span class="p">,</span><span class="w"> </span><span class="k">key</span><span class="p">,</span><span class="w"> </span><span class="n">query</span><span class="p">)</span>
+</code></pre></div>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/google-maps.html">google maps</a></li>
+					<li><a href="/tag/python.html">python</a></li>
+					<li><a href="/tag/scrapping.html">scrapping</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>
