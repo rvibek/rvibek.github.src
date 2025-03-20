@@ -23,6 +23,7 @@ GOOGLE_ANALYTICS = "UA-177774-1"
 
 TIMEZONE = 'Europe/Copenhagen'
 DEFAULT_DATE_FORMAT = '%B %d, %Y' 
+COLOR_THEME = '00'
 
 DEFAULT_LANG = 'en'
 
