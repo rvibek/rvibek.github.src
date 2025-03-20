@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block metadata %}
+<meta name="description" content="{% if article.description %}{{ article.description }}{% else %}{{ BIO }}{% endif %}">
+<meta property="og:description"
+	content="{% if article.description %}{{ article.description }}{% else %}{{ BIO }}{% endif %}">
+<meta property="og:title" content="{{ article.title }}" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="{{ SITEURL }}/{{ article.url }}" />
+{% endblock %}
+
+{% block content %}
+<div class="post">
+	<h1 class="post-title">{{ article.title }}</h1>
+	<span class="post-date">{{ article.locale_date }} • <span class="post-author">{{ article.author }}</span></span>
+	{{ article.content }}
+
+	{% if article.tags %}
+	<span class="post-tags">
+		Tags:
+		<ul>
+			{% for tag in article.tags %}
+			<li><a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a></li>
+			{% endfor %}
+		</ul>
+	</span>
+
+	<span class="post-footer">
+		<h4 class="post-footer-heading">Written By</h4>
+		<a href="./authors.html" class="post-author-name">{{ AUTHOR}}</a>
+		<span class="post-author-bio"> {{ BIO }} </span>
+	</span>
+
+	{% endif %}
+
+	{% include 'fragments/disqus.html' %}
+
+	{% if FOOTER_TEXT %}
+
+	<p class="sidebar-footer" style="margin-top: 75px;">{{ FOOTER_TEXT }}</p>
+
+	{% endif %}
+</div>
+{% endblock %}
