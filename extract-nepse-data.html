@@ -1,45 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-        <title>rvibek - POST Method to extract NEPSE Index</title>
-      <meta charset="utf-8" />
-      <meta name="generator" content="Pelican" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="..in the making" />
-        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="rvibek Full Atom Feed" />
-        <link href="/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate" title="rvibek Categories Atom Feed" />
+<html lang="en" prefix="og: http://ogp.me/ns#">
 
+<head>
+	<link href="http://gmpg.org/xfn/11" rel="profile">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
 
+	<!-- Metadata -->
+<meta name="description" content="I am a data analyst currently based in Copenhagen (again) [previously lived and worked in Geneva, Cairo, Nairobi, Hargeisa, Copenhagen, Kathmandu, Pokhara]. I enjoy data scraping, data wrangling to draw meaningful insignts. My work extends to artificial intelligence and machine learning applications. When not working with data, I'm exploring urban photography.">
+<meta property="og:description"
+	content="I am a data analyst currently based in Copenhagen (again) [previously lived and worked in Geneva, Cairo, Nairobi, Hargeisa, Copenhagen, Kathmandu, Pokhara]. I enjoy data scraping, data wrangling to draw meaningful insignts. My work extends to artificial intelligence and machine learning applications. When not working with data, I'm exploring urban photography.">
+<meta property="og:title" content="POST Method to extract NEPSE Index" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/extract-nepse-data.html" />
+	<meta property="og:image" content="/images/" />
 
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"> -->
 
-    <meta name="tags" content="python" />
-    <meta name="tags" content="scraping" />
-    <meta name="tags" content="data" />
-    <meta name="tags" content="NEPSE" />
-    <meta name="tags" content="pattern" />
-    <meta name="tags" content="clips" />
-    <meta name="tags" content="stock" />
+	<title>rvibek | Vibek Raj Maurya</title>
 
-  </head>
+	<!-- CSS -->
+	<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+	<link
+		href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext"
+		rel="stylesheet">
 
-  <body>
-      <header>
-          <hgroup><h1><a href="/">rvibek</a></h1><p>..in the making</p></hgroup>
-          <nav><ul>
-              <li><a href="https://rvibek.com.np">Home</a></li>
-              <li><a href="https://rvibek.com.np/authors.html">About</a></li>
-                <li><a href="/category/blog.html"  aria-current="page" >Blog</a></li>
-          </ul></nav>
-      </header>
-      <main>
-  <article>
-    <header>
-      <h2>
-        <a href="/extract-nepse-data.html" rel="bookmark"
-           title="Permalink to POST Method to extract NEPSE Index">POST Method to extract NEPSE Index</a></h2>
-      
-    </header>
-    <p>Fiddling with Nepal Stock Exchange site again. The following script extacts data from <a href="http://www.nepalstock.com/datanepse/Indices.php&quot; target=&quot;_blank">Datewise Idices</a> depending upon the value passed - NEPSE, Sensitive, Float, Banking, Hotels indices are extracted.</p>
+	<link rel="stylesheet" href="/theme/css/poole.css" />
+	<link rel="stylesheet" href="/theme/css/hyde.css" />
+	<link rel="stylesheet" href="/theme/css/syntax.css" />
+	<link rel="stylesheet" href="/theme/css/style.css" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css"
+		crossorigin="anonymous">
+
+	<!-- Feeds -->
+<link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="rvibek Full Atom Feed" />
+<link href="/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate" title="rvibek Categories Atom Feed" />
+
+	<!-- Analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-177774-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-177774-1');
+</script>
+</head>
+
+<body class="theme-base-00">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1 style="margin-bottom: 0px;"></h1>
+			<a href="/">
+				<img class="profile-picture" src="https://res.cloudinary.com/rvibek-com-np/image/upload/v1486821422/logo_dpmyds.png">
+				<!-- <img class="profile-picture" src="/images/"> -->
+			</a>
+			</h1>
+			<!-- <h2 style="color: white;">rvibek</h2> -->
+			<h2 style="color: white; margin-top: 2px;">..in the making</h2>
+			<p class="lead"></p>
+			<!-- <p class="lead">I am a data analyst currently based in Copenhagen (again) [previously lived and worked in Geneva, Cairo, Nairobi, Hargeisa, Copenhagen, Kathmandu, Pokhara]. I enjoy data scraping, data wrangling to draw meaningful insignts. My work extends to artificial intelligence and machine learning applications. When not working with data, I'm exploring urban photography. </p> -->
+			<p></p>
+		</div>
+		<ul class="sidebar-nav">
+			<li><a href="https://rvibek.com.np">Home</a></li>
+			<li><a href="https://rvibek.com.np/authors.html">About</a></li>
+		</ul>
+		<nav class="sidebar-social">
+			<a class="sidebar-social-item" href="mailto:mailto:contact@rvibek.com.np">
+				<i class="fa fa-envelope"></i>
+			</a>
+			<a class="sidebar-social-item" href="https://github.com/rvibek" target="_blank">
+				<i class="fa fa-github"></i>
+			</a>
+			<a class="sidebar-social-item" href="https://instagram.com/rvibek" target="_blank">
+				<i class="fa fa-instagram"></i>
+			</a>
+			<a class="sidebar-social-item" href="https://www.linkedin.com/in/rvibek/" target="_blank">
+				<i class="fa fa-linkedin"></i>
+			</a>
+			<a class="sidebar-social-item"
+				href="/feeds/all.atom.xml">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+		<!-- <p class="sidebar-footer"><a href="https://github.com/jvanz/pelican-hyde" target="_blank">pelican-hyde</a>, a theme based on <a href="https://github.com/poole/hyde"  target="_blank">Hyde</a>. Powered by <a href="https://getpelican.com">Pelican</a></p> -->
+
+	</div>
+</div>	<div class="content container">
+<div class="post">
+	<h1 class="post-title">POST Method to extract NEPSE Index</h1>
+	<span class="post-date">June 03, 2015 • <span class="post-author">Vibek Raj Maurya</span></span>
+	<p>Fiddling with Nepal Stock Exchange site again. The following script extacts data from <a href="http://www.nepalstock.com/datanepse/Indices.php&quot; target=&quot;_blank">Datewise Idices</a> depending upon the value passed - NEPSE, Sensitive, Float, Banking, Hotels indices are extracted.</p>
 <p>The script uses <code>POST</code> method to pass the variable <code>topTenBased</code> from the <code>select</code> object and then same page loads the data accordingly. I hadn't pulled the data from page using <code>POST</code> before. </p>
 <p>Here is the source code and the value of different options in <em>Indices.php</em></p>
 <div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nt">&lt;select</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;topTenBased&quot;</span><span class="nt">&gt;</span><span class="w">  </span>
@@ -115,37 +176,33 @@
 
 <p><a href="https://wakari.io/sharing/bundle/rvibek/NEPSE_extract_INDEX&quot; target=&quot;_blank">IPython Notebook</a> in <a href="http://www.wakari.io&quot; target=&quot;_blank">Wakari</a></p>
 <p>Here's my earlier attempt to reproduce the <a href="http://www.rvibek.com.np/nepse-price-table-reproduced-page/">NEPSE Daily Share Price</a></p>
-    <footer>
-      <p>Published: <time datetime="2015-06-03T13:08:43+02:00">
-        June 03, 2015
-      </time></p>
-        <p>Last updated: <time datetime="2017-10-04T16:09:40+02:00">
-          October 04, 2017
-        </time></p>
-        <address>
-          By             <a href="/author/vibek-raj-maurya.html">Vibek Raj Maurya</a>
-        </address>
-        <p>
-          Category: <a href="/category/blog.html">Blog</a>
-        </p>
-        <p>
-          Tags:
-            <a href="/tag/python.html">python</a>
-            <a href="/tag/scraping.html">scraping</a>
-            <a href="/tag/data.html">data</a>
-            <a href="/tag/nepse.html">NEPSE</a>
-            <a href="/tag/pattern.html">pattern</a>
-            <a href="/tag/clips.html">clips</a>
-            <a href="/tag/stock.html">stock</a>
-        </p>
-    </footer>
-  </article>
-      </main>
-      <footer>
-          <address>
-            Proudly powered by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>,
-            which takes great advantage of <a rel="nofollow" href="https://www.python.org/">Python</a>.
-          </address>
-      </footer>
-  </body>
+
+	<span class="post-tags">
+		Tags:
+		<ul>
+			<li><a href="/tag/python.html">python</a></li>
+			<li><a href="/tag/scraping.html">scraping</a></li>
+			<li><a href="/tag/data.html">data</a></li>
+			<li><a href="/tag/nepse.html">NEPSE</a></li>
+			<li><a href="/tag/pattern.html">pattern</a></li>
+			<li><a href="/tag/clips.html">clips</a></li>
+			<li><a href="/tag/stock.html">stock</a></li>
+		</ul>
+	</span>
+
+	<span class="post-footer">
+		<h4 class="post-footer-heading">Written By</h4>
+		<a href="./authors.html" class="post-author-name">Vibek Raj Maurya</a>
+		<span class="post-author-bio"> I am a data analyst currently based in Copenhagen (again) [previously lived and worked in Geneva, Cairo, Nairobi, Hargeisa, Copenhagen, Kathmandu, Pokhara]. I enjoy data scraping, data wrangling to draw meaningful insignts. My work extends to artificial intelligence and machine learning applications. When not working with data, I'm exploring urban photography. </span>
+	</span>
+
+
+
+
+	<p class="sidebar-footer" style="margin-top: 75px;"><a href="https://github.com/jvanz/pelican-hyde" target="_blank">pelican-hyde</a>, a theme based on <a href="https://github.com/poole/hyde"  target="_blank">Hyde</a>. Powered by <a href="https://getpelican.com">Pelican</a></p>
+
+</div>
+	</div>
+</body>
+
 </html>
