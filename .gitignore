@@ -1,4 +1,6 @@
 *.pyc
-*.pyc
 *.DS_Store
 .vscode
+output/
+*.pid
+__pycache__/
