@@ -9,7 +9,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
         with:
-          submodules: true  # Fetch the themes/hyde submodule
+          submodules: false  # Fetch the themes/hyde submodule
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
