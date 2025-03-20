@@ -12,6 +12,7 @@ BIO = "I am a data analyst currently based in Copenhagen (again) [previously liv
 
 PATH = 'content'
 THEME = 'themes/hyde'
+STATIC_PATHS = ['images', 'static']
 
 COVER_IMG_URL = 'https://res.cloudinary.com/rvibek-com-np/image/upload/v1486821421/ghostium800_y3y8pa.jpg'
 PROFILE_IMG_URL = 'https://res.cloudinary.com/rvibek-com-np/image/upload/v1486821422/logo_dpmyds.png'
@@ -67,22 +68,4 @@ EXTRA_PATH_METADATA = {
 }
 
 FOOTER_TEXT = '<a href="https://github.com/jvanz/pelican-hyde" target="_blank">pelican-hyde</a>, a theme based on <a href="https://github.com/poole/hyde"  target="_blank">Hyde</a>. Powered by <a href="https://getpelican.com">Pelican</a>'
-# 
-# 
-# "pelican-hyde, a theme based on Hyde Theme. Proudly powered by Pelican. Theme available on [GitHub](https://github.com/rvibek/pelican-hyde)."
 
-# Uncomment following line if you want document-relative URLs when developing
-#RELATIVE_URLS = True
-# PAGINATED_DIRECT_TEMPLATES = ['index', 'archives']
-# PAGINATED_TEMPLATES = ['index', 'archives']
-
-# PAGE_EXCLUDES = ('authors',)
-# PLUGINS = ('pelican_extended_authors',)
-
-# PLUGIN_PATH = 'src/pelican-plugins'
-# PLUGINS = (
-#     # 'pelican_edit_url',
-#     'pelican_extended_authors',
-#     # 'summary',
-# )
-# BIO = "Hello world!"
