@@ -2,11 +2,13 @@ Title: Nepal Trade Data
 Slug: nepal-trade-data
 Date: 2016-04-14 13:08:43
 Modified: 2016-04-14 13:08:43
-Tags: actionaid, ODK, mobil data collection, YouTube, tutorial
+Tags: nepal, trade, dataviz, data
 Category: Blog 
 Author: Vibek Raj Maurya 
 Lang: EN
-Summary:  The Government of Nepal has established [Trade and Export Promotion Centre (TEPC)](http://www.tepc.gov.np" target="blank), a national trade promotion organization of the country, as a focal point, with the objective of promoting foreign trade in general and export trade in particular of the country.
+Summary: The Trade and Export Promotion Centre (TEPC), Nepal’s national trade promotion body, focuses on enhancing foreign trade and exports. I sourced raw trade data from TEPC for 2009–2014, cleaned it using OpenRefine, MS Excel, and visualized it with Tableau.
+
+The Government of Nepal has established [Trade and Export Promotion Centre (TEPC)](http://www.tepc.gov.np" target="blank), a national trade promotion organization of the country, as a focal point, with the objective of promoting foreign trade in general and export trade in particular of the country.
 
 I acquired raw trade data from 2009-2014 from TEPC. I cleaned it using OpenRefine and MS Excel, and finally created visualization using Tableau.
 

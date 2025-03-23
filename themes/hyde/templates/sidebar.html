@@ -4,29 +4,29 @@
 
 			<h1 style="margin-bottom: 0px;"></h1>
 			<a href="{{ SITEURL }}/">
-				<img class="profile-picture" src="{{ PROFILE_IMG_URL }}">
+				<img class="profile-picture" src="{{ PROFILE_IMG_URL }}" style="border-radius: 50%; border: 2px solid white;">
 				<!-- <img class="profile-picture" src="{{ SITEURL }}/images/{{ PROFILE_IMAGE }}"> -->
 			</a>
 			</h1>
 			<!-- <h2 style="color: white;">{{ SITENAME }}</h2> -->
-			<h2 style="color: white; margin-top: 2px;">{{ SITESUBTITLE }}</h2>
+			<h3 style="color: white; margin-top: 1px;">{{ SITESUBTITLE }}</h3>
 			<p class="lead"></p>
 			<!-- <p class="lead">{{ BIO }} </p> -->
 			<p></p>
 		</div>
 		{% if MENUITEMS or DISPLAY_PAGES_ON_MENU %}
-		<ul class="sidebar-nav">
-			{% if MENUITEMS %}
+		<div class="sidebar-nav">
+			{% if MENUITEMS %} | 
 			{% for title, url in MENUITEMS %}
-			<li><a href="{{ url }}">{{ title }}</a></li>
+			<a href="{{ url }}">{{ title }}</a>{% if not loop.last or DISPLAY_PAGES_ON_MENU %} | {% endif %}
 			{% endfor %}
 			{% endif %}
 			{% if DISPLAY_PAGES_ON_MENU %}
 			{% for p in pages %}
-			<li><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
+			<a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a>{% if not loop.last %} | {% endif %}
 			{% endfor %}
 			{% endif %}
-		</ul>
+		</div>
 		{% endif %}
 		<nav class="sidebar-social">
 			{% for name, link in SOCIAL %}
