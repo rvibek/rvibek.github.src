@@ -14,7 +14,7 @@
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="{{ SITEURL }}" />
 	{% endblock %}
-	<meta property="og:image" content="{{ SITEURL }}/images/{{ PROFILE_IMAGE }}" />
+	<meta property="og:image" content="{{PROFILE_IMG_URL}}" />
 
 	<!-- Enable responsiveness on mobile devices-->
 	<meta name="HandheldFriendly" content="True">
@@ -27,6 +27,7 @@
 	<title>{% block title %}{{ SITE_TITLE }}{% endblock title %}</title>
 
 	<!-- CSS -->
+	<link rel="canonical" href="{{ SITEURL }}" />
 	<link href="//fonts.googleapis.com/" rel="dns-prefetch">
 	<link
 		href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext"
@@ -60,7 +61,14 @@
 	<div class="content container">
 		{% block content %}
 		{% endblock %}
+
+		{% if FOOTER_TEXT %}
+
+		<p class="sidebar-footer" style="margin-top: 75px;">{{ FOOTER_TEXT }}</p>
+	
+		{% endif %}
 	</div>
+
 </body>
 
 </html>
