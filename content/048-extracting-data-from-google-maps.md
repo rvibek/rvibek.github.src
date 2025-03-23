@@ -18,14 +18,15 @@ And here's are the saved results in Gist. [Nepalese Restaurants in Europe](https
 
 The script uses 3 libraries. ```time``` is needed to delay the API call. Google has a limitation on request per second. 
 
-```
+```python
 import json
 import requests
 import time
 ```
 
 The next is declare the varible and load first JSON
-```
+
+```python
 # Declare API Key & Query
 key = 'AIzaSyXXX-XXXX'
 query = 'Nepalese+Restaurants+Finland'
@@ -38,7 +39,7 @@ f = jsonfile.json()
 
 The below function recursively populates the result.
 
-```
+```python
 # Recursive Function
 def getjson(url, pagetoken, key, query):
 
