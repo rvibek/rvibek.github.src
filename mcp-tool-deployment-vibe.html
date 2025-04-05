@@ -104,8 +104,23 @@
 	<p>Lately I’ve been hearing a lot of buzz around <a href="https://modelcontextprotocol.io/docs/concepts/tools" target="_blank"><strong>MCP—Model Context Protocol</strong></a> — and, I had to check it out. A few videos, some docs later, I was in deep.</p>
 <p>That’s when I ended up building my first <code>mcp_tool</code> that interacts with <a href="https://api.unhcr.org/docs/refugee-statistics.html#api-Default-population" target="_blank">UNHCR’s Refugee Population Statistics</a>. The code lives in my GitHub repo: <a href="https://github.com/rvibek/mcp_unhcr" target="_blank">rvibek/mcp_unhcr</a>, and I even spun up a live server version here: <a href="https://smithery.ai/server/@rvibek/mcp_unhcr" target="_blank">smithery.ai server</a>. I built it with some help from <a href="https://manus.ai" target="_blank">Manus</a> — yep, that pretty wild AI sidekick everyone’s talking about.</p>
 <p>The idea behind <code>mcp_tool</code> was just to experiment and get a feel for how MCP works, so I picked up the UNHCR RDF as a real-world dataset to try it out with.</p>
-<p>The code itself is pretty simple — just some scripts, a bit of config magic, and that MCP layer tying it all together. Manus handled most of the heavy lifting. I had to jump in for some refactoring and troubleshooting — ran into a few errors, of course. After five failed deployments (😅), I finally got it running.</p>
+<p>The code itself is pretty simple — just some scripts, a bit of config magic, and that MCP layer tying it all together. Manus handled most of the heavy lifting. I had to jump in for some refactoring and troubleshooting — ran into a few errors, of course. After five failed deployments 😅, I finally got it running.</p>
 <p>Now I’ve got it plugged into Cline in VSCode, and it’s starting to feel like a real little dev assistant setup. Still early days, but it’s been a fun ride so far.</p>
+<h2>How to test MCP project locally</h2>
+<p>The easy way to get started - install <a href="https://docs.astral.sh/uv/">uv</a>, modern python package manager.</p>
+<div class="highlight"><pre><span></span><code>uv<span class="w"> </span>init<span class="w"> </span>mcp-server
+<span class="nb">cd</span><span class="w"> </span>mcp-server
+<span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+
+<span class="c1">## add dependencies</span>
+uv<span class="w"> </span>add<span class="w"> </span><span class="s2">&quot;mcp[cli]&quot;</span><span class="w"> </span>requests
+
+<span class="c1">## run app.py</span>
+mcp<span class="w"> </span>dev<span class="w"> </span>/path/to/app.py
+</code></pre></div>
+
+<p>The server should start on the port 6274</p>
+<p><img src="https://res.cloudinary.com/rvibek-com-np/image/upload/v1743862085/mcp_test_gfb6kw.png" style="width: 100%; max-width: 800px; height: auto; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);" alt="Responsive image with shadow"/></p>
 
 	<span class="post-tags">
 		Tags:
