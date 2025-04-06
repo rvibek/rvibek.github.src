@@ -8,7 +8,7 @@ SITE_TITLE  =  u'rvibek | Vibek Raj Maurya'
 SITESUBTITLE = u'..in the making'
 SITEURL = 'https://rvibek.com.np'
 
-BIO = "Data analyst in currently based in Copenhagen. Expert in data scraping, AI, and insights. Previously lived in Geneva, Cairo, Nairobi, Copenhagen, Kathmandu, Pokhara. Love urban photography."
+BIO = "Data analyst & AI ethusiast currently based in Copenhagen. Previously lived in Geneva, Cairo, Nairobi, Copenhagen, Kathmandu, Pokhara. Love urban photography."
 
 PATH = 'content'
 THEME = 'themes/hyde'
