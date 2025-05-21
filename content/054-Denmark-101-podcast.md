@@ -9,7 +9,7 @@ Summary: The Denmark 101 podcast series is a 10-episode, AI-generated exploratio
 
 The Denmark 101 podcast is a 10-episode series that explores Danish society through engaging dialogue between AI  hosts. Each episode is 6–7 minutes long and blends storytelling with practical insight. The entire production was powered using AI tools.
 
-<iframe src="https://creators.spotify.com/pod/show/rvibek/episodes/S1E10---e335vki" width="100%" height="232" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+<iframe src="https://creators.spotify.com/pod/show/rvibek/episodes/S1E10---e335vki" width="100%" height="650" frameborder="1" allowtransparency="true" allow="encrypted-media"></iframe>
 
 ### Workflow Overview
 The production stack looked like this:
