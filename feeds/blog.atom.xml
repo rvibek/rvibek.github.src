@@ -1,5 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>rvibek - Blog</title><link href="/" rel="alternate"/><link href="/feeds/blog.atom.xml" rel="self"/><id>/</id><updated>2025-05-21T18:00:00+02:00</updated><subtitle>..in the making</subtitle><entry><title>Denmark 101 - AI-generated podcast series</title><link href="/denmark-101-ai-generated-podcast-series.html" rel="alternate"/><published>2025-05-21T18:00:00+02:00</published><updated>2025-05-18T19:00:00+02:00</updated><author><name>Vibek Raj Maurya</name></author><id>tag:None,2025-05-21:/denmark-101-ai-generated-podcast-series.html</id><summary type="html">&lt;p&gt;The Denmark 101 podcast series is a 10-episode, AI-generated exploration of Danish society in Nepali. Featuring engaging virtual hosts, each 6–7 minute episode blends storytelling with practical insights, offering a concise look into Danish culture, technology, and everyday life.&lt;/p&gt;</summary><content type="html">&lt;p&gt;The Denmark 101 podcast is a 10-episode Nepali podcast series that explores Danish society through engaging dialogue between AI  hosts. Each episode is 6–7 minutes long and blends storytelling with practical insight. The entire production was powered using AI tools.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>rvibek - Blog</title><link href="/" rel="alternate"/><link href="/feeds/blog.atom.xml" rel="self"/><id>/</id><updated>2026-01-31T20:51:00+01:00</updated><subtitle>..in the making</subtitle><entry><title>Uncovering Denmark's Real-Time Transit API</title><link href="/reverse-engineering-rejseplanen.html" rel="alternate"/><published>2026-01-31T20:51:00+01:00</published><updated>2026-01-31T20:51:00+01:00</updated><author><name>Vibek Raj Maurya</name></author><id>tag:None,2026-01-31:/reverse-engineering-rejseplanen.html</id><summary type="html">&lt;p&gt;Reverse engineering Rejseplanen.dk's real-time transit API to understand how trains, metros, and buses move around Copenhagen. Discovered three key APIs, mapped transport codes, and built a system to track route progress using AI-assisted "vibe coding" with the kimi k2.5 model.&lt;/p&gt;</summary><content type="html">&lt;p&gt;I have always been fascinated by the real-time visualisations on rejseplanen.dk.
+It is really cool to watch trains, metros and buses move around Copenhagen in
+realtime.&lt;/p&gt;
+&lt;p&gt;I wanted to delve in and see what is going on behind this app - and understand
+how the live map in rejseplanen.dk worked.&lt;/p&gt;
+&lt;p&gt;The project also served as a perfect opportunity to experiment with what the
+community calls "vibe coding" - using AI (specifically the kimi k2.5 model in
+Opencode. The goal was not just to build a tracker, but to understand the architecture of a
+complex, real-time transit system.&lt;/p&gt;
+&lt;h2&gt;The Discovery&lt;/h2&gt;
+&lt;p&gt;I started simple. I first tested with just one API endpoint. I captured
+the network traffic from rejseplanen.dk live map and began dissecting the query
+parameters.&lt;/p&gt;
+&lt;p&gt;The breakthrough came when I realized the API returns nested arrays, not flat
+JSON. A vehicle entry looks like this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;[&amp;quot; B&amp;quot;, 12458213, 55664685, &amp;quot;84/49616/18/19/86&amp;quot;, &amp;quot;31&amp;quot;, 16, &amp;quot;1&amp;quot;, &amp;quot;Buddinge
+St.&amp;quot;, [...], ...]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Each index has meaning:
+- Index 0: Line identifier
+- Index 1-2: X/Y coordinates in a projected coordinate system
+- Index 3: Unique vehicle ID
+- Index 5: Transport category code
+- Index 7: Final destination&lt;/p&gt;
+&lt;h2&gt;Deciphering the Transport Codes&lt;/h2&gt;
+&lt;p&gt;The real detective work began with the cats parameter. Through a combination of analyzing the web app HTML source code, cross-referencing with live API data, and systematic testing of different category codes, I mapped out the entire transport ecosystem.&lt;/p&gt;
+&lt;p&gt;Some key discoveries:
+- 016 = S-train
+- 034 = Metro alternative code
+- 070 = Letbane alternative code
+- 128 = Havnebus/Waterbus
+- 032 = City Bus&lt;/p&gt;
+&lt;h2&gt;Three API Architecture&lt;/h2&gt;
+&lt;p&gt;The limitation became clear: while the vehicle API tells you where something is, it does not tell you the context. Is the train between stations? Which stations are coming up? How far along the route is it?&lt;/p&gt;
+&lt;p&gt;So it was time for more digging&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Vehicle API&lt;/strong&gt;: Real-time positions, delays, and basic future stops. Returns nested arrays with vehicle coordinates.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Station API&lt;/strong&gt;: All station coordinates and names within a bounding box. Provides the mapping from abstract coordinates to human-readable station names.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Route Geometry API&lt;/strong&gt;: The game-changer. By querying with a specific train_id, this returns the complete route path as ~300 coordinate points, plus station indices showing where each station sits on that path.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://res.cloudinary.com/rvibek-com-np/image/upload/v1769889482/reverse_rejseplanen_q8p2zq.png" height="400" /&gt;&lt;/p&gt;
+&lt;p&gt;And, the next steps
+1. Fetch all stations in Copenhagen area and build coordinate-to-name lookup
+2. Fetch all vehicles to get real-time positions and IDs
+3. For each vehicle, fetch its complete route geometry
+4. Calculate progress by finding nearest coordinate on route path to current position
+5. Determine station context by comparing route index against station indices&lt;/p&gt;
+&lt;p&gt;The result shows route progress percentage and station status:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;ROUTE PROGRESS: 17.1%
+Position index: 51/298
+
+STATIONS ON ROUTE:
+   PASSED     Rødovre St.
+   PASSED     Hvidovre St.
+   CURRENT    Danshøj St.
+   UPCOMING   Valby St.
+   UPCOMING   Carlsberg St.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The complete source code is available on GitHub: github.com/rvibek/rejseplanen-tracke&lt;/p&gt;
+&lt;p&gt;This project started as simple curiosity about how rejseplanen.dk works and evolved into comprehensive reverse engineering of a sophisticated real-time transit API.&lt;/p&gt;</content><category term="Blog"/><category term="reverse-engineering"/><category term="api"/><category term="public-transport"/><category term="denmark"/><category term="rejseplanen"/><category term="python"/><category term="data-visualization"/><category term="real-time"/><category term="transit"/><category term="ai"/><category term="llm"/><category term="kimi"/></entry><entry><title>Denmark 101 - AI-generated podcast series</title><link href="/denmark-101-ai-generated-podcast-series.html" rel="alternate"/><published>2025-05-21T18:00:00+02:00</published><updated>2025-05-18T19:00:00+02:00</updated><author><name>Vibek Raj Maurya</name></author><id>tag:None,2025-05-21:/denmark-101-ai-generated-podcast-series.html</id><summary type="html">&lt;p&gt;The Denmark 101 podcast series is a 10-episode, AI-generated exploration of Danish society in Nepali. Featuring engaging virtual hosts, each 6–7 minute episode blends storytelling with practical insights, offering a concise look into Danish culture, technology, and everyday life.&lt;/p&gt;</summary><content type="html">&lt;p&gt;The Denmark 101 podcast is a 10-episode Nepali podcast series that explores Danish society through engaging dialogue between AI  hosts. Each episode is 6–7 minutes long and blends storytelling with practical insight. The entire production was powered using AI tools.&lt;/p&gt;
 &lt;iframe src="https://creators.spotify.com/pod/show/rvibek/episodes/S1E10---e335vki" width="100%" height="900" frameborder="1" allowtransparency="true" allow="encrypted-media"&gt;&lt;/iframe&gt;
 
 &lt;h3&gt;Workflow Overview&lt;/h3&gt;

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+
+<head>
+	<link href="http://gmpg.org/xfn/11" rel="profile">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+	<!-- Metadata -->
+<meta name="description" content="Data analyst & AI ethusiast currently based in Copenhagen. Previously lived in Geneva, Cairo, Nairobi, Copenhagen, Kathmandu, Pokhara. Love urban photography.">
+<meta property="og:description"
+	content="Data analyst & AI ethusiast currently based in Copenhagen. Previously lived in Geneva, Cairo, Nairobi, Copenhagen, Kathmandu, Pokhara. Love urban photography.">
+<meta property="og:title" content="Uncovering Denmark's Real-Time Transit API" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/reverse-engineering-rejseplanen.html" />
+	<meta property="og:image" content="https://res.cloudinary.com/rvibek-com-np/image/upload/v1486821422/logo_dpmyds.png" />
+	<link rel="icon" type="image/x-icon" href="/theme/favicon.ico">
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"> -->
+
+	<title>rvibek | Vibek Raj Maurya</title>
+
+	<!-- CSS -->
+	<link rel="canonical" href="https://rvibek.com.np" />
+	<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+	<link
+		href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext"
+		rel="stylesheet">
+
+	<link rel="stylesheet" href="/theme/css/poole.css" />
+	<link rel="stylesheet" href="/theme/css/hyde.css" />
+	<link rel="stylesheet" href="/theme/css/syntax.css" />
+	<link rel="stylesheet" href="/theme/css/style.css" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css"
+		crossorigin="anonymous">
+
+	<!-- Feeds -->
+<link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="rvibek Full Atom Feed" />
+<link href="/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate" title="rvibek Categories Atom Feed" />
+
+	<!-- Analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-177774-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-177774-1');
+</script>
+</head>
+
+<body class="theme-base-00">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1 style="margin-bottom: 0px; color: #212021;">rvibek</h1>
+			<a href="/">
+				<img class="profile-picture" src="https://res.cloudinary.com/rvibek-com-np/image/upload/v1486821422/logo_dpmyds.png" style="border-radius: 50%; border: 2px solid white;">
+				<!-- <img class="profile-picture" src="/images/"> -->
+			</a>
+			</h1>
+			<!-- <h2 style="color: white;">rvibek</h2> -->
+			<h3 style="color: white; margin-top: 1px;">..in the making</h3>
+			<p class="lead"></p>
+			<!-- <p class="lead">Data analyst & AI ethusiast currently based in Copenhagen. Previously lived in Geneva, Cairo, Nairobi, Copenhagen, Kathmandu, Pokhara. Love urban photography. </p> -->
+			<p></p>
+		</div>
+		<div class="sidebar-nav">
+ | 
+			<a href="https://rvibek.com.np">Home</a> | 			<a href="https://rvibek.com.np/authors.html">About</a> | 		</div>
+		<nav class="sidebar-social">
+			<a class="sidebar-social-item" href="mailto:mailto:contact@rvibek.com.np">
+				<i class="fa fa-envelope"></i>
+			</a>
+			<a class="sidebar-social-item" href="https://github.com/rvibek" target="_blank">
+				<i class="fa fa-github"></i>
+			</a>
+			<a class="sidebar-social-item" href="https://instagram.com/rvibek" target="_blank">
+				<i class="fa fa-instagram"></i>
+			</a>
+			<a class="sidebar-social-item" href="https://www.linkedin.com/in/rvibek/" target="_blank">
+				<i class="fa fa-linkedin"></i>
+			</a>
+			<a class="sidebar-social-item"
+				href="/feeds/all.atom.xml">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+		<!-- <p class="sidebar-footer"><a href="https://github.com/jvanz/pelican-hyde" target="_blank">pelican-hyde</a>, a theme based on <a href="https://github.com/poole/hyde"  target="_blank">Hyde</a>. Powered by <a href="https://getpelican.com">Pelican</a></p> -->
+
+	</div>
+</div>	<div class="content container">
+<div class="post">
+	<h1 class="post-title">Uncovering Denmark's Real-Time Transit API</h1>
+	<span class="post-date">January 31, 2026 • <span class="post-author">Vibek Raj Maurya</span></span>
+	<p>I have always been fascinated by the real-time visualisations on rejseplanen.dk.
+It is really cool to watch trains, metros and buses move around Copenhagen in
+realtime.</p>
+<p>I wanted to delve in and see what is going on behind this app - and understand
+how the live map in rejseplanen.dk worked.</p>
+<p>The project also served as a perfect opportunity to experiment with what the
+community calls "vibe coding" - using AI (specifically the kimi k2.5 model in
+Opencode. The goal was not just to build a tracker, but to understand the architecture of a
+complex, real-time transit system.</p>
+<h2>The Discovery</h2>
+<p>I started simple. I first tested with just one API endpoint. I captured
+the network traffic from rejseplanen.dk live map and began dissecting the query
+parameters.</p>
+<p>The breakthrough came when I realized the API returns nested arrays, not flat
+JSON. A vehicle entry looks like this:</p>
+<div class="highlight"><pre><span></span><code>[&quot; B&quot;, 12458213, 55664685, &quot;84/49616/18/19/86&quot;, &quot;31&quot;, 16, &quot;1&quot;, &quot;Buddinge
+St.&quot;, [...], ...]
+</code></pre></div>
+
+<p>Each index has meaning:
+- Index 0: Line identifier
+- Index 1-2: X/Y coordinates in a projected coordinate system
+- Index 3: Unique vehicle ID
+- Index 5: Transport category code
+- Index 7: Final destination</p>
+<h2>Deciphering the Transport Codes</h2>
+<p>The real detective work began with the cats parameter. Through a combination of analyzing the web app HTML source code, cross-referencing with live API data, and systematic testing of different category codes, I mapped out the entire transport ecosystem.</p>
+<p>Some key discoveries:
+- 016 = S-train
+- 034 = Metro alternative code
+- 070 = Letbane alternative code
+- 128 = Havnebus/Waterbus
+- 032 = City Bus</p>
+<h2>Three API Architecture</h2>
+<p>The limitation became clear: while the vehicle API tells you where something is, it does not tell you the context. Is the train between stations? Which stations are coming up? How far along the route is it?</p>
+<p>So it was time for more digging</p>
+<p><strong>Vehicle API</strong>: Real-time positions, delays, and basic future stops. Returns nested arrays with vehicle coordinates.</p>
+<p><strong>Station API</strong>: All station coordinates and names within a bounding box. Provides the mapping from abstract coordinates to human-readable station names.</p>
+<p><strong>Route Geometry API</strong>: The game-changer. By querying with a specific train_id, this returns the complete route path as ~300 coordinate points, plus station indices showing where each station sits on that path.</p>
+<p><img src="https://res.cloudinary.com/rvibek-com-np/image/upload/v1769889482/reverse_rejseplanen_q8p2zq.png" height="400" /></p>
+<p>And, the next steps
+1. Fetch all stations in Copenhagen area and build coordinate-to-name lookup
+2. Fetch all vehicles to get real-time positions and IDs
+3. For each vehicle, fetch its complete route geometry
+4. Calculate progress by finding nearest coordinate on route path to current position
+5. Determine station context by comparing route index against station indices</p>
+<p>The result shows route progress percentage and station status:</p>
+<div class="highlight"><pre><span></span><code>ROUTE PROGRESS: 17.1%
+Position index: 51/298
+
+STATIONS ON ROUTE:
+   PASSED     Rødovre St.
+   PASSED     Hvidovre St.
+   CURRENT    Danshøj St.
+   UPCOMING   Valby St.
+   UPCOMING   Carlsberg St.
+</code></pre></div>
+
+<p>The complete source code is available on GitHub: github.com/rvibek/rejseplanen-tracke</p>
+<p>This project started as simple curiosity about how rejseplanen.dk works and evolved into comprehensive reverse engineering of a sophisticated real-time transit API.</p>
+
+	<span class="post-tags">
+		Tags:
+		<ul>
+			<li><a href="/tag/reverse-engineering.html">reverse-engineering</a></li>
+			<li><a href="/tag/api.html">api</a></li>
+			<li><a href="/tag/public-transport.html">public-transport</a></li>
+			<li><a href="/tag/denmark.html">denmark</a></li>
+			<li><a href="/tag/rejseplanen.html">rejseplanen</a></li>
+			<li><a href="/tag/python.html">python</a></li>
+			<li><a href="/tag/data-visualization.html">data-visualization</a></li>
+			<li><a href="/tag/real-time.html">real-time</a></li>
+			<li><a href="/tag/transit.html">transit</a></li>
+			<li><a href="/tag/ai.html">ai</a></li>
+			<li><a href="/tag/llm.html">llm</a></li>
+			<li><a href="/tag/kimi.html">kimi</a></li>
+		</ul>
+	</span>
+
+	<span class="post-footer">
+		<h4 class="post-footer-heading">Written By</h4>
+		<a href="./authors.html" class="post-author-name">Vibek Raj Maurya</a>
+		<span class="post-author-bio"> Data analyst & AI ethusiast currently based in Copenhagen. Previously lived in Geneva, Cairo, Nairobi, Copenhagen, Kathmandu, Pokhara. Love urban photography. </span>
+	</span>
+
+
+
+</div>
+
+
+		<p class="sidebar-footer" style="margin-top: 75px;"><a href="https://github.com/jvanz/pelican-hyde" target="_blank">pelican-hyde</a>, a theme based on <a href="https://github.com/poole/hyde"  target="_blank">Hyde</a>. Powered by <a href="https://getpelican.com">Pelican</a></p>
+	
+	</div>
+
+</body>
+	<script
+    src="https://demo.rybbit.io/api/script.js"
+    data-site-id="c4ef70897d03"
+    defer
+></script>
+
+</html>
