@@ -10,7 +10,7 @@
 <meta name="description" content="Data analyst & AI ethusiast currently based in Copenhagen. Previously lived in Geneva, Cairo, Nairobi, Copenhagen, Kathmandu, Pokhara. Love urban photography.">
 <meta property="og:description"
 	content="Data analyst & AI ethusiast currently based in Copenhagen. Previously lived in Geneva, Cairo, Nairobi, Copenhagen, Kathmandu, Pokhara. Love urban photography.">
-<meta property="og:title" content="Uncovering Denmark's Real-Time Transit API" />
+<meta property="og:title" content="Uncovering Denmark's Transit API" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/reverse-engineering-rejseplanen.html" />
 	<meta property="og:image" content="https://res.cloudinary.com/rvibek-com-np/image/upload/v1486821422/logo_dpmyds.png" />
@@ -99,20 +99,14 @@
 	</div>
 </div>	<div class="content container">
 <div class="post">
-	<h1 class="post-title">Uncovering Denmark's Real-Time Transit API</h1>
+	<h1 class="post-title">Uncovering Denmark's Transit API</h1>
 	<span class="post-date">January 31, 2026 • <span class="post-author">Vibek Raj Maurya</span></span>
-	<p>I have always been fascinated by the real-time visualisations on rejseplanen.dk.
-It is really cool to watch trains, metros and buses move around Copenhagen in
-realtime.</p>
-<p>I wanted to delve in and see what is going on behind this app - and understand
-how the live map in rejseplanen.dk worked.</p>
-<p>The project also served as a perfect opportunity to experiment with what the
-community calls "vibe coding" - using AI (specifically the kimi k2.5 model in
-Opencode. The goal was not just to build a tracker, but to understand the architecture of a
-complex, real-time transit system.</p>
+	<p>I have always been fascinated by the real-time visualisations on <a href="https://www.rejseplanen.dk/">rejseplanen.dk</a>. It is really cool to watch trains, metros and buses move around Copenhagen in realtime.</p>
+<p>I wanted to delve in and see what is going on behind this app - and understand how the live map in <a href="https://www.rejseplanen.dk/">rejseplanen.dk</a> worked.</p>
+<p>The project also served as a perfect opportunity to experiment with what the community calls "vibe coding" - using AI (specifically the <a href="https://www.kimi.com/ai-models/kimi-k2-5">kimi k2.5</a> model in <a href="https://opencode.ai/">Opencode</a>. The goal was not just to build a tracker, but to understand the architecture of a complex, real-time transit system.</p>
 <h2>The Discovery</h2>
 <p>I started simple. I first tested with just one API endpoint. I captured
-the network traffic from rejseplanen.dk live map and began dissecting the query
+the network traffic from <a href="https://www.rejseplanen.dk/">rejseplanen.dk</a> live map and began dissecting the query
 parameters.</p>
 <p>The breakthrough came when I realized the API returns nested arrays, not flat
 JSON. A vehicle entry looks like this:</p>
@@ -140,7 +134,7 @@ St.&quot;, [...], ...]
 <p><strong>Vehicle API</strong>: Real-time positions, delays, and basic future stops. Returns nested arrays with vehicle coordinates.</p>
 <p><strong>Station API</strong>: All station coordinates and names within a bounding box. Provides the mapping from abstract coordinates to human-readable station names.</p>
 <p><strong>Route Geometry API</strong>: The game-changer. By querying with a specific train_id, this returns the complete route path as ~300 coordinate points, plus station indices showing where each station sits on that path.</p>
-<p><img src="https://res.cloudinary.com/rvibek-com-np/image/upload/v1769889482/reverse_rejseplanen_q8p2zq.png" height="400" /></p>
+<p><img src="https://res.cloudinary.com/rvibek-com-np/image/upload/v1769889482/reverse_rejseplanen_q8p2zq.png" height="500" /></p>
 <p>And, the next steps
 1. Fetch all stations in Copenhagen area and build coordinate-to-name lookup
 2. Fetch all vehicles to get real-time positions and IDs
@@ -159,19 +153,16 @@ STATIONS ON ROUTE:
    UPCOMING   Carlsberg St.
 </code></pre></div>
 
-<p>The complete source code is available on GitHub: github.com/rvibek/rejseplanen-tracke</p>
-<p>This project started as simple curiosity about how rejseplanen.dk works and evolved into comprehensive reverse engineering of a sophisticated real-time transit API.</p>
+<p>The complete source code is available on GitHub: <a href="https://github.com/rvibek/rejseplanen-tracker">github.com/rvibek/rejseplanen-tracker</a></p>
+<p>This project started as simple curiosity about how <a href="https://www.rejseplanen.dk/">rejseplanen.dk</a> works and evolved into comprehensive reverse engineering of a sophisticated real-time transit API.</p>
 
 	<span class="post-tags">
 		Tags:
 		<ul>
-			<li><a href="/tag/reverse-engineering.html">reverse-engineering</a></li>
 			<li><a href="/tag/api.html">api</a></li>
-			<li><a href="/tag/public-transport.html">public-transport</a></li>
 			<li><a href="/tag/denmark.html">denmark</a></li>
 			<li><a href="/tag/rejseplanen.html">rejseplanen</a></li>
 			<li><a href="/tag/python.html">python</a></li>
-			<li><a href="/tag/data-visualization.html">data-visualization</a></li>
 			<li><a href="/tag/real-time.html">real-time</a></li>
 			<li><a href="/tag/transit.html">transit</a></li>
 			<li><a href="/tag/ai.html">ai</a></li>
