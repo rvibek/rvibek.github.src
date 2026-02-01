@@ -1,28 +1,22 @@
-Title: Uncovering Denmark's Real-Time Transit API
+Title: Uncovering Denmark's Transit API
 Slug: reverse-engineering-rejseplanen
 Date: 2026-01-31 20:51
 Modified: 2026-01-31 20:51
 Category: Blog
-Tags: reverse-engineering, api, public-transport, denmark, rejseplanen, python, data-visualization, real-time, transit, ai, llm, kimi
+Tags: api, denmark, rejseplanen, python, real-time, transit, ai, llm, kimi
 Author: Vibek Raj Maurya
-Summary: Reverse engineering Rejseplanen.dk's real-time transit API to understand how trains, metros, and buses move around Copenhagen. Discovered three key APIs, mapped transport codes, and built a system to track route progress using AI-assisted "vibe coding" with the kimi k2.5 model.
+Summary: Reverse engineering [Rejseplanen.dk](https://www.rejseplanen.dk/)'s real-time transit API to understand how trains, metros, and buses move around Copenhagen. Discovered three key APIs, mapped transport codes, and built a system to track route progress using AI-assisted "vibe coding" with the [kimi](https://www.kimi.com/ai-models/kimi-k2-5) k2.5 model.
 
-I have always been fascinated by the real-time visualisations on rejseplanen.dk.
-It is really cool to watch trains, metros and buses move around Copenhagen in
-realtime.
+I have always been fascinated by the real-time visualisations on [rejseplanen.dk](https://www.rejseplanen.dk/). It is really cool to watch trains, metros and buses move around Copenhagen in realtime.
 
-I wanted to delve in and see what is going on behind this app - and understand
-how the live map in rejseplanen.dk worked.
+I wanted to delve in and see what is going on behind this app - and understand how the live map in [rejseplanen.dk](https://www.rejseplanen.dk/) worked.
 
-The project also served as a perfect opportunity to experiment with what the
-community calls "vibe coding" - using AI (specifically the kimi k2.5 model in
-Opencode. The goal was not just to build a tracker, but to understand the architecture of a
-complex, real-time transit system.
+The project also served as a perfect opportunity to experiment with what the community calls "vibe coding" - using AI (specifically the [kimi k2.5](https://www.kimi.com/ai-models/kimi-k2-5) model in [Opencode](https://opencode.ai/). The goal was not just to build a tracker, but to understand the architecture of a complex, real-time transit system.
 
 ## The Discovery
 
 I started simple. I first tested with just one API endpoint. I captured
-the network traffic from rejseplanen.dk live map and began dissecting the query
+the network traffic from [rejseplanen.dk](https://www.rejseplanen.dk/) live map and began dissecting the query
 parameters.
 
 The breakthrough came when I realized the API returns nested arrays, not flat
@@ -61,7 +55,7 @@ So it was time for more digging
 
 **Route Geometry API**: The game-changer. By querying with a specific train_id, this returns the complete route path as ~300 coordinate points, plus station indices showing where each station sits on that path.
 
-<img src="https://res.cloudinary.com/rvibek-com-np/image/upload/v1769889482/reverse_rejseplanen_q8p2zq.png" height="400" />
+<img src="https://res.cloudinary.com/rvibek-com-np/image/upload/v1769889482/reverse_rejseplanen_q8p2zq.png" height="500" />
 
 And, the next steps
 1. Fetch all stations in Copenhagen area and build coordinate-to-name lookup
@@ -82,6 +76,6 @@ The result shows route progress percentage and station status:
        UPCOMING   Valby St.
        UPCOMING   Carlsberg St.
 
-The complete source code is available on GitHub: github.com/rvibek/rejseplanen-tracke
+The complete source code is available on GitHub: [github.com/rvibek/rejseplanen-tracker](https://github.com/rvibek/rejseplanen-tracker)
 
-This project started as simple curiosity about how rejseplanen.dk works and evolved into comprehensive reverse engineering of a sophisticated real-time transit API.
+This project started as simple curiosity about how [rejseplanen.dk](https://www.rejseplanen.dk/) works and evolved into comprehensive reverse engineering of a sophisticated real-time transit API.
