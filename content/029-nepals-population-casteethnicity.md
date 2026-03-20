@@ -2,7 +2,7 @@ Title: Nepal's Population by Caste-Ethnicity
 Slug: nepals-population-casteethnicity
 Date: 2013-04-12 10:05:43
 Modified: 2013-04-12 10:06:43
-Tags: nepal, census, data, population
+Tags: nepal, open-data, population, data-visualization, tableau
 Category: Blog 
 Author: Vibek Raj Maurya 
 Lang: EN

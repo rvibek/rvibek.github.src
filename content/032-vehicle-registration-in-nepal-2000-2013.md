@@ -2,7 +2,7 @@ Title: Vehicle Registration in Nepal 2000-2013
 Slug: vehicle-registration-in-nepal-2000-2013
 Date: 2014-09-14 10:05:43
 Modified: 2014-09-14 10:06:43
-Tags: dataviz, data, visualization, tableau, vehicle
+Tags: nepal, data-visualization, open-data, tableau, transport
 Category: Blog 
 Author: Vibek Raj Maurya 
 Lang: EN

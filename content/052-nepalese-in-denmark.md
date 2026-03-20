@@ -2,7 +2,7 @@ Title: Growing Nepalese in Denmark - Story in Numbers
 Slug: growing-nepalese-in-denmark
 Date: 2025-03-14 13:00:00
 Modified: 2025-03-14 13:00:00
-Tags: nepalese community, statistics, denmark, dataviz
+Tags: nepal, denmark, immigration, data-visualization, datawrapper, open-data
 Category: Blog
 Author: Vibek Raj Maurya
 Lang: 

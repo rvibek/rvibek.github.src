@@ -1,7 +1,7 @@
 Title: Protected Areas in Nepal
 Slug: protected-areas-in-nepal
 Date: 2010-08-03 21:25:38
-Tags: maps, Nepal, kml, gis, protected area, icimod
+Tags: nepal, gis, environment, kml, open-data
 Category: Blog
 Author: Vibek Raj Maurya
 Email:  rvibek@gmail.com

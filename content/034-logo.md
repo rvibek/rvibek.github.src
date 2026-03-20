@@ -2,7 +2,7 @@ Title: Logo
 Slug: logo
 Date: 2015-05-13 10:05:43
 Modified: 2015-05-13 10:06:43
-Tags: rvibek, logo, facelift, cloudinary
+Tags: design, branding, personal, logo, creative
 Category: Blog 
 Author: Vibek Raj Maurya 
 Lang: EN

@@ -1,7 +1,7 @@
 Title: Different worlds, closely connected
 Slug: different-worlds-closely-connected
 Date: 2009-10-15 21:25:38
-Tags: rvibek, e-waste, photography, Brot Fuer Die Welt, Ghana, Accra
+Tags: ghana, e-waste, photography, environment, conference
 Category: Blog
 Author: Vibek Raj Maurya
 Email:  rvibek@gmail.com

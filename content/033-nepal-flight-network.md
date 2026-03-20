@@ -2,7 +2,7 @@ Title: Nepal Flight Network
 Slug: nepal-flight-network
 Date: 2014-09-26 10:05:43
 Modified: 2014-09-26 10:06:43
-Tags: airport, flight, R, dataviz, nepal, domestic airports
+Tags: nepal, data-visualization, aviation, open-data, r-lang
 Category: Blog 
 Author: Vibek Raj Maurya 
 Lang: EN

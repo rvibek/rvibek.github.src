@@ -3,7 +3,7 @@ Slug: reverse-engineering-rejseplanen
 Date: 2026-01-31 20:51
 Modified: 2026-01-31 20:51
 Category: Blog
-Tags: api, denmark, rejseplanen, python, real-time, transit, ai, llm, kimi
+Tags: denmark, rejseplanen, python, real-time, transit, ai, data-visualisation
 Author: Vibek Raj Maurya
 Summary: Reverse engineering [Rejseplanen.dk](https://www.rejseplanen.dk/)'s real-time transit API to understand how trains, metros, and buses move around Copenhagen. Discovered three key APIs, mapped transport codes, and built a system to track route progress using AI-assisted "vibe coding" with the [kimi](https://www.kimi.com/ai-models/kimi-k2-5) k2.5 model.
 

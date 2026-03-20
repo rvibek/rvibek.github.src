@@ -2,7 +2,7 @@ Title: Green Revolution Thru'
 Slug: green-revolution-thru
 Date: 2004-12-04 22:11:17
 Modified: 2004-09-04 22:11:17
-Tags: environmental, interview, Vibek Raj Maurya, rvibek
+Tags: nepal, environment, photography, interview, media
 Category: Blog
 Author: Vibek Raj Maurya
 Lang:

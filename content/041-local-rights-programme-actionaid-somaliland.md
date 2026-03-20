@@ -2,7 +2,7 @@ Title: LRP ActionAid Somaliland
 Slug: local-rights-programme-actionaid-somaliland
 Date: 2015-06-28 13:08:43
 Modified: 2015-08-22 14:08:43
-Tags: dataviz, cartodb, actionaid, somaliland, actionaid somaliland, LRP, local rights programme
+Tags: somaliland, gis, data-visualization, ngo, open-data
 Category: Blog 
 Author: Vibek Raj Maurya 
 Lang: EN

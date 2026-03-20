@@ -2,7 +2,7 @@ Title: Setting up Docker in ArubaCloud
 Slug: setting-up-docker-in-arubacloud
 Date: 2018-07-20 08:25:16
 Modified: 2020-02-20 22:45:14
-Tags: docker, aruba, python, nginx, jupyter, data science
+Tags: docker, python, hosting, tooling, devops
 Category: Blog
 Author: Vibek Raj Maurya
 Lang: 

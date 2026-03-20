@@ -2,7 +2,7 @@ Title: Kathmandu daily weather record 1970-2000
 Slug: kathmandu-daily-weather-record-1970-2000
 Date: 2015-05-13 10:08:43
 Modified: 2015-05-13 10:09:43
-Tags: dataviz, data, kathmandu, COP20, climatechange, climate change, scraping, WorldClim, NCDC
+Tags: nepal, climate, open-data, data-visualization, web-scraping
 Category: Blog 
 Author: Vibek Raj Maurya 
 Lang: EN

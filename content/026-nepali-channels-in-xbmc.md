@@ -2,7 +2,7 @@ Title: Nepali TV Channels in XBMC
 Slug: nepali-channels-in-xbmc
 Date: 2012-10-12 10:05:43
 Modified: 2012-10-12 10:06:43
-Tags: nepali, nepal, xbmc, addon, ntv, sagarmatha, navix, navi-x
+Tags: nepal, media, streaming, kodi, tutorial
 Category: Blog 
 Author: Vibek Raj Maurya 
 Lang: EN

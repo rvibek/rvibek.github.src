@@ -2,7 +2,7 @@ Title: Accessing krak.dk with Python
 Slug: assessing-krak-dk-with-python
 Date: 2013-06-30 10:05:43
 Modified: 2013-06-30 10:06:43
-Tags: data scraping, krak, denmark, python
+Tags: denmark, python, web-scraping, api, tooling
 Category: Blog 
 Author: Vibek Raj Maurya 
 Lang: EN

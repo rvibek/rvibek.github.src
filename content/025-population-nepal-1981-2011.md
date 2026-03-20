@@ -2,7 +2,7 @@ Title: Population Nepal 1981-2011
 Slug: population-nepal-1981-2011
 Date: 2012-01-12 10:05:43
 Modified: 2012-01-12 10:06:43
-Tags: gis, fusiontables,  nepal, map
+Tags: nepal, gis, open-data, population, google-maps
 Category: Blog 
 Author: Vibek Raj Maurya 
 Lang: EN

@@ -1,7 +1,7 @@
 Title: CSV from Drishti KTM Valley Air Quality
 Slug: csv-from-drishti-kathmandu-valley-air-quality
 Date: 2016-08-18 21:25:38
-Tags: kathmandu, data viz, python, bokeh, air quality
+Tags: nepal, python, air-quality, data-visualization, open-data
 Category: Blog
 Author: 
 Lang: EN

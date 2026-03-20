@@ -2,7 +2,7 @@ Title: Extracting Data from Google Maps
 Slug: extracting-data-from-google-maps
 Date: 2018-02-12 08:25:16
 Modified: 2018-02-12 09:00:00
-Tags: google maps, python, scrapping
+Tags: python, web-scraping, google-maps, api, tooling
 Category: Blog
 Author: Vibek Raj Maurya
 Lang: 

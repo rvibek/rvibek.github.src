@@ -2,7 +2,7 @@ Title: The Human and Environmental Cost
 Slug: the-human-and-environmental-cost
 Date: 2013-01-03 10:05:43
 Modified: 2013-01-03 10:06:43
-Tags: ghana, accra, electronic waste, interview
+Tags: ghana, e-waste, environment, interview, photography
 Category: Blog 
 Author: Vibek Raj Maurya 
 Lang: EN

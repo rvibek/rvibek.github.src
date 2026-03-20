@@ -3,7 +3,7 @@ Slug: denmark-101-ai-generated-podcast-series
 Date: 2025-05-21 18:00
 Modified: 2025-05-18 19:00
 Category: Blog
-Tags: denmark, podcast, ai, gemini, notebookllm
+Tags: denmark, ai, podcast, nepal, media, content-creation
 Author: Vibek Raj Maurya
 Summary: The Denmark 101 podcast series is a 10-episode, AI-generated exploration of Danish society in Nepali. Featuring engaging virtual hosts, each 6–7 minute episode blends storytelling with practical insights, offering a concise look into Danish culture, technology, and everyday life.
 

@@ -2,7 +2,7 @@ Title: Foreigners in Denmark (until 2013 Q1)
 Slug: immigrants-in-denmark-2013
 Date: 2013-03-13 10:05:43
 Modified: 2013-03-13 10:06:43
-Tags: ghana, accra, electronic waste, interview
+Tags: denmark, immigration, nepal, data-visualization, open-data
 Category: Blog 
 Author: Vibek Raj Maurya 
 Lang: EN

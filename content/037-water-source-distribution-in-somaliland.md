@@ -2,7 +2,7 @@ Title: Water Source Distribution in Somaliland
 Slug: water-source-distribution-in-somaliland
 Date: 2015-05-14 13:08:43
 Modified: 2015-05-14 14:08:43
-Tags: dataviz, data, somaliland, water resource, water, fao, swalim
+Tags: somaliland, data-visualization, open-data, water, gis
 Category: Blog 
 Author: Vibek Raj Maurya 
 Lang: EN

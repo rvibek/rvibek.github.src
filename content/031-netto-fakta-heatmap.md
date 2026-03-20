@@ -2,7 +2,7 @@ Title: Netto-Fakta Heatmap
 Slug: netto-fakta-heatmap
 Date: 2013-07-21 10:05:43
 Modified: 2013-07-21 10:06:43
-Tags: gis, map, netto, fakta
+Tags: denmark, gis, data-visualization, heatmap, retail
 Category: Blog 
 Author: Vibek Raj Maurya 
 Lang: EN

@@ -2,7 +2,7 @@ Title: Kantipur 2014 News Visualization
 Slug: kantipur-2014-news-category-visualization
 Date: 2015-07-22 13:08:43
 Modified: 2015-07-22 13:08:43
-Tags: dataviz, tableau, kantipur, news, nepal,
+Tags: nepal, data-visualization, media, tableau, open-data
 Category: Blog 
 Author: Vibek Raj Maurya 
 Lang: EN

@@ -2,7 +2,7 @@ Title: Nepal Trade Data
 Slug: nepal-trade-data
 Date: 2016-04-14 13:08:43
 Modified: 2016-04-14 13:08:43
-Tags: nepal, trade, dataviz, data
+Tags: nepal, data-visualization, open-data, tableau, trade
 Category: Blog 
 Author: Vibek Raj Maurya 
 Lang: EN

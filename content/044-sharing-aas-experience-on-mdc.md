@@ -2,7 +2,7 @@ Title: Sharing ActionAid Somaliland Experince on ODK
 Slug: sharing-aas-experience-on-mdc
 Date: 2016-04-14 13:08:43
 Modified: 2016-04-14 13:08:43
-Tags: actionaid, ODK, mobil data collection, YouTube, tutorial
+Tags: somaliland, ngo, tutorial, mobile-data, fieldwork
 Category: Blog 
 Author: Vibek Raj Maurya 
 Lang: EN

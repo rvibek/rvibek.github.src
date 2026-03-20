@@ -3,7 +3,7 @@ Slug: mcp-tool-deployment-vibe
 Date: 2025-04-04 18:00
 Modified: 2025-04-05 15:00
 Category: Blog
-Tags: mcp, mcp_tool, coding, unhcr, ai, manus, python
+Tags: python, ai, api, humanitarian, open-data, tooling
 Author: Vibek Raj Maurya
 Summary: I built mcp_tool to experiment with MCP—Model Context Protocol using UNHCR’s Refugee Population Statistics, got it running with a little help from Manus.
 

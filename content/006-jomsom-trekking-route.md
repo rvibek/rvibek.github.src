@@ -1,7 +1,7 @@
 Title: Jomsom Trekking Route
 Slug: jomsom-trekking-route
 Date: 2010-07-10 21:25:38
-Tags: maps, Nepal, kml, gis, hiking, trail, trekking
+Tags: nepal, gis, trekking, kml, google-maps
 Category: Blog
 Author: Vibek Raj Maurya
 Email:  rvibek@gmail.com

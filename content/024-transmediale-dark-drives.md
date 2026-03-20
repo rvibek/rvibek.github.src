@@ -2,7 +2,7 @@ Title: Transmediale Dark Drives
 Slug: transmediale-dark-drives
 Date: 2012-01-12 10:05:43
 Modified: 2012-01-12 10:06:43
-Tags: transmediale, photography, ewaste, ghana, germany
+Tags: ghana, e-waste, photography, exhibition, germany
 Category: Blog 
 Author: Vibek Raj Maurya 
 Lang: EN

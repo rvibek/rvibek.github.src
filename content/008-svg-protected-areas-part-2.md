@@ -1,7 +1,7 @@
 Title: SVG Protected Areas in Nepal - 2
 Slug: svg-protected-areas-part-2
 Date: 2010-08-03 21:25:38
-Tags: maps, Nepal, kml, gis, protected area, icimod
+Tags: nepal, gis, environment, svg, open-data
 Category: Blog
 Author: Vibek Raj Maurya
 Email:  rvibek@gmail.com

@@ -3,7 +3,7 @@ Slug: basemap-and-xkcd-in-matplotlib
 Date: 2017-09-15 21:25:38
 Modified: 2017-09-29 20:25:59
 Category: Blog
-Tags: matplotlib, python, southasia, nepal
+Tags: python, matplotlib, gis, nepal, tutorial
 Author: Vibek Raj Maurya
 Lang: EN
 Summary: Matplotlib - I have been using the API for some time but hardly customised it. It was time to roll up the sleeves for yet another tutorial. 

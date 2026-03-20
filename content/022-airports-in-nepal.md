@@ -2,7 +2,7 @@ Title: Airports in Nepal
 Slug: airports-in-nepal
 Date: 2010-09-25 10:05:43
 Modified: 2014-01-25 10:06:43
-Tags: gis, airports, airport, nepal, map
+Tags: nepal, gis, open-data, aviation, data-visualization
 Category: Blog 
 Author: Vibek Raj Maurya 
 Lang: EN

@@ -2,7 +2,7 @@ Title: Maverick Ubunutu 10.10
 Slug: my-maverick
 Date: 2010-10-14 10:05:43
 Modified: 2014-10-14 10:06:43
-Tags: gis, airports, airport, nepal, map
+Tags: linux, ubuntu, desktop, customization, tooling
 Category: Blog 
 Author: Vibek Raj Maurya 
 Lang: EN

@@ -1,7 +1,7 @@
 Title: KML Districts of Nepal
 Slug: kml-districts-of-nepal
 Date: 2010-07-10 21:25:38
-Tags: maps, Nepal, kml, gis
+Tags: nepal, gis, open-data, kml, google-maps
 Category: Blog
 Author: Vibek Raj Maurya
 Email:  rvibek@gmail.com

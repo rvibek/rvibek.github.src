@@ -2,7 +2,7 @@ Title: JSON file for seismic activities in Nepal
 Slug: json-file-for-seismic-activities-in-nepal
 Date: 2015-05-18 13:08:43
 Modified: 2015-05-18 14:08:43
-Tags: python, scraping, data, earthquake, json, magazine
+Tags: nepal, python, web-scraping, earthquake, open-data
 Category: Blog 
 Author: Vibek Raj Maurya 
 Lang: EN

@@ -1,7 +1,7 @@
 Title: I'm just looking
 Date: 2007-07-17 11:09
 Category: Blog
-Tags: nature through lens, wcn, nepalphotography, award, grand prize
+Tags: nepal, photography, award, nature, wildlife
 Slug: nature-thru
 Email:  rvibek@gmail.com
 Summary: Judges for this competition were Mani Lama, Nripa Dhoj Khadka, Pradeep Shakya and Raj Bhai Suwal.Winners of this competition were Mr. Vibek Raj Maurya (Grand prize winner)

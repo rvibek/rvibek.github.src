@@ -2,7 +2,7 @@ Title: Got Featured in UNV Newsletter
 Slug: featured-in-online-unv
 Date: 2016-06-18 13:08:43
 Modified: 2016-06-18 13:08:43
-Tags: UNV, volunteer, GIS, mapping
+Tags: volunteering, gis, nepal, crisis-mapping, humanitarian
 Category: Blog 
 Author: Vibek Raj Maurya 
 Lang: EN

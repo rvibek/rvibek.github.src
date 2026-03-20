@@ -2,7 +2,7 @@ Title: Datawrapper - data viz tool
 Slug: datawrapper-data-viz
 Date: 2021-09-18 23:41:31
 Modified: 2021-09-18 23:41:31
-Tags: data viz, datawrapper
+Tags: data-visualization, datawrapper, tutorial, tooling, open-data
 Category: Blog
 Author: Vibek Raj Maurya
 Lang: 

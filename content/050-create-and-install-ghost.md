@@ -2,7 +2,7 @@ Title: Create and install Ghost
 Slug: create-and-install-ghost
 Date: 2021-08-12 21:20
 Modified: 2021-08-12 21:20
-Tags: ghost, site generator, node, git
+Tags: blogging, ghost, hosting, tutorial, tooling
 Category: Blog
 Author: Vibek Raj Maurya
 Lang: en

@@ -2,7 +2,7 @@ Title: Kathmandu PM2.5 Plot
 Slug: kathmandu-pm25-drishti
 Date: 2017-11-16 08:25:16
 Modified: 2017-11-16 08:25:16
-Tags: google matplotlib, python, kathmandu, nepal, drishti, air quality
+Tags: nepal, python, air-quality, data-visualization, matplotlib
 Category: Blog
 Author: Vibek Raj Maurya
 Lang: 

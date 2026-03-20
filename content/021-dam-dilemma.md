@@ -2,7 +2,7 @@ Title: "Dam Dilemma"
 Slug: dam-dilemma
 Date: 2010-09-15 10:05:43
 Modified: 2014-01-15 10:06:43
-Tags: flickr, photography, photo, magazine
+Tags: nepal, photography, environment, hydropower, media
 Category: Blog 
 Author: Vibek Raj Maurya 
 Lang: EN

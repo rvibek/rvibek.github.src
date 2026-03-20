@@ -2,7 +2,7 @@ Title: POST Method to extract NEPSE Index
 Slug: extract-nepse-data
 Date: 2015-06-03 13:08:43
 Modified: 2017-10-04 16:09:40
-Tags: python, scraping, data, NEPSE, pattern, clips, stock
+Tags: nepal, python, web-scraping, finance, open-data
 Category: Blog 
 Author: Vibek Raj Maurya 
 Summary: The script uses `POST` method to pass the variable `topTenBased` from the `select` object and then same page loads the data accordingly.

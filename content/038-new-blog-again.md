@@ -2,7 +2,7 @@ Title: New blog, Again
 Slug: new-blog-again
 Date: 2015-05-15 13:08:43
 Modified: 2015-05-15 14:08:43
-Tags: wordpress, ghost, ghotium, cloudfare, cdn, openshift
+Tags: blogging, ghost, tooling, migration, hosting
 Category: Blog 
 Author: Vibek Raj Maurya 
 Lang: EN

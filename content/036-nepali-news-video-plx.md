@@ -2,7 +2,7 @@ Title: Nepali news video PLX
 Slug: nepali-news-video-plx
 Date: 2015-05-13 13:08:43
 Modified: 2015-05-13 14:08:43
-Tags: dataviz, data, kimono, xbmc, plx, navix, nepal, kodi, scraping
+Tags: nepal, media, kodi, web-scraping, streaming
 Category: Blog 
 Author: Vibek Raj Maurya 
 Lang: EN

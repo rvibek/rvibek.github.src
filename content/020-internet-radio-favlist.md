@@ -2,7 +2,7 @@ Title: Internet radio fav list
 Slug: internet-radio-favlist
 Date: 2010-09-10 10:05:43
 Modified: 2014-01-14 10:06:43
-Tags: indie, post rock, postrock, indie pop, somafm, ties, soma
+Tags: music, media, radio, streaming, playlist
 Category: Blog 
 Author: Vibek Raj Maurya 
 Lang: EN
