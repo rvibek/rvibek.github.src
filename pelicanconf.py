@@ -5,10 +5,10 @@
 AUTHOR = u'Vibek Raj Maurya'
 SITENAME = u'rvibek'
 SITE_TITLE  =  u'rvibek | Vibek Raj Maurya'
-SITESUBTITLE = u'..in the making'
+SITESUBTITLE = u'...in the making'
 SITEURL = 'https://rvibek.com.np'
 
-BIO = "Data analyst & AI ethusiast currently based in Copenhagen. Previously lived in Geneva, Cairo, Nairobi, Hargeisa, Kathmandu, Pokhara. Love urban photography."
+BIO = "Data analyst & AI ethusiast currently based in Copenhagen. Previously lived in Kathmandu, Pokhara, Geneva, Cairo, Nairobi, Hargeisa. Love urban photography."
 
 PATH = 'content'
 THEME = 'themes/hyde'
