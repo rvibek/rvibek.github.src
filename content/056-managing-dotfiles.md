@@ -86,10 +86,10 @@ Now `~/.config/opencode` is a symlink pointing into your dotfiles. Your settings
 ```
 ~/dotfiles/
 └── .config/
-    └── opencode/
-        ├── opencode.jsonc
-        ├── package.json
-        └── skills
+  └── opencode/
+    ├── opencode.jsonc
+    ├── package.json
+    └── skills
 ```
 
 Same pattern works for any app that stores config under `~/.config/` — Yazi, Newsboat, whatever you use. Create the package, mirror the path, stow it.
@@ -111,11 +111,13 @@ git push -u origin main
 Add a `.gitignore` to keep things clean:
 
 ```gitignore
+
 .DS_Store
 *.swp
 *~
 *.db
 *.lock
+
 ```
 
 Day-to-day, the flow is dead simple — edit a config, commit, push:
