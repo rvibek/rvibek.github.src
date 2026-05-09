@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+
+<head>
+	<link href="http://gmpg.org/xfn/11" rel="profile">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+	<!-- Metadata -->
+<meta name="description" content="Data analyst & AI ethusiast currently based in Copenhagen. Previously lived in Kathmandu, Pokhara, Geneva, Cairo, Nairobi, Hargeisa. Love urban photography.">
+<meta property="og:description"
+	content="Data analyst & AI ethusiast currently based in Copenhagen. Previously lived in Kathmandu, Pokhara, Geneva, Cairo, Nairobi, Hargeisa. Love urban photography.">
+<meta property="og:title" content="Managing dotfiles with GNU Stow" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/manage-dotfiles-with-gnu-stow.html" />
+	<meta property="og:image" content="https://res.cloudinary.com/rvibek-com-np/image/upload/v1486821422/logo_dpmyds.png" />
+	<link rel="icon" type="image/x-icon" href="/theme/favicon.ico">
+
+	<!-- Enable responsiveness on mobile devices-->
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"> -->
+
+	<title>rvibek | Vibek Raj Maurya</title>
+
+	<!-- CSS -->
+	<link rel="canonical" href="https://rvibek.com.np" />
+	<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+	<link
+		href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext"
+		rel="stylesheet">
+
+	<link rel="stylesheet" href="/theme/css/poole.css" />
+	<link rel="stylesheet" href="/theme/css/hyde.css" />
+	<link rel="stylesheet" href="/theme/css/syntax.css" />
+	<link rel="stylesheet" href="/theme/css/style.css" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css"
+		crossorigin="anonymous">
+
+	<!-- Feeds -->
+<link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="rvibek Full Atom Feed" />
+<link href="/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate" title="rvibek Categories Atom Feed" />
+
+	<!-- Analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-177774-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-177774-1');
+</script>
+</head>
+
+<body class="theme-base-00">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1 style="margin-bottom: 0px; color: #212021;">rvibek</h1>
+			<a href="/">
+				<img class="profile-picture" src="https://res.cloudinary.com/rvibek-com-np/image/upload/v1486821422/logo_dpmyds.png" style="border-radius: 50%; border: 2px solid white;">
+				<!-- <img class="profile-picture" src="/images/"> -->
+			</a>
+			</h1>
+			<!-- <h2 style="color: white;">rvibek</h2> -->
+			<h3 style="color: white; margin-top: 1px;">...in the making</h3>
+			<p class="lead"></p>
+			<!-- <p class="lead">Data analyst & AI ethusiast currently based in Copenhagen. Previously lived in Kathmandu, Pokhara, Geneva, Cairo, Nairobi, Hargeisa. Love urban photography. </p> -->
+			<p></p>
+		</div>
+		<div class="sidebar-nav">
+ | 
+			<a href="https://rvibek.com.np">Home</a> | 			<a href="https://rvibek.com.np/authors.html">About</a> | 		</div>
+		<nav class="sidebar-social">
+			<a class="sidebar-social-item" href="mailto:mailto:contact@rvibek.com.np">
+				<i class="fa fa-envelope"></i>
+			</a>
+			<a class="sidebar-social-item" href="https://github.com/rvibek" target="_blank">
+				<i class="fa fa-github"></i>
+			</a>
+			<a class="sidebar-social-item" href="https://instagram.com/rvibek" target="_blank">
+				<i class="fa fa-instagram"></i>
+			</a>
+			<a class="sidebar-social-item" href="https://www.linkedin.com/in/rvibek/" target="_blank">
+				<i class="fa fa-linkedin"></i>
+			</a>
+			<a class="sidebar-social-item"
+				href="/feeds/all.atom.xml">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+		<!-- <p class="sidebar-footer"><a href="https://github.com/jvanz/pelican-hyde" target="_blank">pelican-hyde</a>, a theme based on <a href="https://github.com/poole/hyde"  target="_blank">Hyde</a>. Powered by <a href="https://getpelican.com">Pelican</a></p> -->
+
+	</div>
+</div>	<div class="content container">
+<div class="post">
+	<h1 class="post-title">Managing dotfiles with GNU Stow</h1>
+	<span class="post-date">May 09, 2026 • <span class="post-author">Vibek Raj Maurya</span></span>
+	<p>I used to have config files scattered all over my home directory — .zshrc here, .gitconfig there, random stuff in .config/. No version control, no single source of truth. The real pain hit when I'd tweak something on my MacBook Pro, then have to remember to do the same dance on the Mac Mini and my WSL workstation. Three machines, three copies of the same mess, zero sync. It was a nightmare.
+Then I found <a href="https://www.gnu.org/software/stow/">GNU Stow</a>, and it changed everything.</p>
+<p>Stow is a symlink farm manager. Fancy name, simple idea: you keep all your dotfiles in one tidy folder (<code>~/dotfiles</code>), and Stow creates symlinks from your home directory pointing back to it. Your configs stay organized, Git-trackable, and portable across machines.</p>
+<p>The best part? You can enable or disable entire app configs with a single command.</p>
+<p>Install it quick:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Debian/Ubuntu</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>stow
+
+<span class="c1"># macOS</span>
+brew<span class="w"> </span>install<span class="w"> </span>stow
+</code></pre></div>
+
+<h2>The workflow in 30 seconds</h2>
+<ol>
+<li>Create <code>~/dotfiles</code></li>
+<li>Make a subdirectory (a "package") for each app</li>
+<li>Move your config files into the matching directory structure</li>
+<li>Run <code>stow &lt;package&gt;</code> from inside <code>~/dotfiles</code></li>
+</ol>
+<p>That's it. Let me show you what this looks like in practice.</p>
+<h2>Stowing <code>.zshrc</code></h2>
+<p>ZSH config lives at <code>~/.zshrc</code>. Here's the move:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/dotfiles
+
+<span class="c1"># Move your existing config in</span>
+mv<span class="w"> </span>~/.zshrc<span class="w"> </span>.
+
+<span class="c1"># Stow it</span>
+stow<span class="w"> </span>zsh
+</code></pre></div>
+
+<p>Stow creates a symlink: <code>~/.zshrc → ~/dotfiles/.zshrc</code>. You edit the file in either location — it's the same file.</p>
+<p>Got more ZSH files? Throw them in:</p>
+<div class="highlight"><pre><span></span><code>mv<span class="w"> </span>~/.zsh_aliases<span class="w"> </span>.
+mv<span class="w"> </span>~/.zsh_functions<span class="w"> </span>.
+stow<span class="w"> </span>-R<span class="w">    </span><span class="c1"># Restow to pick up new files</span>
+</code></pre></div>
+
+<p>Your package now looks like:</p>
+<div class="highlight"><pre><span></span><code>~/dotfiles/
+├── .zshrc
+├── .zsh_aliases
+└── .zsh_functions
+</code></pre></div>
+
+<h2>Stowing OpenCode</h2>
+<p>Editors like OpenCode keep config under <code>~/.config/opencode/</code>. The key here is mirroring the directory structure inside your package:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/dotfiles
+mkdir<span class="w"> </span>-p<span class="w"> </span>opencode/.config/opencode
+
+mv<span class="w"> </span>~/.config/opencode/*<span class="w"> </span>opencode/.config/opencode/
+
+stow<span class="w"> </span>opencode
+</code></pre></div>
+
+<p>Now <code>~/.config/opencode</code> is a symlink pointing into your dotfiles. Your settings, keybindings — all tracked:</p>
+<div class="highlight"><pre><span></span><code><span class="o">~/</span><span class="nx">dotfiles</span><span class="o">/</span>
+<span class="err">└──</span><span class="w"> </span><span class="p">.</span><span class="nx">config</span><span class="o">/</span>
+<span class="w">    </span><span class="err">└──</span><span class="w"> </span><span class="nx">opencode</span><span class="o">/</span>
+<span class="w">        </span><span class="err">├──</span><span class="w"> </span><span class="nx">opencode</span><span class="p">.</span><span class="nx">jsonc</span>
+<span class="w">        </span><span class="err">├──</span><span class="w"> </span><span class="kn">package</span><span class="p">.</span><span class="nx">json</span>
+<span class="w">        </span><span class="err">└──</span><span class="w"> </span><span class="nx">skills</span>
+</code></pre></div>
+
+<p>Same pattern works for any app that stores config under <code>~/.config/</code> — Yazi, Newsboat, whatever you use. Create the package, mirror the path, stow it.</p>
+<h2>Version control with Git</h2>
+<p>This is where Stow really earns its keep. Your entire <code>~/dotfiles</code> folder is just a regular directory — perfect for Git.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/dotfiles
+git<span class="w"> </span>init
+git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;init&quot;</span>
+
+git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>git@github.com:rvibek/dotfiles.git
+git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
+</code></pre></div>
+
+<p>Add a <code>.gitignore</code> to keep things clean:</p>
+<div class="highlight"><pre><span></span><code><span class="na">.DS_Store</span>
+<span class="err">*</span><span class="na">.swp</span>
+<span class="err">*~</span>
+<span class="err">*</span><span class="na">.db</span>
+<span class="err">*</span><span class="na">.lock</span>
+</code></pre></div>
+
+<p>Day-to-day, the flow is dead simple — edit a config, commit, push:</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>zsh/.zshrc
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Update zsh aliases&quot;</span>
+git<span class="w"> </span>push
+</code></pre></div>
+
+<h2>Setting up a new machine</h2>
+<p>This is the killer feature. Fresh system? Five commands:</p>
+<div class="highlight"><pre><span></span><code>brew<span class="w"> </span>install<span class="w"> </span>stow
+git<span class="w"> </span>clone<span class="w"> </span>git@github.com:rvibek/dotfiles.git<span class="w"> </span>~/dotfiles
+<span class="nb">cd</span><span class="w"> </span>~/dotfiles
+stow<span class="w"> </span>zsh<span class="w"> </span>opencode
+</code></pre></div>
+
+<p>Done. Your entire environment is back. And you can be selective — only stow what you need on that particular machine.</p>
+<h2>Commands worth remembering</h2>
+<ul>
+<li><code>stow &lt;pkg&gt;</code> — create symlinks</li>
+<li><code>stow -D &lt;pkg&gt;</code> — remove symlinks</li>
+<li><code>stow -R &lt;pkg&gt;</code> — restow (useful after adding files)</li>
+<li><code>stow -n -v &lt;pkg&gt;</code> — dry run, see what would happen</li>
+<li><code>stow */</code> — stow every package at once</li>
+</ul>
+<h2>Quick troubleshooting</h2>
+<p><strong>"Cannot stow over existing file"</strong> — a real file is in the way. Move it into your package first, then restow:</p>
+<div class="highlight"><pre><span></span><code>mv<span class="w"> </span>~/.zshrc<span class="w"> </span>~/dotfiles/zsh/
+stow<span class="w"> </span>-R<span class="w"> </span>zsh
+</code></pre></div>
+
+<p>Happy stowing. ✌️</p>
+
+	<span class="post-tags">
+		Tags:
+		<ul>
+			<li><a href="/tag/dotfiles.html">dotfiles</a></li>
+			<li><a href="/tag/gnu-stow.html">GNU Stow</a></li>
+			<li><a href="/tag/config-management.html">config management</a></li>
+			<li><a href="/tag/productivity.html">productivity</a></li>
+			<li><a href="/tag/ai.html">ai</a></li>
+		</ul>
+	</span>
+
+	<span class="post-footer">
+		<h4 class="post-footer-heading">Written By</h4>
+		<a href="./authors.html" class="post-author-name">Vibek Raj Maurya</a>
+		<span class="post-author-bio"> Data analyst & AI ethusiast currently based in Copenhagen. Previously lived in Kathmandu, Pokhara, Geneva, Cairo, Nairobi, Hargeisa. Love urban photography. </span>
+	</span>
+
+
+
+</div>
+
+
+		<p class="sidebar-footer" style="margin-top: 75px;"><a href="https://github.com/jvanz/pelican-hyde" target="_blank">pelican-hyde</a>, a theme based on <a href="https://github.com/poole/hyde"  target="_blank">Hyde</a>. Powered by <a href="https://getpelican.com">Pelican</a></p>
+	
+	</div>
+
+</body>
+	<script
+    src="https://demo.rybbit.io/api/script.js"
+    data-site-id="c4ef70897d03"
+    defer
+></script>
+
+</html>

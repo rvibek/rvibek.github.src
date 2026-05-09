@@ -106,9 +106,9 @@
 <p>The scripts available in my <a href="https://github.com/rvibek/Data-from-Google-Maps">GitRepo</a></p>
 <p>And here's are the saved results in Gist. <a href="https://gist.github.com/rvibek/e5aea8a9396ad10d5b8d42562c53cf08">Nepalese Restaurants in Europe</a>. Interestingly, there are almost 80 Nepalese restaurants in Finland. </p>
 <p>The script uses 3 libraries. <code>time</code> is needed to delay the API call. Google has a limitation on request per second. </p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">import</span> <span class="nn">time</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 </code></pre></div>
 
 <p>The next is declare the varible and load first JSON</p>
@@ -124,7 +124,7 @@
 
 <p>The below function recursively populates the result.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Recursive Function</span>
-<span class="k">def</span> <span class="nf">getjson</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">pagetoken</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">getjson</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">pagetoken</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
 
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># API has requests per second limitation</span>
 

@@ -105,9 +105,9 @@
 <p>I have setup <a href="https://www.kimonolabs.com/" title="target=&quot;_blank&quot;">Kimono</a> to scrap video list from <a href="http://www.canadanepal.net" title="target=&quot;_blank">CanadaNepal</a>. The following file in <a href="http://www.openshift" title="target=&quot;_blank">OpenShift</a> is updated every hour 
 <a href="http://app-weather.rhcloud.com/data/kimplx.plx" title="target=&quot;_blank">kimplx.plx</a> which is loaded in Navi-X. Search for <em>Nepali TV</em> in Navi-X to see the listings.</p>
 <p><strong>Python Code</strong></p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">import</span> <span class="nn">urllib</span>
-<span class="kn">import</span> <span class="nn">datetime</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">urllib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span>
 
 <span class="n">results</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">urllib</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s2">&quot;http://goo.gl/5sUcpr&quot;</span><span class="p">))</span>
 

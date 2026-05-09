@@ -1,5 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>rvibek</title><link href="/" rel="alternate"/><link href="/feeds/all.atom.xml" rel="self"/><id>/</id><updated>2026-01-31T20:51:00+01:00</updated><subtitle>...in the making</subtitle><entry><title>Uncovering Denmark's Transit API</title><link href="/reverse-engineering-rejseplanen.html" rel="alternate"/><published>2026-01-31T20:51:00+01:00</published><updated>2026-01-31T20:51:00+01:00</updated><author><name>Vibek Raj Maurya</name></author><id>tag:None,2026-01-31:/reverse-engineering-rejseplanen.html</id><summary type="html">&lt;p&gt;Reverse engineering &lt;a href="https://www.rejseplanen.dk/"&gt;Rejseplanen.dk&lt;/a&gt;'s real-time transit API to understand how trains, metros, and buses move around Copenhagen. Discovered three key APIs, mapped transport codes, and built a system to track route progress using AI-assisted "vibe coding" with the &lt;a href="https://www.kimi.com/ai-models/kimi-k2-5"&gt;kimi&lt;/a&gt; k2.5 model.&lt;/p&gt;</summary><content type="html">&lt;p&gt;I have always been fascinated by the real-time visualisations on &lt;a href="https://www.rejseplanen.dk/"&gt;rejseplanen.dk&lt;/a&gt;. It is really cool to watch trains, metros and buses move around Copenhagen in realtime.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>rvibek</title><link href="/" rel="alternate"/><link href="/feeds/all.atom.xml" rel="self"/><id>/</id><updated>2026-05-09T20:20:00+02:00</updated><subtitle>...in the making</subtitle><entry><title>Managing dotfiles with GNU Stow</title><link href="/manage-dotfiles-with-gnu-stow.html" rel="alternate"/><published>2026-05-09T20:20:00+02:00</published><updated>2026-05-09T20:20:00+02:00</updated><author><name>Vibek Raj Maurya</name></author><id>tag:None,2026-05-09:/manage-dotfiles-with-gnu-stow.html</id><summary type="html">&lt;p&gt;This post covers how GNU Stow turned a scattered mess of dotfiles into a clean, Git-tracked system. Stow creates symlinks from your home directory to a single ~/dotfiles folder, letting you enable or disable configs for any app with one command.&lt;/p&gt;</summary><content type="html">&lt;p&gt;I used to have config files scattered all over my home directory — .zshrc here, .gitconfig there, random stuff in .config/. No version control, no single source of truth. The real pain hit when I'd tweak something on my MacBook Pro, then have to remember to do the same dance on the Mac Mini and my WSL workstation. Three machines, three copies of the same mess, zero sync. It was a nightmare.
+Then I found &lt;a href="https://www.gnu.org/software/stow/"&gt;GNU Stow&lt;/a&gt;, and it changed everything.&lt;/p&gt;
+&lt;p&gt;Stow is a symlink farm manager. Fancy name, simple idea: you keep all your dotfiles in one tidy folder (&lt;code&gt;~/dotfiles&lt;/code&gt;), and Stow creates symlinks from your home directory pointing back to it. Your configs stay organized, Git-trackable, and portable across machines.&lt;/p&gt;
+&lt;p&gt;The best part? You can enable or disable entire app configs with a single command.&lt;/p&gt;
+&lt;p&gt;Install it quick:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Debian/Ubuntu&lt;/span&gt;
+sudo&lt;span class="w"&gt; &lt;/span&gt;apt&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;stow
+
+&lt;span class="c1"&gt;# macOS&lt;/span&gt;
+brew&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;stow
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;The workflow in 30 seconds&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Create &lt;code&gt;~/dotfiles&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Make a subdirectory (a "package") for each app&lt;/li&gt;
+&lt;li&gt;Move your config files into the matching directory structure&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;stow &amp;lt;package&amp;gt;&lt;/code&gt; from inside &lt;code&gt;~/dotfiles&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;That's it. Let me show you what this looks like in practice.&lt;/p&gt;
+&lt;h2&gt;Stowing &lt;code&gt;.zshrc&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;ZSH config lives at &lt;code&gt;~/.zshrc&lt;/code&gt;. Here's the move:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;~/dotfiles
+
+&lt;span class="c1"&gt;# Move your existing config in&lt;/span&gt;
+mv&lt;span class="w"&gt; &lt;/span&gt;~/.zshrc&lt;span class="w"&gt; &lt;/span&gt;.
+
+&lt;span class="c1"&gt;# Stow it&lt;/span&gt;
+stow&lt;span class="w"&gt; &lt;/span&gt;zsh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Stow creates a symlink: &lt;code&gt;~/.zshrc → ~/dotfiles/.zshrc&lt;/code&gt;. You edit the file in either location — it's the same file.&lt;/p&gt;
+&lt;p&gt;Got more ZSH files? Throw them in:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;mv&lt;span class="w"&gt; &lt;/span&gt;~/.zsh_aliases&lt;span class="w"&gt; &lt;/span&gt;.
+mv&lt;span class="w"&gt; &lt;/span&gt;~/.zsh_functions&lt;span class="w"&gt; &lt;/span&gt;.
+stow&lt;span class="w"&gt; &lt;/span&gt;-R&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="c1"&gt;# Restow to pick up new files&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Your package now looks like:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;~/dotfiles/
+├── .zshrc
+├── .zsh_aliases
+└── .zsh_functions
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Stowing OpenCode&lt;/h2&gt;
+&lt;p&gt;Editors like OpenCode keep config under &lt;code&gt;~/.config/opencode/&lt;/code&gt;. The key here is mirroring the directory structure inside your package:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;~/dotfiles
+mkdir&lt;span class="w"&gt; &lt;/span&gt;-p&lt;span class="w"&gt; &lt;/span&gt;opencode/.config/opencode
+
+mv&lt;span class="w"&gt; &lt;/span&gt;~/.config/opencode/*&lt;span class="w"&gt; &lt;/span&gt;opencode/.config/opencode/
+
+stow&lt;span class="w"&gt; &lt;/span&gt;opencode
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Now &lt;code&gt;~/.config/opencode&lt;/code&gt; is a symlink pointing into your dotfiles. Your settings, keybindings — all tracked:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="nx"&gt;dotfiles&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
+&lt;span class="err"&gt;└──&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;config&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="err"&gt;└──&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;opencode&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="err"&gt;├──&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;opencode&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;jsonc&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="err"&gt;├──&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kn"&gt;package&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;json&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="err"&gt;└──&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;skills&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Same pattern works for any app that stores config under &lt;code&gt;~/.config/&lt;/code&gt; — Yazi, Newsboat, whatever you use. Create the package, mirror the path, stow it.&lt;/p&gt;
+&lt;h2&gt;Version control with Git&lt;/h2&gt;
+&lt;p&gt;This is where Stow really earns its keep. Your entire &lt;code&gt;~/dotfiles&lt;/code&gt; folder is just a regular directory — perfect for Git.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;~/dotfiles
+git&lt;span class="w"&gt; &lt;/span&gt;init
+git&lt;span class="w"&gt; &lt;/span&gt;add&lt;span class="w"&gt; &lt;/span&gt;.
+git&lt;span class="w"&gt; &lt;/span&gt;commit&lt;span class="w"&gt; &lt;/span&gt;-m&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;init&amp;quot;&lt;/span&gt;
+
+git&lt;span class="w"&gt; &lt;/span&gt;remote&lt;span class="w"&gt; &lt;/span&gt;add&lt;span class="w"&gt; &lt;/span&gt;origin&lt;span class="w"&gt; &lt;/span&gt;git@github.com:rvibek/dotfiles.git
+git&lt;span class="w"&gt; &lt;/span&gt;push&lt;span class="w"&gt; &lt;/span&gt;-u&lt;span class="w"&gt; &lt;/span&gt;origin&lt;span class="w"&gt; &lt;/span&gt;main
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Add a &lt;code&gt;.gitignore&lt;/code&gt; to keep things clean:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="na"&gt;.DS_Store&lt;/span&gt;
+&lt;span class="err"&gt;*&lt;/span&gt;&lt;span class="na"&gt;.swp&lt;/span&gt;
+&lt;span class="err"&gt;*~&lt;/span&gt;
+&lt;span class="err"&gt;*&lt;/span&gt;&lt;span class="na"&gt;.db&lt;/span&gt;
+&lt;span class="err"&gt;*&lt;/span&gt;&lt;span class="na"&gt;.lock&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Day-to-day, the flow is dead simple — edit a config, commit, push:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git&lt;span class="w"&gt; &lt;/span&gt;add&lt;span class="w"&gt; &lt;/span&gt;zsh/.zshrc
+git&lt;span class="w"&gt; &lt;/span&gt;commit&lt;span class="w"&gt; &lt;/span&gt;-m&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Update zsh aliases&amp;quot;&lt;/span&gt;
+git&lt;span class="w"&gt; &lt;/span&gt;push
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Setting up a new machine&lt;/h2&gt;
+&lt;p&gt;This is the killer feature. Fresh system? Five commands:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;brew&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;stow
+git&lt;span class="w"&gt; &lt;/span&gt;clone&lt;span class="w"&gt; &lt;/span&gt;git@github.com:rvibek/dotfiles.git&lt;span class="w"&gt; &lt;/span&gt;~/dotfiles
+&lt;span class="nb"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;~/dotfiles
+stow&lt;span class="w"&gt; &lt;/span&gt;zsh&lt;span class="w"&gt; &lt;/span&gt;opencode
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Done. Your entire environment is back. And you can be selective — only stow what you need on that particular machine.&lt;/p&gt;
+&lt;h2&gt;Commands worth remembering&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;stow &amp;lt;pkg&amp;gt;&lt;/code&gt; — create symlinks&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;stow -D &amp;lt;pkg&amp;gt;&lt;/code&gt; — remove symlinks&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;stow -R &amp;lt;pkg&amp;gt;&lt;/code&gt; — restow (useful after adding files)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;stow -n -v &amp;lt;pkg&amp;gt;&lt;/code&gt; — dry run, see what would happen&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;stow */&lt;/code&gt; — stow every package at once&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Quick troubleshooting&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;"Cannot stow over existing file"&lt;/strong&gt; — a real file is in the way. Move it into your package first, then restow:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;mv&lt;span class="w"&gt; &lt;/span&gt;~/.zshrc&lt;span class="w"&gt; &lt;/span&gt;~/dotfiles/zsh/
+stow&lt;span class="w"&gt; &lt;/span&gt;-R&lt;span class="w"&gt; &lt;/span&gt;zsh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Happy stowing. ✌️&lt;/p&gt;</content><category term="Blog"/><category term="dotfiles"/><category term="GNU Stow"/><category term="config management"/><category term="productivity"/><category term="ai"/></entry><entry><title>Uncovering Denmark's Transit API</title><link href="/reverse-engineering-rejseplanen.html" rel="alternate"/><published>2026-01-31T20:51:00+01:00</published><updated>2026-01-31T20:51:00+01:00</updated><author><name>Vibek Raj Maurya</name></author><id>tag:None,2026-01-31:/reverse-engineering-rejseplanen.html</id><summary type="html">&lt;p&gt;Reverse engineering &lt;a href="https://www.rejseplanen.dk/"&gt;Rejseplanen.dk&lt;/a&gt;'s real-time transit API to understand how trains, metros, and buses move around Copenhagen. Discovered three key APIs, mapped transport codes, and built a system to track route progress using AI-assisted "vibe coding" with the &lt;a href="https://www.kimi.com/ai-models/kimi-k2-5"&gt;kimi&lt;/a&gt; k2.5 model.&lt;/p&gt;</summary><content type="html">&lt;p&gt;I have always been fascinated by the real-time visualisations on &lt;a href="https://www.rejseplanen.dk/"&gt;rejseplanen.dk&lt;/a&gt;. It is really cool to watch trains, metros and buses move around Copenhagen in realtime.&lt;/p&gt;
 &lt;p&gt;I wanted to delve in and see what is going on behind this app - and understand how the live map in &lt;a href="https://www.rejseplanen.dk/"&gt;rejseplanen.dk&lt;/a&gt; worked.&lt;/p&gt;
 &lt;p&gt;The project also served as a perfect opportunity to experiment with what the community calls "vibe coding" - using AI (specifically the &lt;a href="https://www.kimi.com/ai-models/kimi-k2-5"&gt;kimi k2.5&lt;/a&gt; model in &lt;a href="https://opencode.ai/"&gt;Opencode&lt;/a&gt;. The goal was not just to build a tracker, but to understand the architecture of a complex, real-time transit system.&lt;/p&gt;
 &lt;h2&gt;The Discovery&lt;/h2&gt;
@@ -158,9 +271,9 @@ docker pull jupyter/datascience-notebook
 &lt;p&gt;The scripts available in my &lt;a href="https://github.com/rvibek/Data-from-Google-Maps"&gt;GitRepo&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;And here's are the saved results in Gist. &lt;a href="https://gist.github.com/rvibek/e5aea8a9396ad10d5b8d42562c53cf08"&gt;Nepalese Restaurants in Europe&lt;/a&gt;. Interestingly, there are almost 80 Nepalese restaurants in Finland. &lt;/p&gt;
 &lt;p&gt;The script uses 3 libraries. &lt;code&gt;time&lt;/code&gt; is needed to delay the API call. Google has a limitation on request per second. &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;json&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;requests&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;time&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;json&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;requests&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;time&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;The next is declare the varible and load first JSON&lt;/p&gt;
@@ -176,7 +289,7 @@ docker pull jupyter/datascience-notebook
 
 &lt;p&gt;The below function recursively populates the result.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Recursive Function&lt;/span&gt;
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;getjson&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;pagetoken&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;query&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;getjson&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;pagetoken&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;query&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
 
     &lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sleep&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# API has requests per second limitation&lt;/span&gt;
 
@@ -213,7 +326,7 @@ docker pull jupyter/datascience-notebook
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Blog"/><category term="python"/><category term="web-scraping"/><category term="google-maps"/><category term="api"/><category term="tooling"/></entry><entry><title>Kathmandu PM2.5 Plot</title><link href="/kathmandu-pm25-drishti-.html" rel="alternate"/><published>2017-11-16T08:25:16+01:00</published><updated>2017-11-16T08:25:16+01:00</updated><author><name>Vibek Raj Maurya</name></author><id>tag:None,2017-11-16:/kathmandu-pm25-drishti-.html</id><summary type="html">&lt;p&gt;Using page_token parameter to recursively fetch Google Maps API result.&lt;/p&gt;</summary><content type="html">&lt;p&gt;The &lt;code&gt;plt.xkcd()&lt;/code&gt; function can convert any matplotlib plot into XKCD style. Trying it with &lt;a href="https://github.com/rvibek/drishti"&gt;Kathmandu air quality data&lt;/a&gt; collected over a year.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="ktm_air_quality_pm25" src="http://res.cloudinary.com/rvibek-com-np/image/upload/v1510877205/ktm_air_quality_pm25_gukcmg.png"&gt;&lt;/p&gt;
 &lt;h3&gt;Import Library&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;matplotlib&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;matplotlib&lt;/span&gt;
 
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;xkcd&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;span class="n"&gt;font&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;family&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;xkcd&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;weight&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;regular&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;size&amp;#39;&lt;/span&gt;   &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
@@ -248,11 +361,11 @@ docker pull jupyter/datascience-notebook
 &lt;p&gt;Yet another 'binge' watching - &lt;a href="https://www.youtube.com/playlist?list=PLQVvvaa0QuDfefDfXb9Yf0la1fPDKluPF" target="_blank"&gt;Matplotlib Tutorial Series - Graphing in Python&lt;/a&gt;. And, for your viewing pleasure &lt;a href="https://xkcd.com" target="_blank"&gt;xkcd&lt;/a&gt; styled map of South Asia. &lt;/p&gt;
 &lt;p&gt;&lt;a href="http://res.cloudinary.com/rvibek-com-np/image/upload/v1505491453/xkcd_southasia_xkcd_ag53g2.png" target="_blank"&gt;&lt;img alt="xkcd South Asia" src="https://res.cloudinary.com/rvibek-com-np/image/upload/v1505491453/xkcd_southasia_xkcd_ag53g2.png"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://res.cloudinary.com/rvibek-com-np/image/upload/v1505491459/xkcd_southasia_xkcd_fbryap.svg" target="_blank"&gt;Download SVG&lt;/a&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;mpl_toolkits.basemap&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Basemap&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;plt&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;matplotlib&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pandas&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;pd&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;requests&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;mpl_toolkits.basemap&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Basemap&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;matplotlib.pyplot&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;as&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;plt&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;matplotlib&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;pandas&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;as&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;pd&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;requests&lt;/span&gt;
 
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;xkcd&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 
@@ -357,8 +470,8 @@ docker pull jupyter/datascience-notebook
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;The script uses &lt;code&gt;requests.post&lt;/code&gt; to pass the value &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;requests&lt;/span&gt;
-&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;pattern&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;web&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;requests&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;pattern&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;web&lt;/span&gt;
 
 &lt;span class="n"&gt;postdata&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="s1"&gt;&amp;#39;topTenBased&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;58&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="c1"&gt;#value from Select menu (NEPSE)&lt;/span&gt;
@@ -378,7 +491,7 @@ docker pull jupyter/datascience-notebook
 
 
 &lt;span class="c1"&gt;#Iteration and storing data in array &lt;/span&gt;
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;content&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;content&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="n"&gt;mydata&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;
     &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="n"&gt;ad&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;by_tag&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;td&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;content&lt;/span&gt;
@@ -437,7 +550,7 @@ docker pull jupyter/datascience-notebook
     &lt;span class="p"&gt;}&lt;/span&gt;
 
  &lt;span class="c1"&gt;#Function to replace word &lt;/span&gt;
- &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;replace_all&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dic&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+ &lt;span class="k"&gt;def&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;replace_all&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dic&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;j&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;dic&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;iteritems&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
         &lt;span class="n"&gt;text&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;replace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;text&lt;/span&gt;
@@ -509,9 +622,9 @@ docker pull jupyter/datascience-notebook
 &lt;p&gt;I have setup &lt;a href="https://www.kimonolabs.com/" title="target=&amp;quot;_blank&amp;quot;"&gt;Kimono&lt;/a&gt; to scrap video list from &lt;a href="http://www.canadanepal.net" title="target=&amp;quot;_blank"&gt;CanadaNepal&lt;/a&gt;. The following file in &lt;a href="http://www.openshift" title="target=&amp;quot;_blank"&gt;OpenShift&lt;/a&gt; is updated every hour 
 &lt;a href="http://app-weather.rhcloud.com/data/kimplx.plx" title="target=&amp;quot;_blank"&gt;kimplx.plx&lt;/a&gt; which is loaded in Navi-X. Search for &lt;em&gt;Nepali TV&lt;/em&gt; in Navi-X to see the listings.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Python Code&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;json&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;urllib&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;datetime&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;json&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;urllib&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;datetime&lt;/span&gt;
 
 &lt;span class="n"&gt;results&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;json&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;load&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;urllib&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;urlopen&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;http://goo.gl/5sUcpr&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 
