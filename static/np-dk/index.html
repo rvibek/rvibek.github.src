@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Newcomers to a new generation: the story of Nepali Denmark</title>
+<!-- Google tag (gtag.js) — DO NOT REMOVE -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-H7S0FV1J9Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-H7S0FV1J9Q');
+</script>
+<!-- End Google tag -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="data.js?v=20261006135602"></script>
+<script src="geo/denmark-municipalities.js?v=20261006135602"></script>
+<style>
+  :root{
+    --ink:#121317; --ink2:#2f3339; --muted:#6b6f76; --faint:#9aa0a6;
+    --line:#e3e0d9; --paper:#f7f5f1; --card:#ffffff;
+    --red:#E3120B; --blue:#006BA2; --lblue:#3EBCD2; --teal:#379A8B;
+    --gold:#EBB434; --olive:#B4BA39; --purple:#9A607F; --tan:#D1B07C;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.6; -webkit-font-smoothing:antialiased;
+  }
+  .progress{position:fixed;top:0;left:0;height:3px;background:var(--red);width:0;z-index:999;transition:width .1s}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+  .narrow{max-width:720px;margin:0 auto}
+
+  /* ---- hero ---- */
+  header.hero{position:relative;padding:14vh 0 9vh;border-bottom:1px solid var(--line)}
+  .kicker{color:var(--red);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:12px;margin-bottom:22px}
+  h1{font-size:clamp(34px,5.4vw,62px);line-height:1.03;letter-spacing:-.02em;margin:0 0 20px;font-weight:800}
+  h1 em{font-style:normal;color:var(--red)}
+  .standfirst{font-size:clamp(17px,2vw,21px);color:var(--ink2);max-width:760px;margin:0 0 40px}
+  .big{display:flex;flex-wrap:wrap;gap:46px;align-items:flex-end;border-top:1px solid var(--line);padding-top:28px}
+  .big .num{font-size:clamp(48px,9vw,104px);font-weight:800;letter-spacing:-.03em;color:var(--red);line-height:.9}
+  .big .num small{font-size:.28em;color:var(--ink2);display:block;font-weight:700;letter-spacing:0;margin-top:8px;line-height:1.3}
+  .big .arrow{align-self:center;font-size:34px;color:var(--muted)}
+  .meta{color:var(--muted);font-size:13px;margin-top:34px}
+  .scrollcue{margin-top:52px;color:var(--muted);font-size:13px;display:flex;align-items:center;gap:10px}
+  .scrollcue svg{animation:bob 1.6s infinite}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+  /* ---- sections ---- */
+  section{padding:8vh 0;border-bottom:1px solid var(--line)}
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+  h2{font-size:clamp(26px,3.4vw,40px);line-height:1.1;letter-spacing:-.02em;margin:0 0 18px;font-weight:800}
+  .lede{font-size:clamp(16px,1.9vw,19px);color:var(--ink2)}
+  p{color:var(--ink2)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:22px 22px 14px;margin:34px 0}
+  .chart{width:100%}
+  #ch-flow{height:460px}
+  #ch-growth{height:460px}
+  #ch-top10{height:340px}
+  #ch-regions{height:360px}
+  #ch-pyr{height:460px}
+  #ch-regshare{height:420px}
+  .caption{color:var(--muted);font-size:13px;margin:10px 2px 0}
+  .chart-toggle{display:flex;gap:0;justify-content:flex-end;margin:0 0 4px}
+  .chart-toggle button{font:inherit;font-size:12px;font-weight:700;color:var(--muted);background:#fff;
+    border:1px solid var(--line);padding:6px 14px;cursor:pointer}
+  .chart-toggle button:first-child{border-radius:4px 0 0 4px}
+  .chart-toggle button:last-child{border-radius:0 4px 4px 0;border-left:none}
+  .chart-toggle button.on{background:var(--red);border-color:var(--red);color:#fff}
+  .src{color:var(--faint);font-size:12px;margin-top:8px;border-top:1px solid var(--line);padding-top:8px}
+  .stat{display:inline-block;font-weight:800;color:var(--ink);border-bottom:2px solid var(--red);white-space:nowrap}
+
+  /* ---- map ---- */
+  .mapwrap{position:relative;border:1px solid var(--line);border-radius:4px;overflow:hidden;background:#eae7df}
+  #map{height:560px;width:100%;background:#e7ebec}
+  .mapctrl{display:flex;flex-wrap:wrap;gap:14px;align-items:center;padding:16px 18px;background:var(--card);border-bottom:1px solid var(--line)}
+  .mapctrl label{font-size:13px;color:var(--muted);font-weight:700}
+  input[type=range]{flex:1;min-width:200px;accent-color:var(--red)}
+  .qlabel{font-weight:800;font-size:15px;min-width:64px}
+  select{font:inherit;padding:5px 8px;border:1px solid var(--line);border-radius:4px;background:#fff;color:var(--ink)}
+  .legend{position:absolute;right:14px;bottom:14px;z-index:500;background:rgba(255,255,255,.92);border:1px solid var(--line);border-radius:4px;padding:9px 11px;font-size:11px;color:var(--ink2)}
+  .legend .row{display:flex;align-items:center;gap:7px}
+  .legend i{width:20px;height:11px;display:inline-block;border-radius:2px}
+  .topwrap{display:grid;grid-template-columns:1.5fr 1fr;gap:22px;margin-top:34px}
+  @media(max-width:820px){.topwrap{grid-template-columns:1fr}}
+
+  footer{padding:9vh 0 12vh;color:var(--muted)}
+  footer h3{color:var(--ink);font-size:18px}
+  .tag{display:inline-block;background:#efece5;border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:12px;color:var(--ink2);margin:0 6px 8px 0}
+  .leaflet-container{font-family:inherit}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">Immigration · Denmark · 2008–2026</div>
+    <h1>Newcomers to a new generation:<br>the story of <em>Nepali Denmark</em></h1>
+    <p class="standfirst">In 2008, 1,174 people of Nepali origin lived in Denmark. By the latest count (2026) they numbered 15,408 — a roughly thirteenfold increase in under two decades, powered above all by students and a young, Danish-born second generation.</p>
+    <div class="big">
+      <div class="num" id="c-first">0<small>People, 2008</small></div>
+      <div class="arrow">&#8594;</div>
+      <div class="num" id="c-last">0<small>People, <span id="latest-q"></span></small></div>
+      <div class="num" style="color:var(--ink)" id="c-growth">0<small>Growth</small></div>
+    </div>
+    <div class="meta" id="src-meta"></div>
+    <div class="scrollcue"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M6 13l6 6 6-6"/></svg> Scroll to explore</div>
+  </div>
+</header>
+
+<!-- 1. GROWTH -->
+<section id="growth">
+  <div class="wrap">
+    <div class="narrow reveal">
+      <h2>A flat decade, then a surge</h2>
+      <p class="lede">For its first ten years the community grew steadily but gently. Between 2018 and 2020 it stalled completely — then, from 2021 onward, the curve bent sharply upward, adding more people in the last five years than in all the years before combined.</p>
+    </div>
+    <div class="card reveal">
+      <div class="chart-toggle" id="growth-toggle">
+        <button data-metric="total" class="on">Total</button>
+        <button data-metric="age">Age breakdown</button>
+      </div>
+      <div id="ch-growth" class="chart"></div>
+      <div class="caption">Population of Nepali origin in Denmark each year — the total, or split by broad age band. Each point is a year-end (Q4) snapshot; see the note at the foot of the page.</div>
+      <div class="src">Source: Statistics Denmark, Statbank table FOLK1C</div>
+    </div>
+    <div class="narrow reveal">
+      <p>The stall was real: between <span class="stat">2018 and 2019</span> the population actually <b>fell slightly</b>, the only decline in the series. Then momentum returned — and kept accelerating.</p>
+    </div>
+    <div class="card reveal">
+      <div class="two-col" style="display:grid;grid-template-columns:1.1fr 1fr;gap:26px;align-items:center">
+        <div id="ch-yoy" class="chart"></div>
+        <div class="narrow" style="margin:0">
+          <p id="yoy-text"></p>
+        </div>
+      </div>
+      <div class="caption">Change in the population from one year to the next (people). Red = the single largest jump; blue = the only fall.</div>
+      <div class="src">Source: Statistics Denmark, Statbank table FOLK1C</div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. AGE -->
+<section id="age">
+  <div class="wrap">
+    <div class="narrow reveal">
+      <h2>A community of students — and a growing number of families</h2>
+      <p class="lede">Look at who is arriving and one group jumps out. People in their twenties and early thirties dominate, consistent with Nepal's well-known pattern of migration to Denmark for higher education. The bright band below — ages 20 to 34 — is where nearly every new arrival lands.</p>
+    </div>
+    <div class="card reveal"><div id="ch-heat" class="chart"></div>
+      <div class="caption">People of Nepali origin by age group and year. Darker = more people. Hover for exact counts.</div>
+      <div class="src">Source: Statistics Denmark, Statbank table FOLK1C</div>
+    </div>
+    <div class="card reveal"><div id="ch-agebar" class="chart"></div>
+      <div class="caption" id="agebar-cap">Age distribution in <span id="latest-q3"></span>.</div>
+      <div class="src">Source: Statistics Denmark, Statbank table FOLK1C</div>
+    </div>
+  </div>
+</section>
+
+<!-- 2b. WHY THEY CAME -->
+<section id="why">
+  <div class="wrap">
+    <div class="narrow reveal">
+      <h2>Nine in ten come to study</h2>
+      <p class="lede">The surge has a clear engine. Statbank also classifies immigration by the <b>residence permit</b> people arrive on — and among Nepali citizens it is overwhelmingly <b>study</b>. In 2025, of 3,073 immigrants, 2,804 (about 91%) came on a study-related permit. The student pipeline <em>is</em> Nepali migration to Denmark — a pattern visible as far back as 2007.</p>
+    </div>
+    <div class="card reveal">
+      <div class="chart-toggle" id="flow-toggle">
+        <button data-metric="counts" class="on">Counts</button>
+        <button data-metric="share">Share&nbsp;%</button>
+      </div>
+      <div id="ch-flow" class="chart"></div>
+      <div class="caption">Immigration of Nepali citizens by residence permit, each year. "Study" bundles education, au pair, interns and their dependent family members. Switch between absolute counts and each group's share of the year's arrivals.</div>
+      <div class="src">Source: Statistics Denmark — Immigrations (year) by citizenship, sex and residence permit</div>
+    </div>
+    <div class="narrow reveal">
+      <p>A second, smaller channel has appeared alongside study. Nepali citizens admitted under <b>EU/EEA rules</b> are almost entirely <b>dependent family members</b> — spouses and children of an EU/EEA national — rather than EU workers or students. That group was in single digits before 2019, then jumped to <span class="stat" id="eueea-peak">454 in 2022</span>. It looks like family reunification following the students, not a separate labour migration.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3. ANCESTRY -->
+<section id="ancestry">
+  <div class="wrap">
+    <div class="narrow reveal">
+      <h2>Immigrants today, Danish-born Nepalis tomorrow</h2>
+      <p class="lede">Everyone in this data is either an <b>immigrant</b> (born abroad) or a <b>descendant</b> (born in Denmark to Nepali parents). Descendants started as a rounding error — 64 people in 2008 — but they are the fastest-growing share, the beginnings of a settled Nepali-Danish generation.</p>
+    </div>
+    <div class="card reveal"><div id="ch-anc" class="chart"></div>
+      <div class="caption">Immigrants vs. descendants over time.</div>
+      <div class="src">Source: Statistics Denmark, Statbank table FOLK1C</div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. GEOGRAPHY -->
+<section id="geography">
+  <div class="wrap">
+    <div class="narrow reveal">
+      <h2>Almost everyone lives in and around Copenhagen</h2>
+      <p class="lede">Nepali Denmark is overwhelmingly an urban, capital-region community. Use the timeline to watch the map fill in year by year — and drag across the years to see how the growth spread from Copenhagen and Aarhus outward.</p>
+    </div>
+    <div class="mapwrap reveal">
+      <div class="mapctrl">
+        <label for="tslider">Year</label>
+        <input id="tslider" type="range" min="0" max="18" value="18" step="1">
+        <span class="qlabel" id="qlabel"></span>
+        <label for="metric">Map shows</label>
+        <select id="metric">
+          <option value="people">People</option>
+          <option value="since2008">Change since 2008</option>
+        </select>
+        <label style="display:flex;align-items:center;gap:7px"><input type="checkbox" id="bubbles" checked> Region totals</label>
+      </div>
+      <div id="map"></div>
+      <div class="legend" id="maplegend"></div>
+    </div>
+    <div class="topwrap">
+      <div class="card reveal" style="margin:0"><div id="ch-top10" class="chart"></div>
+        <div class="caption">Municipalities with the most people of Nepali origin, <span id="latest-q5"></span>.</div>
+        <div class="src">Source: Statistics Denmark, Statbank table FOLK1C</div>
+      </div>
+      <div class="card reveal" style="margin:0"><div id="ch-regions" class="chart"></div>
+        <div class="caption">Population by region — the trend grows with the timeline above; up to <span class="reg-year">2026</span>. Hovedstaden (the capital region) dwarfs the rest.</div>
+        <div class="src">Source: Statistics Denmark, Statbank table FOLK1C</div>
+      </div>
+    </div>
+    <div class="card reveal"><div id="ch-regshare" class="chart"></div>
+      <div class="caption">Where people live: each region's share of the national total, over time. Every column adds to 100%.</div>
+      <div class="src">Source: Statistics Denmark, Statbank table FOLK1C</div>
+    </div>
+  </div>
+</section>
+<section id="sex">
+  <div class="wrap">
+    <div class="narrow reveal">
+      <h2>A slightly male-heavy start, slowly balancing</h2>
+      <p class="lede">The community began male-dominated — typical of early student migration — and has gradually evened out as families formed.</p>
+    </div>
+    <div class="card reveal"><div id="ch-sex" class="chart"></div>
+      <div class="caption">Population by sex over time.</div>
+      <div class="src">Source: Statistics Denmark, Statbank table FOLK1C</div>
+    </div>
+    <div class="card reveal">
+      <div class="mapctrl" style="border-bottom:1px solid var(--line)">
+        <label for="pyr-year">Year</label>
+        <input id="pyr-year" type="range" min="0" max="18" value="18" step="1">
+        <span class="qlabel" id="pyr-label"></span>
+        <span style="font-size:13px;color:var(--muted)">Men on the left, women on the right — drag to see how the age profile shifts.</span>
+      </div>
+      <div id="ch-pyr" class="chart"></div>
+      <div class="caption">Age and sex profile. Bars are people; hover shows each group's share of the total population.</div>
+      <div class="src">Source: Statistics Denmark, Statbank table FOLK1C</div>
+    </div>
+  </div>
+</section>
+
+<!-- 5b. CITIZENSHIP -->
+<section id="citizenship">
+  <div class="wrap">
+    <div class="narrow reveal">
+      <h2>Becoming Danish</h2>
+      <p class="lede">Immigration is only half the story. As people put down roots, some take the final step: Danish citizenship. It stayed a trickle for decades — barely a handful a year — but has climbed since 2020, reaching 114 in 2024. In all, 693 people of Nepali origin have acquired Danish citizenship since 1979.</p>
+    </div>
+    <div class="card reveal"><div id="ch-nat" class="chart"></div>
+      <div class="caption">People of Nepali (former) citizenship who acquired Danish citizenship each year. Counts only cover years with any naturalisations.</div>
+      <div class="src">Source: Statistics Denmark — Persons who acquired Danish citizenship by former citizenship</div>
+    </div>
+    <div class="card reveal"><div id="ch-natage" class="chart"></div>
+      <div class="caption">Age at which people acquired Danish citizenship, all years combined (1979–<span id="nat-latest-year"></span>). The profile is split: children naturalising alongside their parents, and adults in their late thirties and forties.</div>
+      <div class="src">Source: Statistics Denmark — Persons who acquired Danish citizenship by former citizenship, sex and age</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <h3>Data &amp; method</h3>
+    <p style="max-width:760px">All figures come from <b>Statistics Denmark's Statbank</b>. The <b>population stock</b> is table <b>FOLK1C</b> — population at the first day of the quarter by country of origin, age, sex, ancestry and region. The annual <b>flows</b> come from separate tables: <i>Immigrations (year) by citizenship, sex and residence permit</i> (1997–2025) and <i>Persons who acquired Danish citizenship by former citizenship, sex and age</i> (1979–2025). For the stock table the query selects country of origin = <b>Nepal</b>, all age groups, both sexes, both ancestry categories (immigrants and descendants; "persons of Danish origin" are structurally zero for this origin), and every region and municipality.</p>
+    <p style="max-width:760px"><b>Time:</b> every year-point is a <b>Q4 (year-end)</b> observation, except the latest point, <b>2026</b>, which is <b>Q3</b>. The raw download was split into three batches to respect Statbank's 100,000-record limit and merged with <code>scripts/merge_statbank.py</code>.</p>
+    <div>
+      <span class="tag">13,104 geography × age × sex × ancestry combinations</span>
+      <span class="tag">98 municipalities · 5 regions · 21 age groups</span>
+      <span class="tag">19 year-points (2008–2026)</span>
+    </div>
+    <p style="font-size:12px;color:var(--faint);margin-top:22px">Built as a self-contained interactive story. Charts: Plotly.js · Map: Leaflet + DAGI boundaries (Geodatastyrelsen).</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const Q = window.STORY;
+  const M = Q.meta, I = Q.insights;
+  const QC = {
+    ink:"#2f3339", muted:"#6b6f76", faint:"#9aa0a6", line:"#e3e0d9",
+    red:"#E3120B", blue:"#006BA2", lblue:"#3EBCD2", teal:"#379A8B",
+    gold:"#EBB434", purple:"#9A607F", tan:"#D1B07C"
+  };
+  const FONT = "-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif";
+  const PLOT_CFG = {responsive:true, displayModeBar:false};
+
+  function baseLayout(title, subtitle){
+    return {
+      font:{family:FONT, size:13, color:QC.ink},
+      title:{text:(title?('<b>'+title+'</b>'):'')+(subtitle?('<br><span style="font-size:12.5px;font-weight:400;color:'+QC.muted+'">'+subtitle+'</span>'):''),
+             x:0, xanchor:'left', font:{size:16}},
+      margin:{l:54,r:18,t:title?66:14,b:44},
+      paper_bgcolor:'rgba(0,0,0,0)', plot_bgcolor:'rgba(0,0,0,0)',
+      hoverlabel:{font:{family:FONT,size:12}, bordercolor:QC.line},
+      showlegend:false
+    };
+  }
+  function axis(extra){
+    return Object.assign({showgrid:true, gridcolor:QC.line, gridwidth:1,
+      zeroline:false, showline:false, ticks:'', tickfont:{size:11,color:QC.muted},
+      automargin:true}, extra||{});
+  }
+  function shortYear(q){ return q.slice(0,4); }
+
+  // ---------- hero counters ----------
+  document.querySelectorAll('#latest-q,#latest-q2,#latest-q3,#latest-q4,#latest-q5,#latest-q6')
+    .forEach(e=>e.textContent=M.latest.slice(0,4));
+  document.getElementById('src-meta').textContent =
+    M.source+' · '+M.quarters[0].slice(0,4)+' to '+M.latest.slice(0,4)+' · all regions & municipalities';
+  (function(){const pk=I.euEeaFamilyPeak, el=document.getElementById('eueea-peak');
+    if(pk&&el) el.textContent=pk.value+' in '+pk.year;})();
+  function count(el,target,dur){
+    const start=performance.now();
+    function step(t){ const p=Math.min(1,(t-start)/dur); const v=Math.round(target*(1-Math.pow(1-p,3)));
+      el.firstChild.textContent=v.toLocaleString(); if(p<1) requestAnimationFrame(step); }
+    requestAnimationFrame(step);
+  }
+  count(document.getElementById('c-first'),M.totalFirst,900);
+  count(document.getElementById('c-last'),M.totalLatest,1400);
+  (function(){const el=document.getElementById('c-growth');const s=performance.now();
+    (function st(t){const p=Math.min(1,(t-s)/1400);const v=Math.round(I.totalGrowthPct*(1-Math.pow(1-p,3)));
+      el.firstChild.textContent='+'+v.toLocaleString()+'%';if(p<1)requestAnimationFrame(st);})(s);})();
+
+  // ---------- 1. growth / age breakdown (toggle) ----------
+  (function(){
+    const qs=Q.national.quarters.map(shortYear);
+    const ages=Q.age.ages, mtx=Q.age.matrix;
+    const start=a=>parseInt(a,10);
+    const bands=[
+      {n:'20–24', c:QC.red,   f:a=>start(a)>=20&&start(a)<25},
+      {n:'25–29', c:QC.blue,  f:a=>start(a)>=25&&start(a)<30},
+      {n:'30–34', c:QC.teal,  f:a=>start(a)>=30&&start(a)<35},
+      {n:'0–19',  c:QC.gold,  f:a=>start(a)<20},
+      {n:'35+',   c:QC.purple,f:a=>start(a)>=35}
+    ];
+    function bandSeries(pred){ return Q.age.quarters.map((q,j)=>ages.reduce((s,a)=>s+(pred(a)?mtx[a][j]:0),0)); }
+    const qy=y=>Q.national.quarters.findIndex(q=>q.startsWith(y));
+    let metric='total';
+    function draw(){
+      let traces,L;
+      if(metric==='age'){
+        traces=bands.map(b=>({x:qs, y:bandSeries(b.f), type:'scatter', mode:'lines', name:b.n,
+          line:{color:b.c, width:2.5, shape:'spline', smoothing:0.5},
+          hovertemplate:b.n+': <b>%{y:,}</b><extra></extra>'}));
+        L=baseLayout('Population by broad age band','The 20–29 bands alone are the story of the surge');
+        L.showlegend=true; L.legend={orientation:'h', x:1, xanchor:'right', y:1.16, yanchor:'bottom', bgcolor:'rgba(0,0,0,0)', font:{size:11}};
+        L.margin.t=90;
+      } else {
+        traces=[{x:qs, y:Q.national.total, type:'scatter', mode:'lines+markers',
+          line:{color:QC.red, width:3, shape:'spline', smoothing:0.6}, marker:{size:6, color:QC.red},
+          fill:'tozeroy', fillcolor:'rgba(227,18,11,.07)',
+          hovertemplate:'%{x}<br><b>%{y:,}</b> people<extra></extra>'}];
+        L=baseLayout('People of Nepali origin in Denmark','Start of each year; 2026 is the latest available point');
+        const iPlat=qy('2019'), iSurge=qy('2023');
+        L.annotations=[
+          {x:shortYear(Q.national.quarters[iPlat]), y:Q.national.total[iPlat], text:'2018–20<br>plateau', showarrow:true, arrowhead:0, ax:6, ay:-42, font:{size:11,color:QC.muted}, align:'center'},
+          {x:shortYear(Q.national.quarters[iSurge]), y:Q.national.total[iSurge], text:'surge', showarrow:true, arrowhead:0, ax:6, ay:-34, font:{size:11,color:QC.red,weight:'bold'}}
+        ];
+      }
+      L.height=460;
+      L.xaxis=axis({showgrid:false});
+      L.yaxis=axis({title:{text:'People',font:{size:11,color:QC.muted}}, rangemode:'tozero'});
+      L.hovermode='x unified';
+      Plotly.react('ch-growth',traces,L,PLOT_CFG);
+    }
+    draw();
+    const btns=document.querySelectorAll('#growth-toggle button');
+    btns.forEach(b=>b.addEventListener('click',()=>{
+      metric=b.dataset.metric;
+      btns.forEach(x=>x.classList.toggle('on',x===b));
+      draw();
+    }));
+  })();
+
+  // ---------- 2. yoy bars ----------
+  (function(){
+    const g=I.growthByPeriod;
+    const x=g.map(d=>shortYear(d.to));
+    const y=g.map(d=>d.abs);
+    const maxi=y.indexOf(Math.max.apply(null,y));
+    const colors=y.map((v,i)=> i===maxi?QC.red : (v<0?QC.blue:QC.tan));
+    const t={x,y,type:'bar',marker:{color:colors},
+      customdata:g.map(d=>d.pct),
+      hovertemplate:'%{x}<br><b>%{y:+,}</b> people (%{customdata}%)<extra></extra>'};
+    const L=baseLayout('Year-on-year change','Difference from the previous year, in people');
+    L.xaxis=axis({showgrid:false, tickangle:-45});
+    L.yaxis=axis({title:{text:'Change in people',font:{size:11,color:QC.muted}}});
+    Plotly.newPlot('ch-yoy',[t],L,PLOT_CFG);
+    document.getElementById('yoy-text').innerHTML =
+      'The sharpest single year was <b>'+shortYear(I.peakGrowth.from)+' → '+shortYear(I.peakGrowth.to)+'</b>, when the community grew by <span class="stat">+'+I.peakGrowth.abs.toLocaleString()+'</span> ('+I.peakGrowth.pct+'%). '+
+      'Growth has also accelerated every year since 2020. The only fall came in <b>'+shortYear(I.slowestGrowth.from)+' → '+shortYear(I.slowestGrowth.to)+'</b>, a dip of '+I.slowestGrowth.abs.toLocaleString()+' people.';
+  })();
+
+  // ---------- 3a. heatmap ----------
+  (function(){
+    const ages=Q.age.ages.slice().reverse();
+    const z=ages.map(a=>Q.age.matrix[a]);
+    const y=ages.map(a=>a.replace(' years',''));
+    const colTot=Q.age.quarters.map((q,j)=>ages.reduce((s,a)=>s+Q.age.matrix[a][j],0));
+    const txt=ages.map(a=>Q.age.matrix[a].map((v,j)=>{
+      const p=Math.round(100*v/(colTot[j]||1)); return p>0?String(p):''; }));
+    const t={z:z, y:y, x:Q.age.quarters.map(shortYear), type:'heatmap', text:txt,
+      texttemplate:'%{text}', textfont:{color:'#ffffff', size:9},
+      colorscale:[[0,'#f7f5f1'],[0.15,'#f7d9cc'],[0.4,'#ef9c74'],[0.7,'#d5492b'],[1,'#8f1a12']],
+      hovertemplate:'%{y} · %{x}<br><b>%{z:,}</b> people<extra></extra>', xgap:1, ygap:1,
+      colorbar:{title:{text:'people',font:{size:11}}, thickness:10, len:0.9, outlinewidth:0, tickfont:{size:10}}};
+    const L=baseLayout('Age × time','Where in the age structure the growth happened; cell = share of that year (%)');
+    L.xaxis=axis({showgrid:false, tickangle:-45});
+    L.yaxis=axis({showgrid:false, dtick:1});
+    L.margin.b=54;
+    Plotly.newPlot('ch-heat',[t],L,PLOT_CFG);
+  })();
+
+  // ---------- 3c. latest age bars ----------
+  (function(){
+    const ages=Q.age.ages.slice().reverse();      // oldest at top
+    const li=Q.age.quarters.length-1;
+    const vals=ages.map(a=>Q.age.matrix[a][li]);
+    const tot=vals.reduce((s,v)=>s+v,0)||1;
+    const t={x:vals, y:ages.map(a=>a.replace(' years','')), type:'bar', orientation:'h',
+      marker:{color:vals.map(v=>v>=2000?QC.red:(v>=500?QC.tan:'#c9c6be'))},
+      customdata:vals.map(v=>+(100*v/tot).toFixed(1)),
+      hovertemplate:'%{y}<br><b>%{x:,}</b> people (%{customdata}%)<extra></extra>'};
+    const L=baseLayout('Age distribution, '+shortYear(M.latest),'Only a handful of bands hold most of the community');
+    L.xaxis=axis({showgrid:true});
+    L.yaxis=axis({showgrid:false, dtick:1, tickfont:{size:10,color:QC.muted}});
+    L.margin={l:70,r:18,t:66,b:44};
+    Plotly.newPlot('ch-agebar',[t],L,PLOT_CFG);
+  })();
+
+  // ---------- 4a. ancestry stacked area ----------
+  (function(){
+    const q=Q.national.quarters.map(shortYear);
+    const t=[
+      {x:q,y:Q.national.imm,type:'scatter',mode:'lines',name:'Immigrants',stackgroup:'one',
+       line:{color:QC.blue,width:.5}, fillcolor:'rgba(0,107,162,.85)', hovertemplate:'%{x} immigrants: <b>%{y:,}</b><extra></extra>'},
+      {x:q,y:Q.national.desc,type:'scatter',mode:'lines',name:'Descendants',stackgroup:'one',
+       line:{color:QC.red,width:.5}, fillcolor:'rgba(227,18,11,.85)', hovertemplate:'%{x} descendants: <b>%{y:,}</b><extra></extra>'}
+    ];
+    const L=baseLayout('Immigrants and descendants','The Danish-born second generation is small but compounding');
+    L.showlegend=true; L.legend={orientation:'h', x:1, xanchor:'right', y:1.14, yanchor:'bottom', bgcolor:'rgba(0,0,0,0)', font:{size:12}};
+    L.margin.t=84;
+    L.xaxis=axis({showgrid:false});
+    L.yaxis=axis({title:{text:'People',font:{size:11,color:QC.muted}}, rangemode:'tozero'});
+    Plotly.newPlot('ch-anc',t,L,PLOT_CFG);
+  })();
+
+  // ---------- region lines (trend follows the map year slider) ----------
+  const REGION_PALETTE={ 'Region Hovedstaden':QC.red,'Region Midtjylland':QC.blue,'Region Syddanmark':QC.teal,
+                  'Region Sjælland':QC.purple,'Region Nordjylland':QC.gold };
+  const REGION_YMAX=Math.max.apply(null, Q.regions.names.map(r=>Math.max.apply(null, Q.regions.series[r])));
+  function renderRegions(upto){
+    const qs=Q.regions.quarters.map(shortYear).slice(0, upto+1);
+    const traces=Q.regions.names.map(r=>({x:qs, y:Q.regions.series[r].slice(0, upto+1),
+      type:'scatter', mode:'lines+markers', name:r.replace('Region ',''),
+      marker:{size:4, color:REGION_PALETTE[r]},
+      line:{color:REGION_PALETTE[r], width:r==='Region Hovedstaden'?3:2, shape:'spline', smoothing:0.5},
+      hovertemplate:r+': <b>%{y:,}</b><extra></extra>'}));
+    const L=baseLayout('By region','Population of Nepali origin, up to '+shortYear(Q.regions.quarters[upto]));
+    L.height=360;
+    L.showlegend=true; L.legend={orientation:'h', x:1, xanchor:'right', y:1.2, yanchor:'bottom', bgcolor:'rgba(0,0,0,0)', font:{size:10}};
+    L.margin.t=92;
+    L.xaxis=axis({showgrid:false, range:[shortYear(Q.regions.quarters[0]), shortYear(Q.regions.quarters[Q.regions.quarters.length-1])]});
+    L.yaxis=axis({title:{text:'People',font:{size:11,color:QC.muted}}, range:[0, Math.ceil(REGION_YMAX*1.06)]});
+    L.hovermode='x unified';
+    Plotly.react('ch-regions',traces,L,PLOT_CFG);
+  }
+  renderRegions(M.quarters.length-1);
+
+  // ---------- region share of the national total ----------
+  (function(){
+    const R=Q.regions, qs=R.quarters.map(shortYear);
+    const tot=R.quarters.map((q,j)=>R.names.reduce((s,r)=>s+R.series[r][j],0));
+    const rgba={ 'Region Hovedstaden':'227,18,11','Region Midtjylland':'0,107,162',
+                 'Region Syddanmark':'55,154,139','Region Sjælland':'154,96,127','Region Nordjylland':'235,180,52' };
+    const order=R.names.slice().sort((a,b)=>R.series[b][R.series[b].length-1]-R.series[a][R.series[a].length-1]);
+    const traces=order.map(r=>({x:qs, y:R.series[r].map((v,j)=>+(100*v/(tot[j]||1)).toFixed(2)),
+      type:'scatter', mode:'lines', name:r.replace('Region ',''), stackgroup:'one',
+      line:{color:'rgb('+rgba[r]+')', width:.5}, fillcolor:'rgba('+rgba[r]+',.9)',
+      hovertemplate:r+': <b>%{y:.1f}%</b><extra></extra>'}));
+    const L=baseLayout('Where people live: share of the national total','Each region’s percentage of all people of Nepali origin');
+    L.height=420;
+    L.showlegend=true; L.legend={orientation:'h', x:1, xanchor:'right', y:1.15, yanchor:'bottom', bgcolor:'rgba(0,0,0,0)', font:{size:12}};
+    L.margin.t=92;
+    L.xaxis=axis({showgrid:false});
+    L.yaxis=axis({title:{text:'Share of total (%)',font:{size:11,color:QC.muted}}, range:[0,100], ticksuffix:'%'});
+    L.hovermode='x unified';
+    Plotly.newPlot('ch-regshare',traces,L,PLOT_CFG);
+  })();
+
+  // ---------- sex ----------
+  (function(){
+    const q=Q.sex.quarters.map(shortYear);
+    const tot=Q.sex.men.map((m,i)=>m+Q.sex.women[i]);
+    const pct=arr=>arr.map((v,i)=>+(100*v/(tot[i]||1)).toFixed(1));
+    const pm=pct(Q.sex.men), pw=pct(Q.sex.women);
+    const t=[
+      {x:q,y:Q.sex.men,type:'scatter',mode:'lines',name:'Men',customdata:pm,
+       line:{color:QC.blue,width:2.5,shape:'spline',smoothing:.5},
+       hovertemplate:'Men: <b>%{y:,}</b> (%{customdata}%)<extra></extra>'},
+      {x:q,y:Q.sex.women,type:'scatter',mode:'lines',name:'Women',customdata:pw,
+       line:{color:QC.red,width:2.5,shape:'spline',smoothing:.5},
+       hovertemplate:'Women: <b>%{y:,}</b> (%{customdata}%)<extra></extra>'}
+    ];
+    const L=baseLayout('Population by sex','Men vs. women — hover for each group’s share of the total');
+    L.showlegend=true; L.legend={orientation:'h', x:1, xanchor:'right', y:1.14, yanchor:'bottom', bgcolor:'rgba(0,0,0,0)', font:{size:12}};
+    L.margin.t=92;
+    L.xaxis=axis({showgrid:false});
+    L.yaxis=axis({title:{text:'People',font:{size:11,color:QC.muted}}, rangemode:'tozero'});
+    L.hovermode='x unified';
+    const li=q.length-1;
+    L.annotations=[
+      {x:q[li], y:Q.sex.men[li], text:pm[li]+'%', showarrow:false, xanchor:'left', xshift:6, font:{size:11,color:QC.blue,weight:'bold'}},
+      {x:q[li], y:Q.sex.women[li], text:pw[li]+'%', showarrow:false, xanchor:'left', xshift:6, font:{size:11,color:QC.red,weight:'bold'}}
+    ];
+    Plotly.newPlot('ch-sex',t,L,PLOT_CFG);
+  })();
+
+  // ---------- population pyramid (age x sex, by year) ----------
+  (function(){
+    const P=Q.pyramid; if(!P) return;
+    const ages=P.ages, qs=P.quarters;
+    const sel=document.getElementById('pyr-year');
+    const plab=document.getElementById('pyr-label');
+    sel.min=0; sel.max=qs.length-1; sel.value=qs.length-1; sel.step=1;
+    function draw(){
+      const i=+sel.value;
+      if(plab) plab.textContent=shortYear(qs[i]);
+      const tot=ages.reduce((s,a)=>s+P.men[a][i]+P.women[a][i],0)||1;
+      const ym=ages.map(a=>a.replace(' years',''));
+      const cm=ages.map(a=>[P.men[a][i], +(100*P.men[a][i]/tot).toFixed(1)]);
+      const cw=ages.map(a=>[P.women[a][i], +(100*P.women[a][i]/tot).toFixed(1)]);
+      const traces=[
+        {x:ages.map(a=>-P.men[a][i]), y:ym, type:'bar', orientation:'h', name:'Men', marker:{color:QC.blue},
+         customdata:cm, hovertemplate:'Men, %{y}: <b>%{customdata[0]:,}</b> (%{customdata[1]}%)<extra></extra>'},
+        {x:ages.map(a=>P.women[a][i]), y:ym, type:'bar', orientation:'h', name:'Women', marker:{color:QC.red},
+         customdata:cw, hovertemplate:'Women, %{y}: <b>%{customdata[0]:,}</b> (%{customdata[1]}%)<extra></extra>'}
+      ];
+      const maxv=Math.max.apply(null, ages.map(a=>Math.max(P.men[a][i],P.women[a][i])));
+      const step=Math.max(250, Math.round(maxv/4/250)*250);
+      const tv=[-4,-3,-2,-1,0,1,2,3,4].map(k=>k*step);
+      const L=baseLayout('Age and sex profile, '+shortYear(qs[i]),'Men left of centre · women right');
+      L.barmode='relative'; L.height=460;
+      L.showlegend=true; L.legend={orientation:'h', x:1, xanchor:'right', y:1.15, yanchor:'bottom', bgcolor:'rgba(0,0,0,0)', font:{size:12}};
+      L.margin={l:70,r:18,t:92,b:44};
+      L.xaxis=axis({title:{text:'People',font:{size:11,color:QC.muted}}, tickvals:tv,
+        ticktext:tv.map(v=>Math.abs(v).toLocaleString()), zeroline:true, zerolinecolor:'#c9c6be'});
+      L.yaxis=axis({showgrid:false, dtick:1, tickfont:{size:10,color:QC.muted}});
+      Plotly.react('ch-pyr',traces,L,PLOT_CFG);
+    }
+    draw();
+    sel.addEventListener('input',draw);
+  })();
+
+  // ---------- flows: immigration by residence permit (counts / share) ----------
+  (function(){
+    const f=Q.flows; if(!f) return;
+    const cols={Study:'227,18,11','EU/EEA':'0,107,162',Work:'55,154,139',
+                Family:'235,180,52',Other:'154,96,127',Asylum:'209,176,124'};
+    const totals=f.years.map((_,i)=>f.order.reduce((s,g)=>s+f.series[g][i],0));
+    let metric='counts';
+    function draw(){
+      const share=metric==='share';
+      const traces=f.order.map(g=>({x:f.years,
+        y:f.series[g].map((v,i)=> share ? +(100*v/(totals[i]||1)).toFixed(1) : v),
+        type:'scatter', mode:'lines', name:g, stackgroup:'one',
+        line:{color:'rgb('+cols[g]+')', width:.6}, fillcolor:'rgba('+cols[g]+',.9)',
+        hovertemplate:g+': <b>%{y}'+(share?'%':'')+'</b><extra></extra>'}));
+      const L=baseLayout('Immigration by residence permit, each year','Nepali citizens');
+      L.height=460;
+      L.showlegend=true; L.legend={orientation:'h', x:1, xanchor:'right', y:1.15, yanchor:'bottom', bgcolor:'rgba(0,0,0,0)', font:{size:12}};
+      L.margin.t=92;
+      L.xaxis=axis({showgrid:false});
+      L.yaxis=axis({title:{text:share?'Share of arrivals (%)':'People',font:{size:11,color:QC.muted}},
+        rangemode:'tozero', range:share?[0,100]:undefined, ticksuffix:share?'%':''});
+      L.hovermode='x unified';
+      Plotly.react('ch-flow',traces,L,PLOT_CFG);
+    }
+    draw();
+    const btns=document.querySelectorAll('#flow-toggle button');
+    btns.forEach(b=>b.addEventListener('click',()=>{
+      metric=b.dataset.metric;
+      btns.forEach(x=>x.classList.toggle('on',x===b));
+      draw();
+    }));
+  })();
+
+  // ---------- naturalisations ----------
+  (function(){
+    const n=Q.naturalizations; if(!n) return;
+    const traces=[{x:n.years, y:n.total, type:'bar', marker:{color:QC.red},
+      hovertemplate:'%{x}: <b>%{y}</b> people<extra></extra>'}];
+    const L=baseLayout('Acquired Danish citizenship each year','Nepali origin, 1979–'+n.latestYear);
+    L.xaxis=axis({showgrid:false});
+    L.yaxis=axis({title:{text:'People',font:{size:11,color:QC.muted}}, rangemode:'tozero'});
+    Plotly.newPlot('ch-nat',traces,L,PLOT_CFG);
+
+    // age at acquisition
+    const el=document.getElementById('nat-latest-year'); if(el) el.textContent=n.latestYear;
+    const at=n.ageTotals||{};
+    const rows=Object.keys(at).map(k=>({age:parseInt(k,10), label:k.replace(' years','').replace(' year',''), v:at[k]}))
+      .filter(r=>!isNaN(r.age)).sort((a,b)=>a.age-b.age);
+    const asum=rows.reduce((s,r)=>s+r.v,0)||1;
+    const atrace={x:rows.map(r=>r.age), y:rows.map(r=>r.v), type:'bar',
+      marker:{color:rows.map(r=>r.age<18?QC.tan:QC.red)},
+      customdata:rows.map(r=>+(100*r.v/asum).toFixed(1)),
+      hovertemplate:'Age %{x}<br><b>%{y}</b> people (%{customdata}%)<extra></extra>'};
+    const LA=baseLayout('Age at which Danish citizenship was acquired','All naturalisations 1979–'+n.latestYear+' combined; gold = under 18');
+    LA.xaxis=axis({showgrid:false, title:{text:'Age at acquisition (years)',font:{size:11,color:QC.muted}}});
+    LA.yaxis=axis({title:{text:'People',font:{size:11,color:QC.muted}}, rangemode:'tozero'});
+    Plotly.newPlot('ch-natage',[atrace],LA,PLOT_CFG);
+  })();
+
+  // ================= MAP =================
+  const mapColors=['#f7f5f1','#f9d9cc','#f3ab86','#e46b45','#cf3a22','#9e1b12'];
+  let metric='people', qi=M.quarters.length-1;
+  const geo=window.DK_GEO;
+  const muni=Q.munis;
+  const valueFor=(name)=>{
+    const s=muni.series[name]; if(!s) return 0;
+    return metric==='people' ? s[qi] : s[qi]-s[0];
+  };
+  function breaks(vals){
+    const pos=vals.filter(v=>v>0).sort((a,b)=>a-b);
+    if(!pos.length) return [0,0,0,0,0];
+    const q=p=>pos[Math.min(pos.length-1,Math.floor(p*pos.length))];
+    return [0,q(.2),q(.45),q(.7),q(.9),pos[pos.length-1]];
+  }
+  function colorFor(v,bk){
+    if(v<=0) return v<0?'#5b8fb0':mapColors[0];
+    for(let i=bk.length-1;i>0;i--) if(v>=bk[i-1]) return mapColors[Math.min(i,mapColors.length-1)];
+    return mapColors[1];
+  }
+  const map=L.map('map',{zoomControl:true,attributionControl:false,scrollWheelZoom:false}).setView([56.0,10.5],7);
+  const layer=L.geoJSON(geo,{style:f=>styleMuni(f), onEachFeature:(f,ly)=>{
+    ly.on('mouseover',()=>ly.setStyle({weight:2,color:'#121317'}));
+    ly.on('mouseout',()=>ly.setStyle({weight:.6,color:'#ffffff'}));
+    ly.bindTooltip('',{sticky:true});
+    ly.on('mousemove',e=>{ const v=valueFor(f.properties.name);
+      ly.setTooltipContent('<b>'+f.properties.name+'</b><br>'+v.toLocaleString()+(metric==='people'?' people':' since 2008')); });
+  }}).addTo(map);
+  map.fitBounds(layer.getBounds(),{padding:[14,14]});
+  function styleMuni(f){
+    const vals=muni.names.map(valueFor); const bk=breaks(vals);
+    const v=valueFor(f.properties.name);
+    return {fillColor:colorFor(v,bk), weight:.6, color:'#ffffff', fillOpacity:.92};
+  }
+  let bubbleLayer=L.layerGroup().addTo(map);
+  const regionAnchor={};
+  Q.regions.names.forEach(r=>{
+    const ms=muni.names.filter(m=>muni.region[m]===r).sort((a,b)=>muni.latest[b]-muni.latest[a]);
+    regionAnchor[r]=Q.geo.muniCentroids[ms[0]];
+  });
+  function drawBubbles(){
+    bubbleLayer.clearLayers();
+    if(!document.getElementById('bubbles').checked) return;
+    const maxReg=Math.max.apply(null,Q.regions.names.map(r=>Q.regions.series[r][qi]));
+    Q.regions.names.forEach(r=>{
+      const c=regionAnchor[r]; if(!c) return;
+      const v=Q.regions.series[r][qi];
+      L.circleMarker(c,{radius:Math.max(7,Math.sqrt(v/maxReg)*34),stroke:true,color:'#121317',
+        weight:1.5,fillColor:QC.red,fillOpacity:.28}).addTo(bubbleLayer)
+        .bindTooltip('<b>'+r+'</b><br>'+v.toLocaleString()+' people');
+    });
+  }
+  function drawLegend(bk){
+    const le=document.getElementById('maplegend');
+    let h='<div style="font-weight:700;margin-bottom:5px">'+(metric==='people'?'People':'Change since 2008')+'</div>';
+    for(let i=0;i<mapColors.length;i++){
+      const lo=i===0?0:bk[i-1]; const hi=i===mapColors.length-1?'+':bk[i];
+      h+='<div class="row"><i style="background:'+mapColors[i]+'"></i>'+(i===0&&metric==='people'?'0':lo+' – '+hi)+'</div>';
+    }
+    h+='<div class="row" style="margin-top:5px"><i style="background:'+QC.red+';opacity:.28"></i>region total (bubble)</div>';
+    le.innerHTML=h;
+  }
+  function updateMap(){
+    const vals=muni.names.map(valueFor); const bk=breaks(vals);
+    layer.eachLayer(ly=>ly.setStyle(styleMuni(ly.feature)));
+    drawBubbles(); drawLegend(bk);
+    document.getElementById('qlabel').textContent=shortYear(M.quarters[qi]);
+    document.querySelectorAll('#latest-q5,.reg-year').forEach(e=>e.textContent=shortYear(M.quarters[qi]));
+    updateTop10();
+    renderRegions(qi);
+  }
+  document.getElementById('tslider').addEventListener('input',e=>{ qi=+e.target.value; updateMap(); });
+  document.getElementById('metric').addEventListener('change',e=>{ metric=e.target.value; updateMap(); });
+  document.getElementById('bubbles').addEventListener('change',drawBubbles);
+
+  // top 10 bar (updates with slider)
+  function updateTop10(){
+    const rows=muni.names.map(n=>({n, v:valueFor(n)})).sort((a,b)=>b.v-a.v).slice(0,10).reverse();
+    const t={x:rows.map(r=>r.v), y:rows.map(r=>r.n), type:'bar', orientation:'h',
+      marker:{color:QC.red}, hovertemplate:'%{y}<br><b>%{x:,}</b><extra></extra>'};
+    const L=baseLayout('Top municipalities'+(metric==='since2008'?' · change since 2008':''),'');
+    L.height=340;
+    L.xaxis=axis({showgrid:true});
+    L.yaxis=axis({showgrid:false, tickfont:{size:11,color:QC.ink}});
+    L.margin={l:100,r:50,t:34,b:40};
+    if(document.getElementById('ch-top10')) Plotly.react('ch-top10',[t],L,PLOT_CFG);
+  }
+  updateMap();
+  setTimeout(()=>{ map.invalidateSize(); map.fitBounds(layer.getBounds(),{padding:[14,14]}); },400);
+
+  // ================= scroll reveal + progress =================
+  const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  const bar=document.getElementById('progress');
+  addEventListener('scroll',()=>{ const h=document.documentElement;
+    bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%'; });
+})();
+</script>
+</body>
+</html>
