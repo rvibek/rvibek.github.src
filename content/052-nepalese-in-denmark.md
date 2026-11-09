@@ -1,12 +1,14 @@
 Title: Growing Nepalese in Denmark - Story in Numbers
 Slug: growing-nepalese-in-denmark
 Date: 2025-03-14 13:00:00
-Modified: 2025-03-14 13:00:00
+Modified: 2026-11-09 10:00:00
 Tags: nepal, denmark, immigration, data-visualization, datawrapper, open-data
 Category: Blog
 Author: Vibek Raj Maurya
 Lang: 
 Summary: Denmark’s Nepalese community has surged tenfold since 2008, fueled by education-driven migration and post-pandemic rebounds. The Nepalese diaspora now exceeding 12,000 reflects Denmark’s appeal as a hub for opportunity, education, and integration.
+
+**Update, November 2026:** this post uses data up to early 2025. The community has since passed 15,400 people, and the analysis has been rebuilt with an interactive map, age pyramid and permit flows — see [Nepali Denmark in 2026](https://rvibek.com.np/nepali-denmark-2026.html). The figures below are left as originally published.
 
 Lately, I’ve been digging into some data from [Statistics Denmark](https://www.statbank.dk/){:target="_blank"} about the Nepalese community here, and the story it tells is nothing short of captivating. From students chasing degrees to families reuniting and immigrants putting down permanent roots, the numbers reveal a growing presence. Let me unpack the trends.  
 

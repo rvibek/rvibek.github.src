@@ -13,6 +13,9 @@ BIO = "Data analyst & AI ethusiast currently based in Copenhagen. Previously liv
 PATH = 'content'
 THEME = 'themes/hyde'
 STATIC_PATHS = ['images', 'static']
+# Allow .html files inside STATIC_PATHS (self-contained interactive stories)
+# to be copied as-is instead of being parsed as articles.
+STATIC_EXCLUDE_SOURCES = False
 
 COVER_IMG_URL = 'https://res.cloudinary.com/rvibek-com-np/image/upload/v1486821421/ghostium800_y3y8pa.jpg'
 PROFILE_IMG_URL = 'https://res.cloudinary.com/rvibek-com-np/image/upload/v1486821422/logo_dpmyds.png'
@@ -59,7 +62,7 @@ PAGINATED_TEMPLATES = {'index': None, 'tag': None, 'category': None, 'author': N
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
 
-ARTICLE_EXCLUDES = ('pages', 'authors')
+ARTICLE_EXCLUDES = ('pages', 'authors', 'static')
 
 
 EXTRA_PATH_METADATA = {
